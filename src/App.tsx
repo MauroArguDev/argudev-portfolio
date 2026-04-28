@@ -3,6 +3,7 @@ import { I18nHtmlSync } from '@/components/I18nHtmlSync'
 import { BackgroundMesh } from '@/components/BackgroundMesh'
 import { ScrollProgress } from '@/components/ScrollProgress'
 import { CursorGlow } from '@/components/CursorGlow'
+import { Nav } from '@/sections/Nav'
 
 function App() {
   return (
@@ -11,11 +12,13 @@ function App() {
       <ScrollProgress />
       <CursorGlow />
       <BackgroundMesh />
-      <div>
-        <h1 className="font-display font-bold text-[clamp(22px,5vw,32px)] tracking-[-0.8px] leading-[1.15] text-platinum px-6 py-4">
-          Hello World
-        </h1>
-      </div>
+      <Nav />
+      <main>
+        <section id="hero" className="min-h-screen" />
+        <section id="about" className="min-h-screen" />
+        <section id="projects" className="min-h-screen" />
+        <section id="contact" className="min-h-screen" />
+      </main>
     </>
   )
 }
