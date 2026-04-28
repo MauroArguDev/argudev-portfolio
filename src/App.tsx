@@ -5,6 +5,7 @@ import { CursorGlow } from '@/components/CursorGlow'
 import { Nav } from '@/sections/Nav'
 import { Hero } from '@/sections/Hero'
 import { About } from '@/sections/About'
+import { Projects } from '@/sections/Projects'
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
       <main>
         <Hero />
         <About />
-        <section id="projects" className="min-h-screen" />
+        <Projects />
         <section id="contact" className="min-h-screen" />
       </main>
     </>
