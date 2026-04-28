@@ -18,7 +18,7 @@ export function LanguageSwitcher() {
           onClick={() => i18n.changeLanguage(lang.code)}
           aria-pressed={current === lang.code}
           className={[
-            "font-mono text-[10px] tracking-widest px-2 py-1 rounded transition-all duration-150",
+            "font-mono text-[12px] tracking-widest px-2 py-1 rounded transition-all duration-150",
             current === lang.code
               ? "text-violet border border-violet/40 bg-violet/10"
               : "text-ash border border-transparent hover:text-platinum",
