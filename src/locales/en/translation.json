@@ -1,0 +1,72 @@
+{
+  "nav": {
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact",
+    "available": "Available 2026"
+  },
+  "hero": {
+    "kicker": "iOS Developer · argudev.com",
+    "role": "iOS Developer",
+    "tagline": "Efficiency and Quality",
+    "bio": "iOS developer with 6+ years delivering. Clean code, fast shipping.",
+    "cta_projects": "View projects",
+    "cta_contact": "Contact",
+    "scroll": "Scroll",
+    "tags": {
+      "years": "6 years"
+    }
+  },
+  "about": {
+    "eyebrow": "About",
+    "heading": "Clean code that ships.",
+    "bio": "iOS developer with 6+ years delivering production-ready software. Efficient, clean, and on time — every time.",
+    "stack_heading": "Tech stack"
+  },
+  "projects": {
+    "eyebrow": "Projects",
+    "heading": "Things I have built.",
+    "sub": "Three iOS apps and one React project — all production-ready.",
+    "view_github": "GitHub →",
+    "view_testflight": "TestFlight →",
+    "view_appstore": "App Store →",
+    "view_live": "Live →",
+    "items": {
+      "fintrack": {
+        "description": "Personal finance tracker with categories, budgets, charts and Face ID protection."
+      },
+      "mindfulai": {
+        "description": "Personal journal with AI-powered emotional analysis and weekly summaries."
+      },
+      "arshop": {
+        "description": "3D product catalog with augmented reality placement and Apple Pay sandbox."
+      },
+      "landing": {
+        "description": "High-performance SaaS landing page with dark mode, scroll animations and Lighthouse 100."
+      }
+    }
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "heading": "Let's work together.",
+    "sub": "Available for remote roles. $4,000+ USD monthly.",
+    "name_label": "Name",
+    "name_placeholder": "Your name",
+    "email_label": "Email",
+    "email_placeholder": "your@email.com",
+    "message_label": "Message",
+    "message_placeholder": "Tell me about the project...",
+    "submit": "Send message",
+    "submitting": "Sending...",
+    "sent": "Sent ✓"
+  },
+  "footer": {
+    "tagline": "Brand Identity · 2026"
+  },
+  "lang": {
+    "switcher_label": "Language",
+    "en": "EN",
+    "es": "ES",
+    "fr": "FR"
+  }
+}

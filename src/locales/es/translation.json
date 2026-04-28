@@ -1,0 +1,72 @@
+{
+  "nav": {
+    "about": "Sobre mí",
+    "projects": "Proyectos",
+    "contact": "Contacto",
+    "available": "Disponible 2026"
+  },
+  "hero": {
+    "kicker": "iOS Developer · argudev.com",
+    "role": "iOS Developer",
+    "tagline": "Eficiencia y Calidad",
+    "bio": "iOS developer con +6 años entregando. Código limpio, entrega rápida.",
+    "cta_projects": "Ver proyectos",
+    "cta_contact": "Contacto",
+    "scroll": "Scroll",
+    "tags": {
+      "years": "6 años"
+    }
+  },
+  "about": {
+    "eyebrow": "Sobre mí",
+    "heading": "Código limpio que se entrega.",
+    "bio": "iOS developer con +6 años entregando software listo para producción. Eficiente, limpio y a tiempo — siempre.",
+    "stack_heading": "Stack técnico"
+  },
+  "projects": {
+    "eyebrow": "Proyectos",
+    "heading": "Lo que he construido.",
+    "sub": "Tres apps iOS y un proyecto React — todos listos para producción.",
+    "view_github": "GitHub →",
+    "view_testflight": "TestFlight →",
+    "view_appstore": "App Store →",
+    "view_live": "Ver →",
+    "items": {
+      "fintrack": {
+        "description": "Rastreador de finanzas personales con categorías, presupuestos, gráficos y protección Face ID."
+      },
+      "mindfulai": {
+        "description": "Diario personal con análisis emocional por IA y resúmenes semanales automáticos."
+      },
+      "arshop": {
+        "description": "Catálogo 3D con realidad aumentada y checkout simulado con Apple Pay."
+      },
+      "landing": {
+        "description": "Landing page SaaS de alto rendimiento con modo oscuro, animaciones y Lighthouse 100."
+      }
+    }
+  },
+  "contact": {
+    "eyebrow": "Contacto",
+    "heading": "¿Trabajamos juntos?",
+    "sub": "Disponible para roles remotos. $4,000+ USD mensuales.",
+    "name_label": "Nombre",
+    "name_placeholder": "Tu nombre",
+    "email_label": "Correo",
+    "email_placeholder": "tu@correo.com",
+    "message_label": "Mensaje",
+    "message_placeholder": "Cuéntame sobre el proyecto...",
+    "submit": "Enviar mensaje",
+    "submitting": "Enviando...",
+    "sent": "Enviado ✓"
+  },
+  "footer": {
+    "tagline": "Identidad de marca · 2026"
+  },
+  "lang": {
+    "switcher_label": "Idioma",
+    "en": "EN",
+    "es": "ES",
+    "fr": "FR"
+  }
+}
