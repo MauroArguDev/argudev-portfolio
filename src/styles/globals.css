@@ -5,7 +5,10 @@
     --color-obsidian: #15151F;
     --color-graphite: #1F1F2E;
     --color-violet: #B026FF;
+    --color-violet-2: #8B10CC;
+    --color-violet-3: #6A00A8;
     --color-crimson: #FF0844;
+    --color-plum: #5D1A9E;
     --color-platinum: #F5F5F7;
     --color-silver: #A1A1AA;
     --color-ash: #5C5C6B;
@@ -20,4 +23,5 @@ body {
     color: #F5F5F7;
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
 }
