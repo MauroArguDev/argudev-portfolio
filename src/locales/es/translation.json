@@ -61,7 +61,11 @@
     "sent": "Enviado ✓"
   },
   "footer": {
-    "tagline": "Identidad de marca · 2026"
+    "tagline": "iOS Developer",
+    "available": "Disponible para roles remotos",
+    "nav_heading": "Navegar",
+    "connect_heading": "Conectar",
+    "built_with": "Construido con React · TypeScript · Framer Motion"
   },
   "lang": {
     "switcher_label": "Idioma",
