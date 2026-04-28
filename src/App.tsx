@@ -4,6 +4,7 @@ import { ScrollProgress } from '@/components/ScrollProgress'
 import { CursorGlow } from '@/components/CursorGlow'
 import { Nav } from '@/sections/Nav'
 import { Hero } from '@/sections/Hero'
+import { About } from '@/sections/About'
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
       <Nav />
       <main>
         <Hero />
-        <section id="about" className="min-h-screen" />
+        <About />
         <section id="projects" className="min-h-screen" />
         <section id="contact" className="min-h-screen" />
       </main>
