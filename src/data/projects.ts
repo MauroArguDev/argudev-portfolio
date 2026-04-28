@@ -1,4 +1,6 @@
-export const projects = [
+import type { Project } from "@/types"
+
+export const projects: Project[] = [
   {
     id: "fintrack-pro",
     name: "FinTrack Pro",
@@ -6,7 +8,7 @@ export const projects = [
     year: "2026",
     stack: ["SwiftUI", "SwiftData", "Swift Charts", "CloudKit", "Face ID"],
     descriptionKey: "projects.items.fintrack.description",
-    links: { github: "", testflight: "" },
+    links: {},
   },
   {
     id: "mindfulai-journal",
@@ -15,7 +17,7 @@ export const projects = [
     year: "2026",
     stack: ["SwiftUI", "Core ML", "Claude API", "Speech", "SwiftData"],
     descriptionKey: "projects.items.mindfulai.description",
-    links: { github: "", testflight: "" },
+    links: {},
   },
   {
     id: "arshop-showcase",
@@ -24,7 +26,7 @@ export const projects = [
     year: "2026",
     stack: ["ARKit", "RealityKit", "Combine", "URLSession", "Apple Pay"],
     descriptionKey: "projects.items.arshop.description",
-    links: { github: "", appstore: "" },
+    links: {},
   },
   {
     id: "react-landing",
@@ -33,6 +35,6 @@ export const projects = [
     year: "2026",
     stack: ["Next.js 15", "Tailwind CSS", "Framer Motion", "Resend"],
     descriptionKey: "projects.items.landing.description",
-    links: { github: "", live: "" },
+    links: {},
   },
 ]

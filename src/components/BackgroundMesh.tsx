@@ -1,6 +1,6 @@
 export function BackgroundMesh() {
   return (
-    <div className="bg-mesh">
+    <div className="bg-mesh" aria-hidden="true">
       <div className="bg-orb bg-orb-1" />
       <div className="bg-orb bg-orb-2" />
       <div className="bg-orb bg-orb-3" />

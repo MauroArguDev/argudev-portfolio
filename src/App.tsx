@@ -1,9 +1,9 @@
-import './App.css'
 import { I18nHtmlSync } from '@/components/I18nHtmlSync'
 import { BackgroundMesh } from '@/components/BackgroundMesh'
 import { ScrollProgress } from '@/components/ScrollProgress'
 import { CursorGlow } from '@/components/CursorGlow'
 import { Nav } from '@/sections/Nav'
+import { Hero } from '@/sections/Hero'
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
       <BackgroundMesh />
       <Nav />
       <main>
-        <section id="hero" className="min-h-screen" />
+        <Hero />
         <section id="about" className="min-h-screen" />
         <section id="projects" className="min-h-screen" />
         <section id="contact" className="min-h-screen" />
