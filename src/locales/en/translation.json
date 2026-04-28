@@ -61,7 +61,11 @@
     "sent": "Sent ✓"
   },
   "footer": {
-    "tagline": "Brand Identity · 2026"
+    "tagline": "iOS Developer",
+    "available": "Available for remote roles",
+    "nav_heading": "Navigate",
+    "connect_heading": "Connect",
+    "built_with": "Built with React · TypeScript · Framer Motion"
   },
   "lang": {
     "switcher_label": "Language",
