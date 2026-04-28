@@ -1,5 +1,4 @@
-import { motion } from "framer-motion"
-import { useReducedMotion } from "framer-motion"
+import { motion, useReducedMotion } from "framer-motion"
 import { useScrollReveal } from "@/hooks/useScrollReveal"
 
 interface AnimatedSectionProps {

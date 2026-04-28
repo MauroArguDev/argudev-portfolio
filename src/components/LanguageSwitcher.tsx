@@ -7,11 +7,11 @@ const LANGUAGES = [
 ]
 
 export function LanguageSwitcher() {
-  const { i18n } = useTranslation()
+  const { i18n, t } = useTranslation()
   const current = i18n.language.slice(0, 2)
 
   return (
-    <div className="flex items-center gap-1" role="group" aria-label={i18n.t("lang.switcher_label")}>
+    <div className="flex items-center gap-1" role="group" aria-label={t("lang.switcher_label")}>
       {LANGUAGES.map((lang) => (
         <button
           key={lang.code}

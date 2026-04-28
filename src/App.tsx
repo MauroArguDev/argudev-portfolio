@@ -1,4 +1,3 @@
-import './App.css'
 import { I18nHtmlSync } from '@/components/I18nHtmlSync'
 import { BackgroundMesh } from '@/components/BackgroundMesh'
 import { ScrollProgress } from '@/components/ScrollProgress'

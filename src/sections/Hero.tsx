@@ -39,10 +39,8 @@ export function Hero() {
         </motion.div>
 
         {/* Wordmark — char-by-char entrance */}
-        <div
+        <h1
           className="flex items-baseline mb-6"
-          role="heading"
-          aria-level={1}
           aria-label="ArguDev."
         >
           {WORDMARK.map(({ char, color }, i) => (
@@ -57,7 +55,7 @@ export function Hero() {
               {char}
             </motion.span>
           ))}
-        </div>
+        </h1>
 
         {/* Role line */}
         <motion.div variants={staggerItem} className="mb-10">

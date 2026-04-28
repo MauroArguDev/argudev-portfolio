@@ -20,13 +20,14 @@ export function Nav() {
       style={{
         background: "rgba(7,7,12,0.7)",
         backdropFilter: "blur(28px) saturate(200%)",
+        WebkitBackdropFilter: "blur(28px) saturate(200%)",
         borderBottom: "0.5px solid rgba(255,255,255,0.07)",
       }}
       className="fixed top-0 left-0 right-0 z-50 h-[52px] md:h-[56px]"
     >
       <div className="max-w-6xl mx-auto px-6 h-full flex items-center justify-between">
         {/* Wordmark */}
-        <a href="#" aria-label="ArguDev home" className="flex items-baseline gap-0 select-none">
+        <a href="#hero" aria-label="ArguDev home" className="flex items-baseline gap-0 select-none">
           <span
             className="font-display font-bold text-platinum"
             style={{ fontSize: 34, letterSpacing: "-1px", lineHeight: 1 }}
