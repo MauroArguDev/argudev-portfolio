@@ -1,0 +1,72 @@
+{
+  "nav": {
+    "about": "À propos",
+    "projects": "Projets",
+    "contact": "Contact",
+    "available": "Disponible 2026"
+  },
+  "hero": {
+    "kicker": "Mauricio Argumedo",
+    "role": "iOS Developer",
+    "tagline": "Efficacité et Qualité",
+    "bio": "Développeur iOS avec 6+ ans de livraisons. Code propre, livraison rapide.",
+    "cta_projects": "Voir les projets",
+    "cta_contact": "Contact",
+    "scroll": "Défiler",
+    "tags": {
+      "years": "6 ans"
+    }
+  },
+  "about": {
+    "eyebrow": "À propos",
+    "heading": "Du code propre qui se livre.",
+    "bio": "Développeur iOS avec plus de 6 ans de livraison de logiciels prêts pour la production. Efficace, propre et dans les délais — toujours.",
+    "stack_heading": "Stack technique"
+  },
+  "projects": {
+    "eyebrow": "Projets",
+    "heading": "Ce que j'ai construit.",
+    "sub": "Trois apps iOS et un projet React — tous prêts pour la production.",
+    "view_github": "GitHub →",
+    "view_testflight": "TestFlight →",
+    "view_appstore": "App Store →",
+    "view_live": "Voir →",
+    "items": {
+      "fintrack": {
+        "description": "Suivi des finances personnelles avec catégories, budgets, graphiques et protection Face ID."
+      },
+      "mindfulai": {
+        "description": "Journal personnel avec analyse émotionnelle par IA et résumés hebdomadaires automatiques."
+      },
+      "arshop": {
+        "description": "Catalogue 3D avec réalité augmentée et paiement simulé via Apple Pay."
+      },
+      "landing": {
+        "description": "Landing page SaaS haute performance avec mode sombre, animations au défilement et Lighthouse 100."
+      }
+    }
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "heading": "Travaillons ensemble.",
+    "sub": "Disponible pour des postes à distance. 4 000 $ USD+ par mois.",
+    "name_label": "Nom",
+    "name_placeholder": "Votre nom",
+    "email_label": "E-mail",
+    "email_placeholder": "votre@email.com",
+    "message_label": "Message",
+    "message_placeholder": "Parlez-moi du projet...",
+    "submit": "Envoyer le message",
+    "submitting": "Envoi en cours...",
+    "sent": "Envoyé ✓"
+  },
+  "footer": {
+    "tagline": "Identité de marque · 2026"
+  },
+  "lang": {
+    "switcher_label": "Langue",
+    "en": "EN",
+    "es": "ES",
+    "fr": "FR"
+  }
+}
