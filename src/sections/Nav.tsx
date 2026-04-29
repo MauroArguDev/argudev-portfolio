@@ -26,26 +26,13 @@ export function Nav() {
       className="fixed top-0 left-0 right-0 z-50 h-[52px] md:h-[56px]"
     >
       <div className="max-w-6xl mx-auto px-6 h-full flex items-center justify-between">
-        {/* Wordmark */}
-        <a href="#hero" aria-label="ArguDev home" className="flex items-baseline gap-0 select-none">
-          <span
-            className="font-display font-bold text-platinum"
-            style={{ fontSize: 34, letterSpacing: "-1px", lineHeight: 1 }}
-          >
-            Argu
-          </span>
-          <span
-            className="font-display font-bold text-violet"
-            style={{ fontSize: 34, letterSpacing: "-1px", lineHeight: 1 }}
-          >
-            Dev
-          </span>
-          <span
-            className="font-display font-bold text-crimson"
-            style={{ fontSize: 34, letterSpacing: "-1px", lineHeight: 1 }}
-          >
-            .
-          </span>
+        {/* Logo */}
+        <a href="#hero" aria-label="ArguDev home" className="flex items-center select-none">
+          <img
+            src="/logo.png"
+            alt="ArguDev"
+            style={{ height: 28, width: "auto" }}
+          />
         </a>
 
         {/* Right side */}
@@ -56,7 +43,7 @@ export function Nav() {
               <a
                 key={key}
                 href={href}
-                className="font-mono text-[12px] tracking-[1px] uppercase text-silver hover:text-platinum transition-colors duration-150"
+                className="font-mono text-[13px] tracking-[1px] uppercase text-silver hover:text-platinum transition-colors duration-150"
               >
                 {t(key)}
               </a>
