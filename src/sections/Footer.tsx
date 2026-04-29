@@ -27,29 +27,31 @@ export function Footer() {
 
           {/* Brand column */}
           <div className="flex flex-col gap-3">
-            <div className="flex items-baseline select-none">
-              <span className="font-display font-bold text-platinum" style={{ fontSize: 24, letterSpacing: "-1px", lineHeight: 1 }}>Argu</span>
-              <span className="font-display font-bold text-violet"   style={{ fontSize: 24, letterSpacing: "-1px", lineHeight: 1 }}>Dev</span>
-              <span className="font-display font-bold text-crimson"  style={{ fontSize: 24, letterSpacing: "-1px", lineHeight: 1 }}>.</span>
-            </div>
-            <p className="font-mono text-[12px] text-silver">
+            <a href="#hero" aria-label="ArguDev home" className="select-none w-fit">
+              <img
+                src="/logo.png"
+                alt="ArguDev"
+                style={{ height: 28, width: "auto" }}
+              />
+            </a>
+            <p className="font-mono text-[13px] text-silver">
               {t("footer.tagline")}
             </p>
-            <p className="font-mono text-[11px] text-ash">
+            <p className="font-mono text-[12px] text-ash">
               {t("footer.available")}
             </p>
           </div>
 
           {/* Navigate column */}
           <div className="flex flex-col gap-3">
-            <p className="font-mono text-[10px] tracking-[1.5px] uppercase text-ash">
+            <p className="font-mono text-[13px] tracking-[1.5px] uppercase text-ash">
               {t("footer.nav_heading")}
             </p>
             {NAV_LINKS.map(({ key, href }) => (
               <a
                 key={key}
                 href={href}
-                className="font-mono text-[12px] text-silver hover:text-platinum transition-colors duration-150 w-fit"
+                className="font-mono text-[13px] text-silver hover:text-platinum transition-colors duration-150 w-fit"
               >
                 {t(key)}
               </a>
@@ -58,7 +60,7 @@ export function Footer() {
 
           {/* Connect column */}
           <div className="flex flex-col gap-3">
-            <p className="font-mono text-[10px] tracking-[1.5px] uppercase text-ash">
+            <p className="font-mono text-[13px] tracking-[1.5px] uppercase text-ash">
               {t("footer.connect_heading")}
             </p>
             {CONNECT_LINKS.map(({ label, href }) => (
@@ -67,7 +69,7 @@ export function Footer() {
                 href={href}
                 target={href.startsWith("mailto") ? undefined : "_blank"}
                 rel={href.startsWith("mailto") ? undefined : "noopener noreferrer"}
-                className="font-mono text-[12px] text-silver hover:text-platinum transition-colors duration-150 w-fit"
+                className="font-mono text-[13px] text-silver hover:text-platinum transition-colors duration-150 w-fit"
               >
                 {label}
               </a>
@@ -78,15 +80,28 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div
-          className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 pt-6"
+          className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-6"
           style={{ borderTop: "0.5px solid rgba(255,255,255,0.06)" }}
         >
-          <p className="font-mono text-[10px] text-ash">
+          <p className="font-mono text-[13px] text-ash">
             © 2026 Mauro Argumedo · ArguDev
           </p>
-          <p className="font-mono text-[10px] text-ash">
-            {t("footer.built_with")}
-          </p>
+          <div className="flex flex-col sm:items-end gap-1">
+            <p className="font-mono text-[13px] text-ash">
+              {t("footer.built_with")}
+            </p>
+            <p className="font-mono text-[13px] text-ash">
+              Brand identity &amp; design by{" "}
+              <a
+                href="https://www.instagram.com/danivan_design"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-silver hover:text-platinum transition-colors duration-150"
+              >
+                Danivan Peña
+              </a>
+            </p>
+          </div>
         </div>
 
       </div>

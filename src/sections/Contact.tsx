@@ -12,7 +12,7 @@ const CONTACT_LINKS = [
 ] as const
 
 const inputClass = [
-  "w-full px-4 py-3 rounded-xl font-body text-[15px] text-platinum",
+  "w-full px-4 py-3 rounded-xl font-body text-[16px] text-platinum",
   "bg-graphite border border-white/10",
   "placeholder:text-ash",
   "focus:border-violet/50 focus:outline-none focus:ring-1 focus:ring-violet/30",
@@ -70,7 +70,7 @@ export function Contact() {
           {/* Eyebrow */}
           <div className="flex items-center gap-3 mb-6">
             <span className="w-6 h-[2px] bg-violet rounded-full" aria-hidden="true" />
-            <span className="font-mono text-[12px] tracking-[1px] uppercase text-silver">
+            <span className="font-mono text-[13px] tracking-[1px] uppercase text-silver">
               {t("contact.eyebrow")}
             </span>
           </div>
@@ -78,11 +78,11 @@ export function Contact() {
           {/* Heading + subheading */}
           <h2
             className="font-display font-semibold text-platinum leading-tight mb-3"
-            style={{ fontSize: "clamp(22px, 3vw, 32px)", letterSpacing: "-0.3px" }}
+            style={{ fontSize: "clamp(28px, 3.5vw, 40px)", letterSpacing: "-0.3px" }}
           >
             {t("contact.heading")}
           </h2>
-          <p className="font-body text-[15px] text-silver mb-14">
+          <p className="font-body text-[16px] text-silver mb-14">
             {t("contact.sub")}
           </p>
 
@@ -95,7 +95,7 @@ export function Contact() {
               <div className="flex flex-col gap-1.5">
                 <label
                   htmlFor="contact-name"
-                  className="font-mono text-[11px] tracking-[1px] uppercase text-ash"
+                  className="font-mono text-[12px] tracking-[1px] uppercase text-ash"
                 >
                   {t("contact.name_label")}
                 </label>
@@ -116,7 +116,7 @@ export function Contact() {
               <div className="flex flex-col gap-1.5">
                 <label
                   htmlFor="contact-email"
-                  className="font-mono text-[11px] tracking-[1px] uppercase text-ash"
+                  className="font-mono text-[12px] tracking-[1px] uppercase text-ash"
                 >
                   {t("contact.email_label")}
                 </label>
@@ -137,7 +137,7 @@ export function Contact() {
               <div className="flex flex-col gap-1.5">
                 <label
                   htmlFor="contact-message"
-                  className="font-mono text-[11px] tracking-[1px] uppercase text-ash"
+                  className="font-mono text-[12px] tracking-[1px] uppercase text-ash"
                 >
                   {t("contact.message_label")}
                 </label>
@@ -155,7 +155,7 @@ export function Contact() {
 
               {/* Error */}
               {error && (
-                <p role="alert" className="font-mono text-[11px] text-crimson">
+                <p role="alert" className="font-mono text-[12px] text-crimson">
                   {error}
                 </p>
               )}
@@ -164,7 +164,7 @@ export function Contact() {
               <button
                 type="submit"
                 disabled={isDisabled}
-                className="w-full px-6 py-3 rounded-xl font-body font-medium text-[15px] text-platinum bg-violet hover:bg-violet-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
+                className="w-full px-6 py-3 rounded-xl font-body font-medium text-[16px] text-platinum bg-violet hover:bg-violet-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
                 style={{ boxShadow: isDisabled ? "none" : "0 0 24px rgba(176,38,255,0.4)" }}
               >
                 {buttonLabel}
@@ -173,7 +173,7 @@ export function Contact() {
 
             {/* Contact info */}
             <div className="flex flex-col gap-5">
-              <p className="font-mono text-[11px] tracking-[1.5px] uppercase text-ash">
+              <p className="font-mono text-[12px] tracking-[1.5px] uppercase text-ash">
                 Direct contact
               </p>
               <ul className="flex flex-col gap-3" aria-label="Contact links">
@@ -183,7 +183,7 @@ export function Contact() {
                       href={href}
                       target={href.startsWith("mailto") ? undefined : "_blank"}
                       rel={href.startsWith("mailto") ? undefined : "noopener noreferrer"}
-                      className="font-mono text-[13px] text-silver hover:text-platinum transition-colors duration-150 break-all"
+                      className="font-mono text-[14px] text-silver hover:text-platinum transition-colors duration-150 break-all"
                     >
                       {label}
                     </a>

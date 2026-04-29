@@ -17,7 +17,7 @@ export function Projects() {
           {/* Eyebrow */}
           <div className="flex items-center gap-3 mb-6">
             <span className="w-6 h-[2px] bg-violet rounded-full" aria-hidden="true" />
-            <span className="font-mono text-[12px] tracking-[1px] uppercase text-silver">
+            <span className="font-mono text-[13px] tracking-[1px] uppercase text-silver">
               {t("projects.eyebrow")}
             </span>
           </div>
@@ -25,11 +25,11 @@ export function Projects() {
           {/* Heading + subheading */}
           <h2
             className="font-display font-semibold text-platinum leading-tight mb-3"
-            style={{ fontSize: "clamp(22px, 3vw, 32px)", letterSpacing: "-0.3px" }}
+            style={{ fontSize: "clamp(28px, 3.5vw, 40px)", letterSpacing: "-0.3px" }}
           >
             {t("projects.heading")}
           </h2>
-          <p className="font-body text-[15px] text-silver mb-14">
+          <p className="font-body text-[16px] text-silver mb-14">
             {t("projects.sub")}
           </p>
 
