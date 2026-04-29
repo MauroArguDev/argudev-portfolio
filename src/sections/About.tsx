@@ -4,7 +4,7 @@ import { AnimatedSection } from "@/components/AnimatedSection"
 import { staggerContainer, staggerItem } from "@/lib/motion"
 import { useScrollReveal } from "@/hooks/useScrollReveal"
 import { stack } from "@/data/stack"
-import profilePhoto from "@/assets/profile.jpeg"
+import iPhoneImg from "@/assets/iPhone.png"
 import type { Variants } from "framer-motion"
 
 const STACK_GROUPS = [
@@ -30,32 +30,30 @@ export function About() {
           {/* Eyebrow */}
           <div className="flex items-center gap-3 mb-12">
             <span className="w-6 h-[2px] bg-violet rounded-full" aria-hidden="true" />
-            <span className="font-mono text-[12px] tracking-[1px] uppercase text-silver">
+            <span className="font-mono text-[13px] tracking-[1px] uppercase text-silver">
               {t("about.eyebrow")}
             </span>
           </div>
 
-          {/* Two-column layout: content left, photo right */}
-          <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-12 lg:gap-20 items-start">
+          {/* Two-column: heading + bio + stack left, iPhone right */}
+          <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-12 lg:gap-20 items-center">
 
-            {/* Left column: heading + bio + stack — second on mobile, first on desktop */}
-            <div className="order-2 lg:order-1 flex flex-col gap-10">
-              {/* Heading + bio */}
+            {/* Left: heading + bio + stack */}
+            <div className="flex flex-col gap-10">
               <div>
                 <h2
-                  className="font-display font-semibold text-platinum mb-5 leading-tight"
-                  style={{ fontSize: "clamp(22px, 3vw, 32px)", letterSpacing: "-0.3px" }}
+                  className="font-display font-semibold text-platinum mb-6 leading-tight"
+                  style={{ fontSize: "clamp(28px, 3.5vw, 40px)", letterSpacing: "-0.3px" }}
                 >
                   {t("about.heading")}
                 </h2>
-                <p className="font-body text-[15px] leading-relaxed text-silver">
+                <p className="font-body text-[17px] leading-relaxed text-silver">
                   {t("about.bio")}
                 </p>
               </div>
 
-              {/* Stack grid */}
               <div>
-                <p className="font-mono text-[11px] tracking-[1.5px] uppercase text-ash mb-6">
+                <p className="font-mono text-[12px] tracking-[1.5px] uppercase text-ash mb-6">
                   {t("about.stack_heading")}
                 </p>
                 <motion.div
@@ -70,14 +68,14 @@ export function About() {
                       key={label}
                       variants={prefersReduced ? reducedItem : staggerItem}
                     >
-                      <p className="font-mono text-[10px] tracking-[1.5px] uppercase text-ash mb-2">
+                      <p className="font-mono text-[12px] tracking-[1.5px] uppercase text-ash mb-3">
                         {label}
                       </p>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-2.5">
                         {items.map((tech) => (
                           <span
                             key={tech}
-                            className="glass px-3 py-1.5 rounded-full font-mono text-[11px] tracking-[0.5px] text-violet"
+                            className="glass px-4 py-2 rounded-full font-mono text-[13px] tracking-[0.3px] text-violet"
                           >
                             {tech}
                           </span>
@@ -89,17 +87,19 @@ export function About() {
               </div>
             </div>
 
-            {/* Right column: profile photo — first on mobile, second on desktop */}
-            <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-              <div className="glass p-1 rounded-2xl w-full max-w-[280px] sm:max-w-[320px] lg:max-w-full overflow-hidden">
-                <img
-                  src={profilePhoto}
-                  alt="Mauro Argumedo — iOS Developer"
-                  loading="lazy"
-                  className="w-full rounded-xl object-cover object-top"
-                  style={{ aspectRatio: "3/4" }}
-                />
-              </div>
+            {/* Right: iPhone mockup — centered against full left column */}
+            <div className="hidden lg:flex justify-center items-center">
+              <motion.img
+                src={iPhoneImg}
+                alt="iOS app showcase"
+                loading="lazy"
+                animate={prefersReduced ? {} : { y: [0, -14, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                className="w-full max-w-[240px] xl:max-w-[270px]"
+                style={{
+                  filter: "hue-rotate(40deg) saturate(2) brightness(0.85) drop-shadow(0 24px 56px rgba(176,38,255,0.35))",
+                }}
+              />
             </div>
 
           </div>

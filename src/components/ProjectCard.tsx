@@ -19,28 +19,28 @@ export function ProjectCard({ project }: Props) {
     >
       {/* Top row: type badge + year */}
       <div className="flex items-center justify-between">
-        <span className="px-2.5 py-1 rounded-full font-mono text-[10px] tracking-[1px] uppercase text-violet bg-violet/10 border border-violet/25">
+        <span className="px-2.5 py-1 rounded-full font-mono text-[11px] tracking-[1px] uppercase text-violet bg-violet/10 border border-violet/25">
           {project.type}
         </span>
-        <span className="font-mono text-[11px] text-ash">{project.year}</span>
+        <span className="font-mono text-[12px] text-ash">{project.year}</span>
       </div>
 
       {/* Title */}
-      <h3 className="font-display font-bold text-platinum" style={{ fontSize: 16 }}>
+      <h3 className="font-display font-bold text-platinum" style={{ fontSize: 18 }}>
         {project.name}
       </h3>
 
       {/* Stack tags */}
       <div className="flex flex-wrap gap-x-3 gap-y-1">
         {project.stack.map((tech) => (
-          <span key={tech} className="font-mono text-[10px] tracking-[0.5px] text-violet">
+          <span key={tech} className="font-mono text-[11px] tracking-[0.5px] text-violet">
             {tech}
           </span>
         ))}
       </div>
 
       {/* Description */}
-      <p className="font-body text-[14px] text-silver leading-relaxed flex-1">
+      <p className="font-body text-[15px] text-silver leading-relaxed flex-1">
         {description}
       </p>
 
@@ -52,7 +52,7 @@ export function ProjectCard({ project }: Props) {
               href={project.links.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-mono text-[11px] text-silver hover:text-platinum transition-colors duration-150"
+              className="font-mono text-[12px] text-silver hover:text-platinum transition-colors duration-150"
             >
               {t("projects.view_github")}
             </a>
@@ -62,7 +62,7 @@ export function ProjectCard({ project }: Props) {
               href={project.links.testflight}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-mono text-[11px] text-silver hover:text-platinum transition-colors duration-150"
+              className="font-mono text-[12px] text-silver hover:text-platinum transition-colors duration-150"
             >
               {t("projects.view_testflight")}
             </a>
@@ -72,7 +72,7 @@ export function ProjectCard({ project }: Props) {
               href={project.links.appstore}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-mono text-[11px] text-silver hover:text-platinum transition-colors duration-150"
+              className="font-mono text-[12px] text-silver hover:text-platinum transition-colors duration-150"
             >
               {t("projects.view_appstore")}
             </a>
@@ -82,7 +82,7 @@ export function ProjectCard({ project }: Props) {
               href={project.links.live}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-mono text-[11px] text-silver hover:text-platinum transition-colors duration-150"
+              className="font-mono text-[12px] text-silver hover:text-platinum transition-colors duration-150"
             >
               {t("projects.view_live")}
             </a>
