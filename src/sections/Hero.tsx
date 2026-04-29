@@ -87,15 +87,15 @@ export function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Right: profile photo */}
+        {/* Right: profile photo — visible on all screen sizes */}
         <motion.div
           initial={{ opacity: 0, x: prefersReduced ? 0 : 48 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.9, delay: 0.65, ease: [0.16, 1, 0.3, 1] }}
-          className="hidden lg:flex justify-center items-center"
+          className="flex justify-center items-center"
         >
           <div
-            className="glass p-1.5 rounded-2xl overflow-hidden w-full max-w-[300px] xl:max-w-[340px]"
+            className="glass p-1.5 rounded-2xl overflow-hidden w-full max-w-[220px] sm:max-w-[260px] lg:max-w-[300px] xl:max-w-[340px]"
             style={{ boxShadow: "0 24px 64px rgba(176,38,255,0.2), 0 8px 32px rgba(0,0,0,0.5)" }}
           >
             <img
