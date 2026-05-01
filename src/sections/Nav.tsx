@@ -28,11 +28,16 @@ export function Nav() {
       <div className="max-w-6xl mx-auto px-6 h-full flex items-center justify-between">
         {/* Logo */}
         <a href="#hero" aria-label="ArguDev home" className="flex items-center select-none">
-          <img
-            src="/logo.png"
-            alt="ArguDev"
-            style={{ height: 28, width: "auto" }}
-          />
+          <picture>
+            <source srcSet="/logo.avif" type="image/avif" />
+            <img
+              src="/logo.png"
+              alt="ArguDev"
+              width={896}
+              height={243}
+              style={{ height: 34, width: "auto" }}
+            />
+          </picture>
         </a>
 
         {/* Right side */}
@@ -51,11 +56,6 @@ export function Nav() {
           </nav>
 
           <LanguageSwitcher />
-
-          {/* Available pill */}
-          <span className="hidden sm:inline-flex items-center px-3 py-1 rounded-full font-mono text-[12px] tracking-[1px] uppercase text-violet border border-violet/30 bg-violet/10">
-            {t("nav.available")}
-          </span>
         </div>
       </div>
     </motion.header>

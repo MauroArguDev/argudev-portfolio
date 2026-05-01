@@ -58,7 +58,8 @@
     "message_placeholder": "Tell me about the project...",
     "submit": "Send message",
     "submitting": "Sending...",
-    "sent": "Sent ✓"
+    "sent": "Sent ✓",
+    "direct": "Direct contact"
   },
   "footer": {
     "tagline": "iOS Developer",
