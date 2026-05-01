@@ -22,7 +22,7 @@ export function ProjectCard({ project }: Props) {
         <span className="px-2.5 py-1 rounded-full font-mono text-[11px] tracking-[1px] uppercase text-violet bg-violet/10 border border-violet/25">
           {project.type}
         </span>
-        <span className="font-mono text-[12px] text-ash">{project.year}</span>
+        <span className="font-mono text-[12px] text-silver">{project.year}</span>
       </div>
 
       {/* Title */}
@@ -31,9 +31,13 @@ export function ProjectCard({ project }: Props) {
       </h3>
 
       {/* Stack tags */}
-      <div className="flex flex-wrap gap-x-3 gap-y-1">
+      <div className="flex flex-wrap gap-1.5">
         {project.stack.map((tech) => (
-          <span key={tech} className="font-mono text-[11px] tracking-[0.5px] text-violet">
+          <span
+            key={tech}
+            className="font-mono text-[10px] tracking-[0.5px] text-violet px-2 py-0.5 rounded-md border border-violet/25"
+            style={{ background: "rgba(176,38,255,0.05)" }}
+          >
             {tech}
           </span>
         ))}

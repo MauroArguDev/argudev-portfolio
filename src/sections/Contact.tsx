@@ -14,7 +14,7 @@ const CONTACT_LINKS = [
 const inputClass = [
   "w-full px-4 py-3 rounded-xl font-body text-[16px] text-platinum",
   "bg-graphite border border-white/10",
-  "placeholder:text-ash",
+  "placeholder:text-silver/40",
   "focus:border-violet/50 focus:outline-none focus:ring-1 focus:ring-violet/30",
   "disabled:opacity-50 disabled:cursor-not-allowed",
   "transition-colors duration-150",
@@ -95,7 +95,7 @@ export function Contact() {
               <div className="flex flex-col gap-1.5">
                 <label
                   htmlFor="contact-name"
-                  className="font-mono text-[12px] tracking-[1px] uppercase text-ash"
+                  className="font-mono text-[12px] tracking-[1px] uppercase text-silver"
                 >
                   {t("contact.name_label")}
                 </label>
@@ -116,7 +116,7 @@ export function Contact() {
               <div className="flex flex-col gap-1.5">
                 <label
                   htmlFor="contact-email"
-                  className="font-mono text-[12px] tracking-[1px] uppercase text-ash"
+                  className="font-mono text-[12px] tracking-[1px] uppercase text-silver"
                 >
                   {t("contact.email_label")}
                 </label>
@@ -137,7 +137,7 @@ export function Contact() {
               <div className="flex flex-col gap-1.5">
                 <label
                   htmlFor="contact-message"
-                  className="font-mono text-[12px] tracking-[1px] uppercase text-ash"
+                  className="font-mono text-[12px] tracking-[1px] uppercase text-silver"
                 >
                   {t("contact.message_label")}
                 </label>
@@ -173,8 +173,8 @@ export function Contact() {
 
             {/* Contact info */}
             <div className="flex flex-col gap-5">
-              <p className="font-mono text-[12px] tracking-[1.5px] uppercase text-ash">
-                Direct contact
+              <p className="font-mono text-[12px] tracking-[1.5px] uppercase text-silver">
+                {t("contact.direct")}
               </p>
               <ul className="flex flex-col gap-3" aria-label="Contact links">
                 {CONTACT_LINKS.map(({ label, href }) => (

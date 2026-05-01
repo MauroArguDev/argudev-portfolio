@@ -33,12 +33,17 @@ export function Hero() {
 
           {/* Logo as h1 */}
           <motion.h1 variants={staggerItem} className="mb-6">
-            <img
-              src="/logo.png"
-              alt="ArguDev."
-              loading="eager"
-              className="h-16 md:h-20 lg:h-24 w-auto"
-            />
+            <picture>
+              <source srcSet="/logo.avif" type="image/avif" />
+              <img
+                src="/logo.png"
+                alt="ArguDev."
+                loading="eager"
+                width={896}
+                height={243}
+                className="h-16 md:h-20 lg:h-24 w-auto"
+              />
+            </picture>
           </motion.h1>
 
           {/* Role + tagline */}
@@ -63,6 +68,7 @@ export function Hero() {
               <span
                 key={tag}
                 className="glass px-4 py-2 rounded-full font-mono text-[13px] tracking-[0.3px] text-violet"
+                style={{ background: "rgba(255,255,255,0.05)" }}
               >
                 {tag}
               </span>
@@ -102,6 +108,7 @@ export function Hero() {
               src={profilePhoto}
               alt="Mauricio Argumedo — iOS Developer"
               loading="eager"
+              fetchPriority="high"
               className="w-full rounded-xl object-cover object-top"
               style={{ aspectRatio: "3/4" }}
             />
@@ -110,9 +117,9 @@ export function Hero() {
 
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-        <span className="font-mono text-[11px] tracking-[2px] uppercase text-ash">
+      {/* Scroll indicator — only shown on two-column layout where it sits cleanly above the fold */}
+      <div className="hidden lg:flex lg:flex-col absolute bottom-8 left-1/2 -translate-x-1/2 items-center gap-2">
+        <span className="font-mono text-[11px] tracking-[2px] uppercase text-silver">
           {t("hero.scroll")}
         </span>
         <motion.div

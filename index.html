@@ -38,9 +38,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
+    rel="preload"
+    as="style"
     href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap"
-    rel="stylesheet"
+    onload="this.onload=null;this.rel='stylesheet'"
   />
+  <noscript>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+  </noscript>
 
   <title>Mauricio Argumedo — iOS Developer | ArguDev</title>
 
@@ -48,19 +56,34 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Mauricio Argumedo",
-    "url": "https://argudev.com",
-    "jobTitle": "iOS Developer",
-    "description": "iOS developer with 6+ years delivering production-ready software. Specialist in Swift, SwiftUI, UIKit, and ARKit.",
-    "image": "https://argudev.com/logo.png",
-    "sameAs": [
-      "https://github.com/MauroArguDev",
-      "https://www.linkedin.com/in/mauro-argumedo-1942801ab/"
-    ],
-    "knowsAbout": ["Swift", "SwiftUI", "UIKit", "ARKit", "React", "iOS Development", "Machine Learning"],
-    "email": "mailto:argudev@proton.me",
-    "availableFor": "Remote roles and relocation"
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://argudev.com/#person",
+        "name": "Mauricio Argumedo",
+        "url": "https://argudev.com",
+        "jobTitle": "iOS Developer",
+        "description": "iOS developer with 6+ years delivering production-ready software. Specialist in Swift, SwiftUI, UIKit, and ARKit.",
+        "image": "https://argudev.com/logo.png",
+        "email": "argudev@proton.me",
+        "sameAs": [
+          "https://github.com/MauroArguDev",
+          "https://www.linkedin.com/in/mauro-argumedo-1942801ab/"
+        ],
+        "knowsAbout": ["Swift", "SwiftUI", "UIKit", "ARKit", "React", "iOS Development", "TypeScript"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://argudev.com/#website",
+        "url": "https://argudev.com",
+        "name": "ArguDev — Mauricio Argumedo",
+        "description": "Portfolio of Mauricio Argumedo, iOS Developer with 6+ years delivering production-ready apps.",
+        "inLanguage": ["en", "es", "fr"],
+        "author": {
+          "@id": "https://argudev.com/#person"
+        }
+      }
+    ]
   }
   </script>
 </head>

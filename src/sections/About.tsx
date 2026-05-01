@@ -53,7 +53,7 @@ export function About() {
               </div>
 
               <div>
-                <p className="font-mono text-[12px] tracking-[1.5px] uppercase text-ash mb-6">
+                <p className="font-mono text-[12px] tracking-[1.5px] uppercase text-silver mb-6">
                   {t("about.stack_heading")}
                 </p>
                 <motion.div
@@ -68,7 +68,7 @@ export function About() {
                       key={label}
                       variants={prefersReduced ? reducedItem : staggerItem}
                     >
-                      <p className="font-mono text-[12px] tracking-[1.5px] uppercase text-ash mb-3">
+                      <p className="font-mono text-[12px] tracking-[1.5px] uppercase text-silver mb-3">
                         {label}
                       </p>
                       <div className="flex flex-wrap gap-2.5">

@@ -58,7 +58,8 @@
     "message_placeholder": "Cuéntame sobre el proyecto...",
     "submit": "Enviar mensaje",
     "submitting": "Enviando...",
-    "sent": "Enviado ✓"
+    "sent": "Enviado ✓",
+    "direct": "Contacto directo"
   },
   "footer": {
     "tagline": "iOS Developer",
