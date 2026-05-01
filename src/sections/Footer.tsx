@@ -28,23 +28,28 @@ export function Footer() {
           {/* Brand column */}
           <div className="flex flex-col gap-3">
             <a href="#hero" aria-label="ArguDev home" className="select-none w-fit">
-              <img
-                src="/logo.png"
-                alt="ArguDev"
-                style={{ height: 28, width: "auto" }}
-              />
+              <picture>
+                <source srcSet="/logo.avif" type="image/avif" />
+                <img
+                  src="/logo.png"
+                  alt="ArguDev"
+                  width={896}
+                  height={243}
+                  style={{ height: 28, width: "auto" }}
+                />
+              </picture>
             </a>
             <p className="font-mono text-[13px] text-silver">
               {t("footer.tagline")}
             </p>
-            <p className="font-mono text-[12px] text-ash">
+            <p className="font-mono text-[12px] text-silver">
               {t("footer.available")}
             </p>
           </div>
 
           {/* Navigate column */}
           <div className="flex flex-col gap-3">
-            <p className="font-mono text-[13px] tracking-[1.5px] uppercase text-ash">
+            <p className="font-mono text-[13px] tracking-[1.5px] uppercase text-silver">
               {t("footer.nav_heading")}
             </p>
             {NAV_LINKS.map(({ key, href }) => (
@@ -60,7 +65,7 @@ export function Footer() {
 
           {/* Connect column */}
           <div className="flex flex-col gap-3">
-            <p className="font-mono text-[13px] tracking-[1.5px] uppercase text-ash">
+            <p className="font-mono text-[13px] tracking-[1.5px] uppercase text-silver">
               {t("footer.connect_heading")}
             </p>
             {CONNECT_LINKS.map(({ label, href }) => (
@@ -83,20 +88,20 @@ export function Footer() {
           className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-6"
           style={{ borderTop: "0.5px solid rgba(255,255,255,0.06)" }}
         >
-          <p className="font-mono text-[13px] text-ash">
+          <p className="font-mono text-[13px] text-silver">
             © 2026 Mauro Argumedo · ArguDev
           </p>
           <div className="flex flex-col sm:items-end gap-1">
-            <p className="font-mono text-[13px] text-ash">
+            <p className="font-mono text-[13px] text-silver">
               {t("footer.built_with")}
             </p>
-            <p className="font-mono text-[13px] text-ash">
+            <p className="font-mono text-[13px] text-silver">
               Brand identity &amp; design by{" "}
               <a
                 href="https://www.instagram.com/danivan_design"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-silver hover:text-platinum transition-colors duration-150"
+                className="text-platinum underline decoration-platinum/40 hover:decoration-platinum transition-colors duration-150"
               >
                 Danivan Peña
               </a>
