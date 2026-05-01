@@ -101,7 +101,7 @@ export function Hero() {
           className="flex justify-center items-center"
         >
           <div
-            className="glass p-1.5 rounded-2xl overflow-hidden w-full max-w-[220px] sm:max-w-[260px] lg:max-w-[300px] xl:max-w-[340px]"
+            className="glass p-1.5 rounded-2xl overflow-hidden w-full max-w-[280px] sm:max-w-[320px] lg:max-w-full"
             style={{ boxShadow: "0 24px 64px rgba(176,38,255,0.2), 0 8px 32px rgba(0,0,0,0.5)" }}
           >
             <img
