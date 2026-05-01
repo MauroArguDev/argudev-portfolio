@@ -88,7 +88,7 @@ export function About() {
             </div>
 
             {/* Right: iPhone mockup — centered against full left column */}
-            <div className="hidden lg:flex justify-center items-center">
+            <div className="hidden lg:flex justify-end items-center">
               <motion.img
                 src={iPhoneImg}
                 alt="iOS app showcase"
