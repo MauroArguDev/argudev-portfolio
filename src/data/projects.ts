@@ -1,4 +1,6 @@
 import type { Project } from "@/types"
+import miFondoImg from "@/assets/mi-fondo.png"
+import placeholderImg from "@/assets/placeholder.png"
 
 export const projects: Project[] = [
   {
@@ -6,35 +8,24 @@ export const projects: Project[] = [
     name: "FinTrack Pro",
     type: "iOS App",
     year: "2026",
+    image: placeholderImg,
     stack: ["SwiftUI", "SwiftData", "Swift Charts", "CloudKit", "Face ID"],
     descriptionKey: "projects.items.fintrack.description",
-    links: {},
+    links: {
+      github: "https://github.com/MauroArguDev/FinTrackPro",
+    },
   },
   {
-    id: "mindfulai-journal",
-    name: "MindfulAI Journal",
+    id: "mi-fondo-app",
+    name: "Mi Fondo App",
     type: "iOS App",
-    year: "2026",
-    stack: ["SwiftUI", "Core ML", "Claude API", "Speech", "SwiftData"],
-    descriptionKey: "projects.items.mindfulai.description",
-    links: {},
-  },
-  {
-    id: "arshop-showcase",
-    name: "ARShop Showcase",
-    type: "iOS App",
-    year: "2026",
-    stack: ["ARKit", "RealityKit", "Combine", "URLSession", "Apple Pay"],
-    descriptionKey: "projects.items.arshop.description",
-    links: {},
-  },
-  {
-    id: "react-landing",
-    name: "SaaS Landing",
-    type: "React",
-    year: "2026",
-    stack: ["Next.js 15", "Tailwind CSS", "Framer Motion", "Resend"],
-    descriptionKey: "projects.items.landing.description",
-    links: {},
+    year: "2020",
+    image: miFondoImg,
+    client: "Fiducia S.A.",
+    stack: ["Swift", "UIKit", "Combine", "URLSession", "OTP Security"],
+    descriptionKey: "projects.items.mifondo.description",
+    links: {
+      appstore: "https://apps.apple.com/sv/app/mi-fondo-app/id1461509423?l=en-GB",
+    },
   },
 ]

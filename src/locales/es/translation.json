@@ -26,23 +26,18 @@
   "projects": {
     "eyebrow": "Proyectos",
     "heading": "Lo que he construido.",
-    "sub": "Tres apps iOS y un proyecto React — todos listos para producción.",
+    "sub": "Proyectos personales y trabajo con clientes — entregados y listos para producción.",
+    "client_label": "Cliente",
     "view_github": "GitHub →",
     "view_testflight": "TestFlight →",
     "view_appstore": "App Store →",
     "view_live": "Ver →",
     "items": {
       "fintrack": {
-        "description": "Rastreador de finanzas personales con categorías, presupuestos, gráficos y protección Face ID."
+        "description": "Rastreador de finanzas personales con categorías, presupuestos, visualizaciones con Swift Charts y protección Face ID."
       },
-      "mindfulai": {
-        "description": "Diario personal con análisis emocional por IA y resúmenes semanales automáticos."
-      },
-      "arshop": {
-        "description": "Catálogo 3D con realidad aumentada y checkout simulado con Apple Pay."
-      },
-      "landing": {
-        "description": "Landing page SaaS de alto rendimiento con modo oscuro, animaciones y Lighthouse 100."
+      "mifondo": {
+        "description": "App de gestión de fondos para Fiducia S.A., la principal administradora de Ecuador. Invierte desde $25/mes, gestiona retiros y accede a planes médicos CHUBB."
       }
     }
   },

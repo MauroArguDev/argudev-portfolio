@@ -96,7 +96,7 @@ export function Footer() {
               {t("footer.built_with")}
             </p>
             <p className="font-mono text-[13px] text-silver">
-              Brand identity &amp; design by{" "}
+              Brand identity, photography &amp; design by{" "}
               <a
                 href="https://www.instagram.com/danivan_design"
                 target="_blank"
