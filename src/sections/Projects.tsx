@@ -39,7 +39,7 @@ export function Projects() {
             variants={staggerContainer}
             initial="hidden"
             animate={inView ? "show" : "hidden"}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
           >
             {projects.map((project) => (
               <motion.div key={project.id} variants={staggerItem}>
