@@ -26,23 +26,18 @@
   "projects": {
     "eyebrow": "Projects",
     "heading": "Things I have built.",
-    "sub": "Three iOS apps and one React project — all production-ready.",
+    "sub": "Personal projects and client work — shipped and production-ready.",
+    "client_label": "Client",
     "view_github": "GitHub →",
     "view_testflight": "TestFlight →",
     "view_appstore": "App Store →",
     "view_live": "Live →",
     "items": {
       "fintrack": {
-        "description": "Personal finance tracker with categories, budgets, charts and Face ID protection."
+        "description": "Personal finance tracker with categories, budgets, Swift Charts visualizations and Face ID protection."
       },
-      "mindfulai": {
-        "description": "Personal journal with AI-powered emotional analysis and weekly summaries."
-      },
-      "arshop": {
-        "description": "3D product catalog with augmented reality placement and Apple Pay sandbox."
-      },
-      "landing": {
-        "description": "High-performance SaaS landing page with dark mode, scroll animations and Lighthouse 100."
+      "mifondo": {
+        "description": "Investment fund app for Fiducia S.A., Ecuador's leading fund administrator. Invest from $25/month, manage withdrawals and access CHUBB medical plans."
       }
     }
   },

@@ -26,23 +26,18 @@
   "projects": {
     "eyebrow": "Projets",
     "heading": "Ce que j'ai construit.",
-    "sub": "Trois apps iOS et un projet React — tous prêts pour la production.",
+    "sub": "Projets personnels et travaux client — livrés et prêts pour la production.",
+    "client_label": "Client",
     "view_github": "GitHub →",
     "view_testflight": "TestFlight →",
     "view_appstore": "App Store →",
     "view_live": "Voir →",
     "items": {
       "fintrack": {
-        "description": "Suivi des finances personnelles avec catégories, budgets, graphiques et protection Face ID."
+        "description": "Suivi des finances personnelles avec catégories, budgets, visualisations Swift Charts et protection Face ID."
       },
-      "mindfulai": {
-        "description": "Journal personnel avec analyse émotionnelle par IA et résumés hebdomadaires automatiques."
-      },
-      "arshop": {
-        "description": "Catalogue 3D avec réalité augmentée et paiement simulé via Apple Pay."
-      },
-      "landing": {
-        "description": "Landing page SaaS haute performance avec mode sombre, animations au défilement et Lighthouse 100."
+      "mifondo": {
+        "description": "Application de gestion de fonds pour Fiducia S.A., le principal gestionnaire de fonds d'Équateur. Investissez à partir de 25 $/mois, gérez vos retraits et accédez aux plans médicaux CHUBB."
       }
     }
   },
