@@ -15,16 +15,23 @@ export function ProjectCard({ project }: Props) {
   return (
     <motion.article
       {...cardHover}
-      className="glass rounded-2xl flex flex-col h-full overflow-hidden"
+      className="glass rounded-2xl flex flex-col h-full overflow-hidden group"
     >
       {/* Project image header */}
       {project.image && (
-        <div className="w-full aspect-video overflow-hidden bg-obsidian shrink-0">
+        <div className="relative w-full aspect-[4/3] sm:aspect-[3/2] md:aspect-video overflow-hidden shrink-0">
           <img
             src={project.image}
             alt={project.name}
             loading="lazy"
-            className="w-full h-full object-contain"
+            decoding="async"
+            className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          />
+          {/* gradient fade into card content */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-x-0 bottom-0 h-16 pointer-events-none"
+            style={{ background: "linear-gradient(to bottom, transparent, rgba(21,21,31,0.85))" }}
           />
         </div>
       )}
