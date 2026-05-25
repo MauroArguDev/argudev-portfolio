@@ -1,7 +1,7 @@
 import { motion, useReducedMotion } from "framer-motion"
 import { useTranslation } from "react-i18next"
 import { staggerContainer, staggerItem } from "@/lib/motion"
-import profilePhoto from "@/assets/profile.jpeg"
+import profilePhoto from "@/assets/profile.jpg"
 
 export function Hero() {
   const { t } = useTranslation()
