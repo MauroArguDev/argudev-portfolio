@@ -20,7 +20,12 @@
       "Bash(curl -sIL \"https://us-central1-fiduciaappmovil.cloudfunctions.net/.well-known/apple-app-site-association\")",
       "Bash(curl -s \"https://www.mifondo.ec/.well-known/apple-app-site-association\")",
       "Bash(curl -sI \"https://www.mifondo.ec/.well-known/apple-app-site-association\")",
-      "Bash(curl -sIL \"https://www.mifondo.ec/redireccion-tienda\")"
+      "Bash(curl -sIL \"https://www.mifondo.ec/redireccion-tienda\")",
+      "Bash(curl -sv https://argudev.com/.well-known/apple-app-site-association)",
+      "Bash(curl -s -D - https://argudev.com/.well-known/apple-app-site-association -o /tmp/aasa_body.txt)",
+      "Read(//tmp/**)",
+      "Bash(curl -s -D - https://www.argudev.com/.well-known/apple-app-site-association)",
+      "Bash(curl -s -D - https://www.argudev.com/.well-known/assetlinks.json)"
     ]
   }
 }
