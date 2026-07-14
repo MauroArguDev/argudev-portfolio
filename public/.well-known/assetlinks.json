@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.devsu.fiducia.qa",
+      "sha256_cert_fingerprints": [
+        "E9:71:CA:0F:39:B4:10:41:E0:22:A8:50:87:1E:16:BF:42:9A:A1:12:52:95:01:E8:15:A8:E4:FB:24:C8:FE:D1"
+      ]
+    }
+  }
+]
