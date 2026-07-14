@@ -15,7 +15,12 @@
       "Bash(mkdir -p public/.well-known)",
       "Bash(cp ~/Downloads/apple-app-site-association public/.well-known/apple-app-site-association)",
       "Bash(vercel --version)",
-      "Bash(python3 *)"
+      "Bash(python3 *)",
+      "Bash(curl -sIL \"https://us-central1-fiduciaappmovil.cloudfunctions.net/fiducia-store-redirect-test/redireccion-tienda\")",
+      "Bash(curl -sIL \"https://us-central1-fiduciaappmovil.cloudfunctions.net/.well-known/apple-app-site-association\")",
+      "Bash(curl -s \"https://www.mifondo.ec/.well-known/apple-app-site-association\")",
+      "Bash(curl -sI \"https://www.mifondo.ec/.well-known/apple-app-site-association\")",
+      "Bash(curl -sIL \"https://www.mifondo.ec/redireccion-tienda\")"
     ]
   }
 }
