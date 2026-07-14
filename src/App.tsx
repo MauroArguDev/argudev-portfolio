@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 import { Analytics } from '@vercel/analytics/react'
 import { I18nHtmlSync } from '@/components/I18nHtmlSync'
+import { AppStoreRedirect } from '@/components/AppStoreRedirect'
 import { BackgroundMesh } from '@/components/BackgroundMesh'
 import { ScrollProgress } from '@/components/ScrollProgress'
 import { CursorGlow } from '@/components/CursorGlow'
@@ -68,6 +69,7 @@ function App() {
                 </PageTransition>
               }
             />
+            <Route path="/redireccion-tienda" element={<AppStoreRedirect />} />
           </Routes>
         </AnimatePresence>
         <Suspense fallback={null}>
