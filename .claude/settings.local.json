@@ -14,7 +14,8 @@
       "Bash(npm install *)",
       "Bash(mkdir -p public/.well-known)",
       "Bash(cp ~/Downloads/apple-app-site-association public/.well-known/apple-app-site-association)",
-      "Bash(vercel --version)"
+      "Bash(vercel --version)",
+      "Bash(python3 *)"
     ]
   }
 }

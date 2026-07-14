@@ -2,7 +2,10 @@
   "applinks": {
     "details": [
       {
-        "appID": "JU9X547M5G.com.devsu.fiducia",
+        "appIDs": [
+          "JU9X547M5G.com.devsu.fiducia",
+          "JU9X547M5G.com.devsu.fiducia.qa"
+        ],
         "paths": ["/redireccion-tienda"]
       }
     ]
