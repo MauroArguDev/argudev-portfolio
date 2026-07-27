@@ -1,0 +1,14 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "JU9X547M5G.com.devsu.fiducia",
+          "JU9X547M5G.com.devsu.fiducia.qa",
+	  "JU9X547M5G.com.devsu.fiducia.develop"
+        ],
+        "paths": ["/app"]
+      }
+    ]
+  }
+}

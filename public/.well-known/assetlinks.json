@@ -1,0 +1,38 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.devsu.fiducia.qa",
+      "sha256_cert_fingerprints": [
+        "94:90:F9:83:88:F0:1A:C4:50:2F:92:08:5F:8E:D3:65:C7:C2:F9:14:0C:96:B8:31:7E:33:76:DE:F0:7B:7D:77"
+      ]
+    }
+  },
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.devsu.fiducia.stage",
+      "sha256_cert_fingerprints": [
+        "48:23:8D:BE:B8:83:6E:B3:BD:52:DA:EC:A1:C4:34:4F:B9:08:27:43:A7:80:F9:6D:B7:54:FF:D2:75:43:10:F7"
+      ]
+    }
+  },
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.devsu.fiducia",
+      "sha256_cert_fingerprints": [
+        "48:23:8D:BE:B8:83:6E:B3:BD:52:DA:EC:A1:C4:34:4F:B9:08:27:43:A7:80:F9:6D:B7:54:FF:D2:75:43:10:F7"
+      ]
+    }
+  }
+]
