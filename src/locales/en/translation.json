@@ -3,7 +3,11 @@
     "about": "About",
     "projects": "Projects",
     "contact": "Contact",
-    "available": "Available 2026"
+    "available": "Available 2026",
+    "menu_open": "Open menu",
+    "menu_close": "Close menu",
+    "main_label": "Main navigation",
+    "home_label": "ArguDev home"
   },
   "hero": {
     "kicker": "Mauricio Argumedo",
