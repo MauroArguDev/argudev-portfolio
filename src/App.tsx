@@ -1,13 +1,11 @@
 import { lazy, Suspense, useState, useEffect } from 'react'
-import { Routes, Route, useLocation } from 'react-router-dom'
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 import { Analytics } from '@vercel/analytics/react'
 import { I18nHtmlSync } from '@/components/I18nHtmlSync'
 import { BackgroundMesh } from '@/components/BackgroundMesh'
 import { ScrollProgress } from '@/components/ScrollProgress'
 import { CursorGlow } from '@/components/CursorGlow'
-import { PageTransition } from '@/components/PageTransition'
 import { Nav } from '@/sections/Nav'
 import { Hero } from '@/sections/Hero'
 
@@ -17,7 +15,6 @@ const Contact = lazy(() => import('@/sections/Contact').then(m => ({ default: m.
 const Footer = lazy(() => import('@/sections/Footer').then(m => ({ default: m.Footer })))
 
 function App() {
-  const location = useLocation()
   const [langChanging, setLangChanging] = useState(false)
 
   useEffect(() => {
@@ -51,25 +48,14 @@ function App() {
         animate={{ opacity: langChanging ? 0 : 1, y: langChanging ? 6 : 0 }}
         transition={{ duration: 0.16, ease: "easeInOut" }}
       >
-        <AnimatePresence mode="wait">
-          <Routes location={location} key={location.pathname}>
-            <Route
-              path="/"
-              element={
-                <PageTransition>
-                  <main id="main" tabIndex={-1} style={{ outline: "none" }}>
-                    <Hero />
-                    <Suspense fallback={null}>
-                      <About />
-                      <Projects />
-                      <Contact />
-                    </Suspense>
-                  </main>
-                </PageTransition>
-              }
-            />
-          </Routes>
-        </AnimatePresence>
+        <main id="main" tabIndex={-1} style={{ outline: "none" }}>
+          <Hero />
+          <Suspense fallback={null}>
+            <About />
+            <Projects />
+            <Contact />
+          </Suspense>
+        </main>
         <Suspense fallback={null}>
           <Footer />
         </Suspense>
