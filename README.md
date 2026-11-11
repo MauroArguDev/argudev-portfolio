@@ -12,7 +12,7 @@ A single-page site in English, Spanish and French, with a "liquid glass" visual 
 |---|---|
 | UI | React 19, TypeScript, Vite |
 | Styling | Tailwind CSS v4, design tokens in `src/styles/globals.css` |
-| Motion | Framer Motion, respecting `prefers-reduced-motion` |
+| Motion | CSS keyframes and transitions, respecting `prefers-reduced-motion` |
 | i18n | i18next, keys type-checked against the English file |
 | Contact | EmailJS |
 | Hosting | Vercel, with security headers and a strict CSP in `vercel.json` |

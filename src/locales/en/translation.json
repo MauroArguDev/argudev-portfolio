@@ -116,7 +116,7 @@
   },
   "footer": {
     "tagline": "iOS developer · 6+ years delivering",
-    "built_with": "Built with React · TypeScript · Framer Motion",
+    "built_with": "Built with React · TypeScript · Tailwind CSS",
     "credits": "Brand identity, photography & design by",
     "back_to_top": "Back to top"
   },
