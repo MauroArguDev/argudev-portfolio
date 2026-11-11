@@ -2,6 +2,26 @@ import { motion, useReducedMotion } from "framer-motion"
 import { useTranslation } from "react-i18next"
 import { LogoMark } from "@/components/LogoMark"
 import profilePhoto from "@/assets/profile.webp"
+import { now, type NowLanguage } from "@/data/now"
+
+// "Now · Nov 2026 — Shipping Guldr…", read from src/data/now.ts
+function NowStatus() {
+  const { t, i18n } = useTranslation()
+  const code = i18n.language.slice(0, 2)
+  const lang = (code in now.status ? code : "en") as NowLanguage
+  const since = new Intl.DateTimeFormat(lang, { month: "short", year: "numeric" })
+    .format(new Date(`${now.since}T12:00:00`))
+
+  return (
+    <p className="flex items-center gap-3 mb-10 font-mono text-[12px] tracking-[0.08em] text-silver">
+      <span className="pulse w-2 h-2 bg-violet" aria-hidden="true" />
+      <span className="uppercase text-ash">{t("hero.status_label")}</span>
+      <time dateTime={now.since} className="text-ash">{since}</time>
+      <span className="w-4 h-px bg-white/20" aria-hidden="true" />
+      {now.status[lang]}
+    </p>
+  )
+}
 
 const EASE = [0.16, 1, 0.3, 1] as const
 
@@ -25,12 +45,7 @@ export function Hero() {
 
         {/* Text */}
         <div className="lg:col-span-7 relative z-10">
-          <p className="flex items-center gap-3 mb-10 font-mono text-[12px] tracking-[0.08em] text-silver">
-            <span className="pulse w-2 h-2 bg-violet" aria-hidden="true" />
-            <span className="uppercase text-ash">{t("hero.status_label")}</span>
-            <span className="w-4 h-px bg-white/20" aria-hidden="true" />
-            {t("hero.status")}
-          </p>
+          <NowStatus />
 
           <p className="mb-5 font-mono text-[13px] tracking-[0.12em] uppercase text-violet">
             {t("hero.role")}
