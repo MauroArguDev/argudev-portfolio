@@ -99,7 +99,7 @@ export function Hero() {
                 />
               </div>
             </div>
-            <figcaption className="mt-5 flex justify-between font-mono text-[11px] tracking-[0.1em] uppercase text-ash">
+            <figcaption className="mt-[calc(5%+1.25rem)] flex justify-between font-mono text-[11px] tracking-[0.1em] uppercase text-ash">
               <span>{t("hero.caption")}</span>
               <span className="hidden sm:inline text-silver">argudev.com</span>
             </figcaption>
