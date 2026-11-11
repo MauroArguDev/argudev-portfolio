@@ -2,8 +2,8 @@
 // halves: a gap at the top between its brackets and one at the chin.
 // Points are percentages of the portrait, the same ones as .mask-face in globals.css.
 const HALVES = [
-  [[39, 0], [0, 0], [13.5, 71.9], [2.5, 80.7], [19.3, 85.3], [28.4, 100], [39, 100]],
-  [[61, 0], [100, 0], [86.5, 71.9], [97.6, 80.7], [80.7, 85.3], [71.6, 100], [61, 100]],
+  [[39, 0], [0, 0], [13.5, 59], [2.5, 71.9], [19.3, 78.6], [28.4, 100], [39, 100]],
+  [[61, 0], [100, 0], [86.5, 59], [97.6, 71.9], [80.7, 78.6], [71.6, 100], [61, 100]],
 ]
 
 // The portrait is 100 x 125 user units; the outline is its silhouette scaled up from the center
