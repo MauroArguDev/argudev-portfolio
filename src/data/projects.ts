@@ -14,7 +14,7 @@ export const miFondo: CaseStudy = {
   name: "Mi Fondo",
   year: "2020",
   client: "Fiducia S.A.",
-  stack: ["Swift", "UIKit", "Combine", "URLSession"],
+  stack: ["Swift", "SwiftUI", "UIKit", "Combine", "Vision", "AVFoundation"],
   links: [
     { label: "work.view_appstore", href: "https://apps.apple.com/sv/app/mi-fondo-app/id1461509423?l=en-GB" },
   ],

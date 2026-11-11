@@ -37,6 +37,8 @@
     "problem": "Problem",
     "decisions": "Key decisions",
     "outcome": "Outcome",
+    "role": "Role",
+    "challenges": "Challenges",
     "highlights": "Highlights",
     "built_with": "Built with",
     "view_github": "Source on GitHub",
@@ -56,7 +58,12 @@
     },
     "mifondo": {
       "tagline": "Investment fund app for Ecuador's leading fund administrator.",
+      "role": "iOS Developer & Tech Lead",
       "summary": "Customers invest from $25 a month, manage withdrawals and access CHUBB medical plans from their phone.",
+      "challenges": [
+        "Led the refactor of the whole app from UIKit to SwiftUI.",
+        "Built biometric liveness checks: the camera detects when the user smiles, takes that selfie as proof of life and sends it to an endpoint that confirms it is the account holder."
+      ],
       "highlights": [
         "Investing from $25 a month",
         "Withdrawals managed in the app",

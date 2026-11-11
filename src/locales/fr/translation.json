@@ -37,6 +37,8 @@
     "problem": "Problème",
     "decisions": "Décisions clés",
     "outcome": "Résultat",
+    "role": "Rôle",
+    "challenges": "Défis",
     "highlights": "Points forts",
     "built_with": "Construit avec",
     "view_github": "Code sur GitHub",
@@ -56,7 +58,12 @@
     },
     "mifondo": {
       "tagline": "App de fonds d’investissement pour le premier gestionnaire de fonds de l’Équateur.",
+      "role": "Développeur iOS et Tech Lead",
       "summary": "Les clients investissent dès 25 $ par mois, gèrent leurs retraits et accèdent aux plans médicaux CHUBB depuis leur téléphone.",
+      "challenges": [
+        "J’ai mené la refonte de toute l’app d’UIKit vers SwiftUI.",
+        "J’ai mis en place la vérification biométrique de présence : la caméra détecte le sourire de l’utilisateur, prend ce selfie comme preuve de vie et l’envoie à un endpoint qui confirme qu’il s’agit bien du titulaire du compte."
+      ],
       "highlights": [
         "Investir dès 25 $ par mois",
         "Retraits gérés dans l’app",
