@@ -1,59 +1,102 @@
 {
   "nav": {
+    "work": "Trabajo",
     "about": "Sobre mí",
-    "projects": "Proyectos",
     "contact": "Contacto",
-    "available": "Disponible 2026",
     "menu_open": "Abrir menú",
     "menu_close": "Cerrar menú",
     "main_label": "Navegación principal",
     "home_label": "Inicio de ArguDev"
   },
+  "a11y": {
+    "skip_to_content": "Saltar al contenido principal"
+  },
   "hero": {
-    "kicker": "Mauricio Argumedo",
-    "role": "iOS Developer",
-    "tagline": "Eficiencia y Calidad",
-    "bio": "iOS developer con +6 años entregando. Código limpio, entrega rápida.",
-    "cta_projects": "Ver proyectos",
-    "cta_contact": "Contacto",
+    "status_label": "Ahora",
+    "status": "Lanzando Guldr en el App Store",
+    "role": "iOS Developer · ArguDev",
+    "statement": "Seis años llevando apps iOS del primer commit al App Store.",
+    "proof": [
+      "+6 años entregando",
+      "Swift 6 · SwiftUI",
+      "Cliente: Fiducia S.A.",
+      "Guldr v1.0"
+    ],
+    "cta_work": "Ver el trabajo",
+    "cta_contact": "Contáctame",
     "photo_alt": "Retrato de Mauricio Argumedo, desarrollador iOS",
-    "skip_to_content": "Saltar al contenido principal",
-    "scroll": "Scroll",
-    "tags": {
-      "years": "6 años"
+    "caption": "fig. 01 — el desarrollador"
+  },
+  "work": {
+    "index": "01",
+    "eyebrow": "Trabajo seleccionado",
+    "heading": "Apps que llegaron a producción.",
+    "sub": "Un producto propio y uno para un cliente. Los dos corren en teléfonos reales, no en mockups.",
+    "own": "Producto propio",
+    "client": "Cliente",
+    "problem": "Problema",
+    "decisions": "Decisiones clave",
+    "outcome": "Resultado",
+    "highlights": "Destacados",
+    "built_with": "Hecha con",
+    "view_github": "Código en GitHub",
+    "view_decisions": "Decisiones de arquitectura",
+    "view_appstore": "Ver en el App Store",
+    "guldr": {
+      "status": "v1.0 · TestFlight",
+      "tagline": "Tu oro, en orden. Una app de finanzas personales local-first.",
+      "problem": "Las apps de finanzas piden una cuenta y envían tus gastos a sus servidores. Guldr guarda todo en el teléfono: sin cuenta, sin servidores, sin recolectar datos.",
+      "decisions": [
+        "El dinero se guarda como unidades menores en Int64 más un código ISO 4217, nunca como Double.",
+        "La lógica de dominio vive en GuldrCore, un paquete Swift compartido por la app y el widget, probado en macOS sin simulador.",
+        "Concurrencia estricta de Swift 6 y MVVM con view models @Observable.",
+        "Los widgets leen el store de SwiftData en solo lectura desde el App Group."
+      ],
+      "outcome": "v1.0 en TestFlight con la etiqueta de privacidad \"Datos no recopilados\". Presupuestos, análisis, widgets y rachas de registro, con VoiceOver, Dynamic Type y Reducir movimiento en toda la app.",
+      "demo_alt": "Demo de Guldr: registrar un gasto desde Inicio y luego abrir Análisis"
+    },
+    "mifondo": {
+      "tagline": "App de fondos de inversión para la administradora de fondos líder de Ecuador.",
+      "summary": "Los clientes invierten desde $25 al mes, gestionan retiros y acceden a planes médicos CHUBB desde su teléfono.",
+      "highlights": [
+        "Inversión desde $25 al mes",
+        "Retiros gestionados en la app",
+        "Planes médicos CHUBB",
+        "Acceso protegido con OTP"
+      ],
+      "image_alt": "Pantallas de la app Mi Fondo junto a la frase \"Tu futuro, lo más importante\""
     }
   },
   "about": {
+    "index": "02",
     "eyebrow": "Sobre mí",
-    "heading": "Código limpio que se entrega.",
+    "heading": "Código limpio que llega a producción.",
     "bio": "iOS developer con +6 años entregando software listo para producción. Eficiente, limpio y a tiempo — siempre.",
-    "stack_heading": "Stack técnico",
-    "mockup_alt": "Maqueta de iPhone"
-  },
-  "projects": {
-    "eyebrow": "Proyectos",
-    "heading": "Lo que he construido.",
-    "sub": "Proyectos personales y trabajo con clientes — entregados y listos para producción.",
-    "client_label": "Cliente",
-    "view_github": "GitHub →",
-    "view_testflight": "TestFlight →",
-    "view_appstore": "App Store →",
-    "view_live": "Ver →",
-    "types": {
-      "ios_app": "App iOS"
-    },
-    "items": {
-      "guldr": {
-        "description": "App de finanzas personales local-first: sin cuenta, sin servidores, sin recolectar datos. Presupuestos con alertas, análisis con Swift Charts, widgets, rachas de registro y Face ID. Hecha con concurrencia estricta de Swift 6, un paquete Swift compartido, Swift Testing y CI."
+    "principles_heading": "Cómo trabajo",
+    "principles": [
+      {
+        "title": "Entregar en pasos pequeños",
+        "body": "Pull requests pequeños, CI en cada cambio y releases que se pueden repetir."
       },
-      "mifondo": {
-        "description": "App de gestión de fondos para Fiducia S.A., la principal administradora de Ecuador. Invierte desde $25/mes, gestiona retiros y accede a planes médicos CHUBB."
+      {
+        "title": "Cuidar los datos",
+        "body": "Dinero en unidades menores, esquemas versionados y migraciones que nunca pierden datos."
+      },
+      {
+        "title": "Nativo primero",
+        "body": "Componentes del sistema antes que UI a medida, con accesibilidad desde el primer día."
       }
-    }
+    ],
+    "stack_heading": "Stack, y dónde lo usé",
+    "used_guldr": "Guldr",
+    "used_mifondo": "Mi Fondo",
+    "used_ci": "CI en cada pull request",
+    "used_site": "Este sitio"
   },
   "contact": {
+    "index": "03",
     "eyebrow": "Contacto",
-    "heading": "¿Trabajamos juntos?",
+    "heading": "Construyamos algo que llegue a producción.",
     "sub": "Disponible para roles remotos y reubicación.",
     "name_label": "Nombre",
     "name_placeholder": "Tu nombre",
@@ -64,7 +107,7 @@
     "submit": "Enviar mensaje",
     "submitting": "Enviando...",
     "sent": "Enviado ✓",
-    "direct": "Contacto directo",
+    "direct": "Directo",
     "sent_note": "¡Gracias! Tu mensaje va en camino. Te responderé pronto.",
     "error_name": "Escribe tu nombre.",
     "error_email": "Escribe un correo válido.",
@@ -74,12 +117,10 @@
     "links_label": "Enlaces de contacto"
   },
   "footer": {
-    "tagline": "iOS Developer",
-    "available": "Disponible para roles remotos",
-    "nav_heading": "Navegar",
-    "connect_heading": "Conectar",
+    "tagline": "iOS developer · +6 años entregando",
     "built_with": "Construido con React · TypeScript · Framer Motion",
-    "credits": "Identidad de marca, fotografía y diseño por"
+    "credits": "Identidad de marca, fotografía y diseño por",
+    "back_to_top": "Volver arriba"
   },
   "lang": {
     "switcher_label": "Idioma",

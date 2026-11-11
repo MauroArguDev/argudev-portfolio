@@ -1,9 +1,10 @@
 import { useTranslation } from "react-i18next"
+import { LogoMark } from "@/components/LogoMark"
 import { contact, mailto } from "@/data/contact"
 
 const NAV_LINKS = [
+  { key: "nav.work", href: "#work" },
   { key: "nav.about", href: "#about" },
-  { key: "nav.projects", href: "#projects" },
   { key: "nav.contact", href: "#contact" },
 ] as const
 
@@ -13,101 +14,70 @@ const CONNECT_LINKS = [
   { label: contact.email, href: mailto },
 ] as const
 
+const linkClass = "w-fit font-mono text-[13px] text-silver hover:text-platinum transition-colors duration-150"
+
 export function Footer() {
   const { t } = useTranslation()
 
   return (
-    <footer
-      className="px-6 md:px-12 lg:px-24 pt-14 pb-10 border-t-[0.5px] border-white/[0.06]"
-    >
-      <div className="max-w-6xl mx-auto">
-
-        {/* Main grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[2fr_1fr_1fr] gap-10 mb-12">
-
-          {/* Brand column */}
-          <div className="flex flex-col gap-3">
-            <a href="#hero" aria-label="ArguDev home" className="select-none w-fit">
-              <picture>
-                <source srcSet="/logo.avif" type="image/avif" />
-                <img
-                  src="/logo.png"
-                  alt="ArguDev"
-                  width={896}
-                  height={243}
-                  style={{ height: 28, width: "auto" }}
-                />
-              </picture>
-            </a>
-            <p className="font-mono text-[13px] text-silver">
-              {t("footer.tagline")}
-            </p>
-            <p className="font-mono text-[12px] text-silver">
-              {t("footer.available")}
-            </p>
+    <footer className="relative px-6 md:px-10 pt-24 pb-10 border-t border-white/[0.06]">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-20">
+          <div className="md:col-span-6 flex items-center gap-6">
+            <LogoMark className="w-16 md:w-20 shrink-0 text-platinum" />
+            <div>
+              <p className="font-display font-bold text-[32px] leading-none tracking-[-0.03em]">
+                <span className="text-platinum">Argu</span>
+                <span className="text-violet">Dev</span>
+                <span className="text-crimson">.</span>
+              </p>
+              <p className="mt-3 font-mono text-[12px] text-ash">{t("footer.tagline")}</p>
+            </div>
           </div>
 
-          {/* Navigate column */}
-          <div className="flex flex-col gap-3">
-            <p className="font-mono text-[13px] tracking-[1.5px] uppercase text-silver">
-              {t("footer.nav_heading")}
-            </p>
+          <nav className="md:col-span-3 flex flex-col gap-3" aria-label={t("nav.main_label")}>
             {NAV_LINKS.map(({ key, href }) => (
-              <a
-                key={key}
-                href={href}
-                className="font-mono text-[13px] text-silver hover:text-platinum transition-colors duration-150 w-fit"
-              >
-                {t(key)}
-              </a>
+              <a key={key} href={href} className={linkClass}>{t(key)}</a>
             ))}
-          </div>
+          </nav>
 
-          {/* Connect column */}
-          <div className="flex flex-col gap-3">
-            <p className="font-mono text-[13px] tracking-[1.5px] uppercase text-silver">
-              {t("footer.connect_heading")}
-            </p>
+          <div className="md:col-span-3 flex flex-col gap-3">
             {CONNECT_LINKS.map(({ label, href }) => (
               <a
                 key={href}
                 href={href}
                 target={href.startsWith("mailto") ? undefined : "_blank"}
                 rel={href.startsWith("mailto") ? undefined : "noopener noreferrer"}
-                className="font-mono text-[13px] text-silver hover:text-platinum transition-colors duration-150 w-fit"
+                className={linkClass}
               >
                 {label}
               </a>
             ))}
           </div>
-
         </div>
 
-        {/* Bottom bar */}
-        <div
-          className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-6 border-t-[0.5px] border-white/[0.06]"
-        >
-          <p className="font-mono text-[13px] text-silver">
-            © {new Date().getFullYear()} Mauricio Argumedo · ArguDev
-          </p>
-          <div className="flex flex-col sm:items-end gap-1">
-            <p className="font-mono text-[13px] text-silver">
-              {t("footer.built_with")}
-            </p>
-            <p className="font-mono text-[13px] text-silver">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pt-6 border-t border-white/[0.06] font-mono text-[12px] text-ash">
+          <div className="flex flex-col gap-1">
+            <p>© {new Date().getFullYear()} Mauricio Argumedo · ArguDev</p>
+            <p>
               {t("footer.credits")}{" "}
               <a
                 href="https://www.instagram.com/danivan_design"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-platinum underline decoration-platinum/40 hover:decoration-platinum transition-colors duration-150"
+                className="text-silver underline decoration-white/30 hover:text-platinum hover:decoration-platinum transition-colors duration-150"
               >
                 Danivan Peña
               </a>
             </p>
           </div>
+          <div className="flex flex-col md:items-end gap-1">
+            <p>{t("footer.built_with")}</p>
+            <a href="#hero" className="w-fit md:self-end text-silver hover:text-platinum transition-colors duration-150">
+              ↑ {t("footer.back_to_top")}
+            </a>
+          </div>
         </div>
-
       </div>
     </footer>
   )

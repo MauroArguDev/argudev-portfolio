@@ -1,7 +1,6 @@
 import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import emailjs from "@emailjs/browser"
-import { AnimatedSection } from "@/components/AnimatedSection"
 import { SectionHeader } from "@/components/SectionHeader"
 import { emailjsConfig, isEmailjsConfigured } from "@/lib/emailjs"
 import { sanitize } from "@/lib/sanitize"
@@ -34,13 +33,16 @@ const CONTACT_LINKS = [
 ] as const
 
 const inputClass = [
-  "w-full px-4 py-3 rounded-xl font-body text-[16px] text-platinum",
-  "bg-graphite border border-white/10",
-  "placeholder:text-silver/40",
-  "focus:border-violet/50 focus:outline-none focus:ring-1 focus:ring-violet/30",
+  "w-full px-0 py-3 font-body text-[18px] text-platinum",
+  "bg-transparent border-0 border-b border-white/15 rounded-none",
+  "placeholder:text-ash/70",
+  "focus:border-violet focus:outline-none",
+  "aria-[invalid=true]:border-crimson",
   "disabled:opacity-50 disabled:cursor-not-allowed",
   "transition-colors duration-150",
 ].join(" ")
+
+const labelClass = "font-mono text-[11px] tracking-[0.12em] uppercase text-ash"
 
 export function Contact() {
   const { t } = useTranslation()
@@ -107,33 +109,28 @@ export function Contact() {
   }
 
   return (
-    <AnimatedSection>
-      <section id="contact" className="py-24 px-6 md:px-12 lg:px-24">
-        <div className="max-w-6xl mx-auto">
-          <SectionHeader
-            eyebrow={t("contact.eyebrow")}
-            title={t("contact.heading")}
-            subtitle={t("contact.sub")}
-          />
+    <section id="contact" className="relative px-6 md:px-10 py-20 md:py-40 border-t border-white/[0.06] overflow-hidden">
+      <div className="hero-light -right-1/4 top-0 w-[70%] h-full opacity-60" aria-hidden="true" />
+      <div className="relative max-w-7xl mx-auto">
+        <SectionHeader
+          index={t("contact.index")}
+          eyebrow={t("contact.eyebrow")}
+          title={t("contact.heading")}
+          subtitle={t("contact.sub")}
+        />
 
-          {/* Two-column: form + contact info */}
-          <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-12 lg:gap-20 items-start">
-
-            {/* Form */}
-            <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5">
-              {/* Name */}
-              <div className="flex flex-col gap-1.5">
-                <label
-                  htmlFor="contact-name"
-                  className="font-mono text-[12px] tracking-[1px] uppercase text-silver"
-                >
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+          <form onSubmit={handleSubmit} noValidate className="lg:col-span-7 flex flex-col gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              <div className="flex flex-col gap-1">
+                <label htmlFor="contact-name" className={labelClass}>
                   {t("contact.name_label")}
                 </label>
                 <input
                   id="contact-name"
                   type="text"
-                  required
                   autoComplete="name"
+                  required
                   maxLength={MAX_LENGTH.name}
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -145,20 +142,15 @@ export function Contact() {
                 />
                 {invalidField === "name" && <FieldError message={t(FIELD_ERROR.name)} />}
               </div>
-
-              {/* Email */}
-              <div className="flex flex-col gap-1.5">
-                <label
-                  htmlFor="contact-email"
-                  className="font-mono text-[12px] tracking-[1px] uppercase text-silver"
-                >
+              <div className="flex flex-col gap-1">
+                <label htmlFor="contact-email" className={labelClass}>
                   {t("contact.email_label")}
                 </label>
                 <input
                   id="contact-email"
                   type="email"
-                  required
                   autoComplete="email"
+                  required
                   maxLength={MAX_LENGTH.email}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -170,19 +162,15 @@ export function Contact() {
                 />
                 {invalidField === "email" && <FieldError message={t(FIELD_ERROR.email)} />}
               </div>
-
-              {/* Message */}
-              <div className="flex flex-col gap-1.5">
-                <label
-                  htmlFor="contact-message"
-                  className="font-mono text-[12px] tracking-[1px] uppercase text-silver"
-                >
+            </div>
+              <div className="flex flex-col gap-1">
+                <label htmlFor="contact-message" className={labelClass}>
                   {t("contact.message_label")}
                 </label>
                 <textarea
                   id="contact-message"
+                  rows={4}
                   required
-                  rows={5}
                   maxLength={MAX_LENGTH.message}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
@@ -195,72 +183,67 @@ export function Contact() {
                 {invalidField === "message" && <FieldError message={t(FIELD_ERROR.message)} />}
               </div>
 
-              {/* Honeypot — off-screen and hidden from assistive tech */}
-              <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">
-                <label htmlFor="contact-company">Company</label>
-                <input
-                  id="contact-company"
-                  type="text"
-                  tabIndex={-1}
-                  autoComplete="off"
-                  value={company}
-                  onChange={(e) => setCompany(e.target.value)}
-                />
-              </div>
-
-              {/* Submit error */}
-              {error && (
-                <p role="alert" className="font-mono text-[12px] text-crimson">
-                  {t(error)}
-                </p>
-              )}
-
-              {/* Success — the live region stays mounted so the update is announced */}
-              <p role="status" className="font-mono text-[12px] text-silver empty:hidden">
-                {sent ? t("contact.sent_note") : ""}
-              </p>
-
-              {/* Submit */}
-              <button
-                type="submit"
-                disabled={isDisabled}
-                className="w-full px-6 py-3 rounded-xl font-body font-medium text-[16px] text-platinum bg-violet hover:bg-violet-2 shadow-glow disabled:shadow-none disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
-              >
-                {buttonLabel}
-              </button>
-            </form>
-
-            {/* Contact info */}
-            <div className="flex flex-col gap-5">
-              <p className="font-mono text-[12px] tracking-[1.5px] uppercase text-silver">
-                {t("contact.direct")}
-              </p>
-              <ul className="flex flex-col gap-3" aria-label={t("contact.links_label")}>
-                {CONTACT_LINKS.map(({ label, href }) => (
-                  <li key={href}>
-                    <a
-                      href={href}
-                      target={href.startsWith("mailto") ? undefined : "_blank"}
-                      rel={href.startsWith("mailto") ? undefined : "noopener noreferrer"}
-                      className="font-mono text-[14px] text-silver hover:text-platinum transition-colors duration-150 break-all"
-                    >
-                      {label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+            {/* Honeypot — off-screen and hidden from assistive tech */}
+            <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">
+              <label htmlFor="contact-company">Company</label>
+              <input
+                id="contact-company"
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+                value={company}
+                onChange={(e) => setCompany(e.target.value)}
+              />
             </div>
 
+            {error && (
+              <p role="alert" className="font-mono text-[12px] text-crimson">
+                {t(error)}
+              </p>
+            )}
+
+            {/* Success — the live region stays mounted so the update is announced */}
+            <p role="status" className="font-mono text-[12px] text-silver empty:hidden">
+              {sent ? t("contact.sent_note") : ""}
+            </p>
+
+            <button
+              type="submit"
+              disabled={isDisabled}
+              className="cut cut-sm self-start inline-flex items-center gap-3 px-8 py-4 bg-violet hover:bg-violet-2 font-body font-medium text-[16px] text-platinum disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
+            >
+              {buttonLabel}
+              {!isDisabled && <span aria-hidden="true">→</span>}
+            </button>
+          </form>
+
+          <div className="lg:col-span-5 lg:pl-10 lg:border-l border-white/[0.08]">
+            <p className={labelClass}>{t("contact.direct")}</p>
+            <ul className="mt-6 flex flex-col" aria-label={t("contact.links_label")}>
+              {CONTACT_LINKS.map(({ label, href }) => (
+                <li key={href} className="border-b border-white/[0.08]">
+                  <a
+                    href={href}
+                    target={href.startsWith("mailto") ? undefined : "_blank"}
+                    rel={href.startsWith("mailto") ? undefined : "noopener noreferrer"}
+                    className="group flex items-center justify-between gap-4 py-5 font-mono text-[14px] text-silver hover:text-platinum transition-colors duration-150 break-all"
+                  >
+                    {label}
+                    <span aria-hidden="true" className="shrink-0 text-ash group-hover:text-violet transition-colors duration-150">↗</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-      </section>
-    </AnimatedSection>
+      </div>
+    </section>
   )
 }
 
 function FieldError({ message }: { message: string }) {
   return (
-    <p id="contact-error" className="font-mono text-[12px] text-crimson">
+    <p id="contact-error" className="mt-2 font-mono text-[12px] text-crimson">
       {message}
     </p>
   )

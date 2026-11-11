@@ -1,31 +1,22 @@
-import type { Project } from "@/types"
-import miFondoImg from "@/assets/mi-fondo.webp"
-import guldrImg from "@/assets/guldr.webp"
+import type { CaseStudy } from "@/types"
 
-export const projects: Project[] = [
-  {
-    id: "guldr",
-    name: "Guldr",
-    type: "ios_app",
-    year: "2026",
-    image: guldrImg,
-    stack: ["Swift 6", "SwiftUI", "SwiftData", "WidgetKit", "Swift Charts", "Swift Testing"],
-    descriptionKey: "projects.items.guldr.description",
-    links: {
-      github: "https://github.com/MauroArguDev/Guldr",
-    },
-  },
-  {
-    id: "mi-fondo-app",
-    name: "Mi Fondo App",
-    type: "ios_app",
-    year: "2020",
-    image: miFondoImg,
-    client: "Fiducia S.A.",
-    stack: ["Swift", "UIKit", "Combine", "URLSession", "OTP Security"],
-    descriptionKey: "projects.items.mifondo.description",
-    links: {
-      appstore: "https://apps.apple.com/sv/app/mi-fondo-app/id1461509423?l=en-GB",
-    },
-  },
-]
+// Copy for each case study lives in the locale files under work.guldr and work.mifondo.
+export const guldr: CaseStudy = {
+  name: "Guldr",
+  year: "2026",
+  stack: ["Swift 6", "SwiftUI", "SwiftData", "WidgetKit", "Swift Charts", "Swift Testing"],
+  links: [
+    { label: "work.view_github", href: "https://github.com/MauroArguDev/Guldr" },
+    { label: "work.view_decisions", href: "https://github.com/MauroArguDev/Guldr/tree/main/docs/decisions" },
+  ],
+}
+
+export const miFondo: CaseStudy = {
+  name: "Mi Fondo",
+  year: "2020",
+  client: "Fiducia S.A.",
+  stack: ["Swift", "UIKit", "Combine", "URLSession", "OTP"],
+  links: [
+    { label: "work.view_appstore", href: "https://apps.apple.com/sv/app/mi-fondo-app/id1461509423?l=en-GB" },
+  ],
+}
