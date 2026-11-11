@@ -86,6 +86,7 @@ function GuldrCase() {
 
 function MiFondoCase() {
   const { t } = useTranslation()
+  const challenges = t("work.mifondo.challenges", { returnObjects: true })
   const highlights = t("work.mifondo.highlights", { returnObjects: true })
 
   return (
@@ -116,7 +117,20 @@ function MiFondoCase() {
           {t("work.mifondo.summary")}
         </p>
 
-        <dl className="mt-10">
+        <dl className="mt-10 flex flex-col gap-10 lg:gap-7">
+          <CaseBlock label={t("work.role")}>
+            <p className="text-platinum">{t("work.mifondo.role")}</p>
+          </CaseBlock>
+          <CaseBlock label={t("work.challenges")}>
+            <ol className="flex flex-col gap-3 lg:gap-2">
+              {challenges.map((challenge, i) => (
+                <li key={challenge} className="grid grid-cols-[2rem_1fr]">
+                  <span className="font-mono text-[12px] pt-1 text-violet">{String(i + 1).padStart(2, "0")}</span>
+                  <span>{challenge}</span>
+                </li>
+              ))}
+            </ol>
+          </CaseBlock>
           <CaseBlock label={t("work.highlights")}>
             <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-x-8 gap-y-3">
               {highlights.map((item) => (
