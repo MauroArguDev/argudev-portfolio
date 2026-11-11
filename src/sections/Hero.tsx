@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next"
-import { LogoMark } from "@/components/LogoMark"
+import { MaskOutline } from "@/components/MaskOutline"
 import profilePhoto from "@/assets/profile.webp"
 import { now, type NowLanguage } from "@/data/now"
 
@@ -81,15 +81,13 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Portrait, framed by the mark's outline */}
-        <div className="lg:col-span-5 relative mx-auto w-full max-w-[280px] sm:max-w-[400px] lg:max-w-none">
+        {/* Portrait cut to the mark's silhouette, with its outline drawn around it */}
+        <div className="lg:col-span-5 relative mx-auto w-full max-w-[292px] sm:max-w-[416px] lg:max-w-none lg:w-[104%] lg:-ml-[4%]">
           <div className="hero-light -left-1/3 -top-1/4 w-[140%] h-[120%]" aria-hidden="true" />
-          <LogoMark
-            draw
-            className="absolute -inset-x-[14%] -top-[10%] w-[128%] text-violet/35 pointer-events-none"
-          />
           <figure className="relative">
-            <div className="jaw">
+            <div className="relative">
+              <MaskOutline className="absolute -left-[7%] -top-[5%] w-[114%] h-[110%] text-violet/60 pointer-events-none" />
+              <div className="mask-face">
                 <img
                   src={profilePhoto}
                   alt={t("hero.photo_alt")}
@@ -97,12 +95,13 @@ export function Hero() {
                   fetchPriority="high"
                   width={960}
                   height={1478}
-                  className="block w-full aspect-[4/5] object-cover object-[50%_20%]"
+                  className="block w-full aspect-[20/23] object-cover object-[50%_20%]"
                 />
+              </div>
             </div>
-            <figcaption className="mt-5 flex justify-between font-mono text-[11px] tracking-[0.1em] uppercase text-ash">
+            <figcaption className="mt-[calc(4.6%+1.25rem)] flex justify-between font-mono text-[11px] tracking-[0.1em] uppercase text-ash">
               <span>{t("hero.caption")}</span>
-              <span className="text-silver">argudev.com</span>
+              <span className="hidden sm:inline text-silver">argudev.com</span>
             </figcaption>
           </figure>
         </div>
