@@ -1,4 +1,4 @@
-// The mark's outer contour around the 4:5 portrait. Like the mark, it is two open
+// The mark's outer contour around the 20:23 portrait. Like the mark, it is two open
 // halves: a gap at the top between its brackets and one at the chin.
 // Points are percentages of the portrait, the same ones as .mask-face in globals.css.
 const HALVES = [
@@ -6,8 +6,8 @@ const HALVES = [
   [[61, 0], [100, 0], [86.5, 59], [97.6, 71.9], [80.7, 78.6], [71.6, 100], [61, 100]],
 ]
 
-// The portrait is 100 x 125 user units; the outline is its silhouette scaled up from the center
-const HEIGHT = 125
+// The portrait is 100 x 115 user units (aspect 20:23); the outline is its silhouette scaled up from the center
+const HEIGHT = 115
 const SCALE = 1.08
 
 function toPoints(half: number[][]) {
@@ -20,10 +20,13 @@ function toPoints(half: number[][]) {
     .join(" ")
 }
 
-/** Place it over the portrait with `-left-[7%] -top-[5%] w-[114%] h-[110%]`, matching the viewBox */
+// The SVG box is the portrait grown by 7% each side horizontally and 5% vertically
+const VIEW_BOX = `-7 ${-HEIGHT * 0.05} 114 ${HEIGHT * 1.1}`
+
+/** Place it over the portrait with `-left-[7%] -top-[5%] w-[114%] h-[110%]`, matching VIEW_BOX */
 export function MaskOutline({ className }: { className?: string }) {
   return (
-    <svg viewBox="-7 -6.25 114 137.5" className={className} aria-hidden="true">
+    <svg viewBox={VIEW_BOX} className={className} aria-hidden="true">
       {HALVES.map((half, i) => (
         <polyline
           key={i}

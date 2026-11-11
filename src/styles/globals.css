@@ -92,7 +92,7 @@ body {
     padding: 1px;
 }
 
-/* Mask: the mark's outer silhouette fitted to a 4:5 portrait — sloped sides,
+/* Mask: the mark's outer silhouette fitted to the 20:23 portrait — sloped sides,
    cheek points and a narrow chin. Same points as MaskOutline. */
 .mask-face {
     clip-path: polygon(

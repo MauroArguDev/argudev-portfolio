@@ -82,7 +82,7 @@ export function Hero() {
         </div>
 
         {/* Portrait cut to the mark's silhouette, with its outline drawn around it */}
-        <div className="lg:col-span-5 relative mx-auto w-full max-w-[280px] sm:max-w-[400px] lg:max-w-none">
+        <div className="lg:col-span-5 relative mx-auto w-full max-w-[292px] sm:max-w-[416px] lg:max-w-none lg:w-[104%] lg:-ml-[4%]">
           <div className="hero-light -left-1/3 -top-1/4 w-[140%] h-[120%]" aria-hidden="true" />
           <figure className="relative">
             <div className="relative">
@@ -95,11 +95,11 @@ export function Hero() {
                   fetchPriority="high"
                   width={960}
                   height={1478}
-                  className="block w-full aspect-[4/5] object-cover object-[50%_20%]"
+                  className="block w-full aspect-[20/23] object-cover object-[50%_20%]"
                 />
               </div>
             </div>
-            <figcaption className="mt-[calc(5%+1.25rem)] flex justify-between font-mono text-[11px] tracking-[0.1em] uppercase text-ash">
+            <figcaption className="mt-[calc(4.6%+1.25rem)] flex justify-between font-mono text-[11px] tracking-[0.1em] uppercase text-ash">
               <span>{t("hero.caption")}</span>
               <span className="hidden sm:inline text-silver">argudev.com</span>
             </figcaption>
