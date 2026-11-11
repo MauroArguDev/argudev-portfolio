@@ -13,7 +13,6 @@
   },
   "hero": {
     "status_label": "Ahora",
-    "status": "Lanzando Guldr en el App Store",
     "role": "iOS Developer · ArguDev",
     "statement": "Seis años llevando apps iOS del primer commit al App Store.",
     "proof": [
@@ -25,7 +24,7 @@
     "cta_work": "Ver el trabajo",
     "cta_contact": "Contáctame",
     "photo_alt": "Retrato de Mauricio Argumedo, desarrollador iOS",
-    "caption": "fig. 01 — el desarrollador"
+    "caption": "Mauricio Argumedo — iOS Developer"
   },
   "work": {
     "index": "01",
