@@ -3,7 +3,14 @@ import { SectionHeader } from "@/components/SectionHeader"
 import { DeviceFrame } from "@/components/DeviceFrame"
 import { guldr, miFondo } from "@/data/projects"
 import type { CaseStudy } from "@/types"
-import guldrDemo from "@/assets/guldr-demo.webp"
+import guldrDemoWebm from "@/assets/guldr-demo.webm"
+import guldrDemoMp4 from "@/assets/guldr-demo.mp4"
+import guldrDemoPoster from "@/assets/guldr-demo-poster.webp"
+
+const GULDR_DEMO = [
+  { src: guldrDemoWebm, type: "video/webm" },
+  { src: guldrDemoMp4, type: "video/mp4" },
+]
 import miFondoImg from "@/assets/mi-fondo.webp"
 
 export function Work() {
@@ -44,7 +51,7 @@ function GuldrCase() {
           />
           <div className="relative flex justify-center">
             <div className="brackets w-full max-w-[300px] lg:max-w-[270px]" style={{ "--bracket": "var(--color-gold)" } as React.CSSProperties}>
-              <DeviceFrame src={guldrDemo} alt={t("work.guldr.demo_alt")} />
+              <DeviceFrame sources={GULDR_DEMO} poster={guldrDemoPoster} label={t("work.guldr.demo_alt")} />
             </div>
           </div>
         </div>
