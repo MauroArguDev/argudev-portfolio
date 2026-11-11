@@ -98,7 +98,7 @@ export function Hero() {
           >
             <img
               src={profilePhoto}
-              alt="Mauricio Argumedo — iOS Developer"
+              alt={t("hero.photo_alt")}
               loading="eager"
               fetchPriority="high"
               className="w-full rounded-xl object-cover object-top"

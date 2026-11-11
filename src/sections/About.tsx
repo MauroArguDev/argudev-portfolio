@@ -83,7 +83,7 @@ export function About() {
             <div className="hidden lg:flex justify-end items-center">
               <motion.img
                 src={iPhoneImg}
-                alt="iOS app showcase"
+                alt={t("about.mockup_alt")}
                 loading="lazy"
                 animate={prefersReduced ? {} : { y: [0, -14, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}

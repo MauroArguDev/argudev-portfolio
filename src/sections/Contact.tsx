@@ -235,7 +235,7 @@ export function Contact() {
               <p className="font-mono text-[12px] tracking-[1.5px] uppercase text-silver">
                 {t("contact.direct")}
               </p>
-              <ul className="flex flex-col gap-3" aria-label="Contact links">
+              <ul className="flex flex-col gap-3" aria-label={t("contact.links_label")}>
                 {CONTACT_LINKS.map(({ label, href }) => (
                   <li key={href}>
                     <a

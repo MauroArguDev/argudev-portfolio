@@ -88,14 +88,14 @@ export function Footer() {
           className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-6 border-t-[0.5px] border-white/[0.06]"
         >
           <p className="font-mono text-[13px] text-silver">
-            © 2026 Mauro Argumedo · ArguDev
+            © {new Date().getFullYear()} Mauricio Argumedo · ArguDev
           </p>
           <div className="flex flex-col sm:items-end gap-1">
             <p className="font-mono text-[13px] text-silver">
               {t("footer.built_with")}
             </p>
             <p className="font-mono text-[13px] text-silver">
-              Brand identity, photography &amp; design by{" "}
+              {t("footer.credits")}{" "}
               <a
                 href="https://www.instagram.com/danivan_design"
                 target="_blank"
