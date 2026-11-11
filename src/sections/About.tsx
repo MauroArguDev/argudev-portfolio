@@ -4,7 +4,7 @@ import { AnimatedSection } from "@/components/AnimatedSection"
 import { staggerContainer, staggerItem } from "@/lib/motion"
 import { useScrollReveal } from "@/hooks/useScrollReveal"
 import { stack } from "@/data/stack"
-import iPhoneImg from "@/assets/iPhone.png"
+import iPhoneImg from "@/assets/iPhone.webp"
 import type { Variants } from "framer-motion"
 
 const STACK_GROUPS = [

@@ -1,5 +1,5 @@
 import type { Project } from "@/types"
-import miFondoImg from "@/assets/mi-fondo.png"
+import miFondoImg from "@/assets/mi-fondo.webp"
 import placeholderImg from "@/assets/placeholder.png"
 
 export const projects: Project[] = [
