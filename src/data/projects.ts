@@ -7,7 +7,6 @@ export const guldr: CaseStudy = {
   stack: ["Swift 6", "SwiftUI", "SwiftData", "WidgetKit", "Swift Charts", "Swift Testing"],
   links: [
     { label: "work.view_github", href: "https://github.com/MauroArguDev/Guldr" },
-    { label: "work.view_decisions", href: "https://github.com/MauroArguDev/Guldr/tree/main/docs/decisions" },
   ],
 }
 
@@ -15,7 +14,7 @@ export const miFondo: CaseStudy = {
   name: "Mi Fondo",
   year: "2020",
   client: "Fiducia S.A.",
-  stack: ["Swift", "UIKit", "Combine", "URLSession", "OTP"],
+  stack: ["Swift", "UIKit", "Combine", "URLSession"],
   links: [
     { label: "work.view_appstore", href: "https://apps.apple.com/sv/app/mi-fondo-app/id1461509423?l=en-GB" },
   ],

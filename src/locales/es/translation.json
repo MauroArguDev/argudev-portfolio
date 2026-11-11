@@ -40,7 +40,6 @@
     "highlights": "Destacados",
     "built_with": "Hecha con",
     "view_github": "Código en GitHub",
-    "view_decisions": "Decisiones de arquitectura",
     "view_appstore": "Ver en el App Store",
     "guldr": {
       "status": "v1.0 · TestFlight",
@@ -61,8 +60,7 @@
       "highlights": [
         "Inversión desde $25 al mes",
         "Retiros gestionados en la app",
-        "Planes médicos CHUBB",
-        "Acceso protegido con OTP"
+        "Planes médicos CHUBB"
       ],
       "image_alt": "Pantallas de la app Mi Fondo junto a la frase \"Tu futuro, lo más importante\""
     }

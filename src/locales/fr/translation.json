@@ -40,7 +40,6 @@
     "highlights": "Points forts",
     "built_with": "Construit avec",
     "view_github": "Code sur GitHub",
-    "view_decisions": "Décisions d’architecture",
     "view_appstore": "Voir sur l’App Store",
     "guldr": {
       "status": "v1.0 · TestFlight",
@@ -61,8 +60,7 @@
       "highlights": [
         "Investir dès 25 $ par mois",
         "Retraits gérés dans l’app",
-        "Plans médicaux CHUBB",
-        "Accès sécurisé par OTP"
+        "Plans médicaux CHUBB"
       ],
       "image_alt": "Écrans de l’app Mi Fondo à côté de la phrase « Tu futuro, lo más importante »"
     }

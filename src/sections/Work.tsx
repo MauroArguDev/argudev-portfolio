@@ -33,17 +33,17 @@ function GuldrCase() {
 
   return (
     <article className="cut cut-lg cut-line">
-      <div className="cut cut-lg bg-obsidian grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 p-6 sm:p-10 lg:p-16">
+      <div className="cut cut-lg bg-obsidian grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 lg:items-center p-6 sm:p-10 lg:p-14">
 
-        {/* Device on Guldr's own gold light; it stays in view while the copy scrolls */}
+        {/* Device on Guldr's own gold light */}
         <div className="lg:col-span-5 relative">
           <div
             aria-hidden="true"
             className="absolute inset-0 -m-6 sm:-m-10 lg:-m-16 lg:mr-0"
             style={{ background: "radial-gradient(closest-side at 50% 30%, rgb(200 169 106 / 0.22), transparent)" }}
           />
-          <div className="relative lg:sticky lg:top-28 flex justify-center">
-            <div className="brackets w-full max-w-[300px]" style={{ "--bracket": "var(--color-gold)" } as React.CSSProperties}>
+          <div className="relative flex justify-center">
+            <div className="brackets w-full max-w-[300px] lg:max-w-[270px]" style={{ "--bracket": "var(--color-gold)" } as React.CSSProperties}>
               <DeviceFrame src={guldrDemo} alt={t("work.guldr.demo_alt")} />
             </div>
           </div>
@@ -58,12 +58,12 @@ function GuldrCase() {
             {t("work.guldr.tagline")}
           </p>
 
-          <dl className="mt-12 flex flex-col gap-10">
+          <dl className="mt-12 lg:mt-10 flex flex-col gap-10 lg:gap-7">
             <CaseBlock label={t("work.problem")}>
               <p>{t("work.guldr.problem")}</p>
             </CaseBlock>
             <CaseBlock label={t("work.decisions")}>
-              <ol className="flex flex-col gap-3">
+              <ol className="flex flex-col gap-3 lg:gap-2">
                 {decisions.map((decision, i) => (
                   <li key={decision} className="grid grid-cols-[2rem_1fr]">
                     <span className="font-mono text-[12px] pt-1 text-gold">{String(i + 1).padStart(2, "0")}</span>
@@ -90,7 +90,7 @@ function MiFondoCase() {
 
   return (
     <article className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-      <div className="lg:col-span-5 lg:order-2">
+      <div className="lg:col-span-7 lg:order-2">
         <div className="cut cut-lg cut-line">
           <img
             src={miFondoImg}
@@ -104,7 +104,7 @@ function MiFondoCase() {
         </div>
       </div>
 
-      <div className="lg:col-span-7 lg:order-1 flex flex-col">
+      <div className="lg:col-span-5 lg:order-1 flex flex-col">
         <CaseMeta kind={`${t("work.client")} · ${miFondo.client}`} study={miFondo} />
         <h3 className="mt-6 font-display font-bold text-[clamp(40px,5vw,64px)] leading-none tracking-[-0.04em] text-platinum">
           {miFondo.name}
@@ -118,7 +118,7 @@ function MiFondoCase() {
 
         <dl className="mt-10">
           <CaseBlock label={t("work.highlights")}>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-x-8 gap-y-3">
               {highlights.map((item) => (
                 <li key={item} className="flex gap-3">
                   <span className="mt-[9px] w-1.5 h-1.5 shrink-0 bg-violet" aria-hidden="true" />
@@ -153,7 +153,7 @@ function CaseMeta({ kind, study, badge }: { kind: string; study: CaseStudy; badg
 
 function CaseBlock({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-[9rem_1fr] gap-2 sm:gap-6 pt-6 border-t border-white/[0.08]">
+    <div className="grid grid-cols-1 sm:grid-cols-[9rem_1fr] lg:grid-cols-1 xl:grid-cols-[9rem_1fr] gap-2 sm:gap-6 lg:gap-2 xl:gap-6 pt-6 border-t border-white/[0.08]">
       <dt className="font-mono text-[12px] tracking-[0.1em] uppercase text-ash pt-1">{label}</dt>
       <dd className="font-body text-[16px] leading-relaxed text-silver">{children}</dd>
     </div>

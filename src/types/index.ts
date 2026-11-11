@@ -1,6 +1,5 @@
 export type WorkLinkLabel =
   | "work.view_github"
-  | "work.view_decisions"
   | "work.view_appstore"
 
 export interface WorkLink {

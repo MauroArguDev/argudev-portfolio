@@ -40,7 +40,6 @@
     "highlights": "Highlights",
     "built_with": "Built with",
     "view_github": "Source on GitHub",
-    "view_decisions": "Architecture decisions",
     "view_appstore": "View on the App Store",
     "guldr": {
       "status": "v1.0 · TestFlight",
@@ -61,8 +60,7 @@
       "highlights": [
         "Investing from $25 a month",
         "Withdrawals managed in the app",
-        "CHUBB medical plans",
-        "OTP-secured access"
+        "CHUBB medical plans"
       ],
       "image_alt": "Mi Fondo app screens next to the line \"Tu futuro, lo más importante\""
     }
