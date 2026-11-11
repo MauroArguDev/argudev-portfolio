@@ -1,24 +1,24 @@
 import type { Project } from "@/types"
 import miFondoImg from "@/assets/mi-fondo.webp"
-import placeholderImg from "@/assets/placeholder.png"
+import guldrImg from "@/assets/guldr.webp"
 
 export const projects: Project[] = [
   {
-    id: "fintrack-pro",
-    name: "FinTrack Pro",
-    type: "iOS App",
+    id: "guldr",
+    name: "Guldr",
+    type: "ios_app",
     year: "2026",
-    image: placeholderImg,
-    stack: ["SwiftUI", "SwiftData", "Swift Charts", "CloudKit", "Face ID"],
-    descriptionKey: "projects.items.fintrack.description",
+    image: guldrImg,
+    stack: ["Swift 6", "SwiftUI", "SwiftData", "WidgetKit", "Swift Charts", "Swift Testing"],
+    descriptionKey: "projects.items.guldr.description",
     links: {
-      github: "https://github.com/MauroArguDev/FinTrackPro",
+      github: "https://github.com/MauroArguDev/Guldr",
     },
   },
   {
     id: "mi-fondo-app",
     name: "Mi Fondo App",
-    type: "iOS App",
+    type: "ios_app",
     year: "2020",
     image: miFondoImg,
     client: "Fiducia S.A.",

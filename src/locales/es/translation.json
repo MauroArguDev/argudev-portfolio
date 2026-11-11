@@ -32,9 +32,12 @@
     "view_testflight": "TestFlight →",
     "view_appstore": "App Store →",
     "view_live": "Ver →",
+    "types": {
+      "ios_app": "App iOS"
+    },
     "items": {
-      "fintrack": {
-        "description": "Rastreador de finanzas personales con categorías, presupuestos, visualizaciones con Swift Charts y protección Face ID."
+      "guldr": {
+        "description": "App de finanzas personales local-first: sin cuenta, sin servidores, sin recolectar datos. Presupuestos con alertas, análisis con Swift Charts, widgets, rachas de registro y Face ID. Hecha con concurrencia estricta de Swift 6, un paquete Swift compartido, Swift Testing y CI."
       },
       "mifondo": {
         "description": "App de gestión de fondos para Fiducia S.A., la principal administradora de Ecuador. Invierte desde $25/mes, gestiona retiros y accede a planes médicos CHUBB."

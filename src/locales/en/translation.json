@@ -32,9 +32,12 @@
     "view_testflight": "TestFlight →",
     "view_appstore": "App Store →",
     "view_live": "Live →",
+    "types": {
+      "ios_app": "iOS App"
+    },
     "items": {
-      "fintrack": {
-        "description": "Personal finance tracker with categories, budgets, Swift Charts visualizations and Face ID protection."
+      "guldr": {
+        "description": "Local-first personal finance app: no account, no servers, nothing collected. Budgets with alerts, Swift Charts analytics, widgets, a logging streak and Face ID. Built with Swift 6 strict concurrency, a shared Swift package, Swift Testing and CI."
       },
       "mifondo": {
         "description": "Investment fund app for Fiducia S.A., Ecuador's leading fund administrator. Invest from $25/month, manage withdrawals and access CHUBB medical plans."
