@@ -1,13 +1,12 @@
 import { motion, useReducedMotion } from "framer-motion"
 import { useTranslation } from "react-i18next"
+import { stack } from "@/data/stack"
 import { staggerContainer, staggerItem } from "@/lib/motion"
 import profilePhoto from "@/assets/profile.jpg"
 
 export function Hero() {
   const { t } = useTranslation()
   const prefersReduced = useReducedMotion()
-
-  const tagPills = ["Swift", "SwiftUI", "UIKit", "ARKit", "React", "Machine Learning"]
 
   return (
     <section
@@ -48,23 +47,17 @@ export function Hero() {
 
           {/* Role + tagline */}
           <motion.div variants={staggerItem} className="mb-10">
-            <p
-              className="font-display font-bold text-platinum leading-tight"
-              style={{ fontSize: "clamp(24px, 4.5vw, 48px)", letterSpacing: "-0.5px" }}
-            >
+            <p className="font-display font-bold text-hero text-platinum leading-tight">
               {t("hero.role")}
             </p>
-            <p
-              className="font-display font-bold text-silver leading-tight"
-              style={{ fontSize: "clamp(24px, 4.5vw, 48px)", letterSpacing: "-0.5px" }}
-            >
+            <p className="font-display font-bold text-hero text-silver leading-tight">
               {t("hero.tagline")}
             </p>
           </motion.div>
 
           {/* Tag pills */}
           <motion.div variants={staggerItem} className="flex flex-wrap gap-2.5 mb-10">
-            {tagPills.map((tag) => (
+            {stack.highlights.map((tag) => (
               <span
                 key={tag}
                 className="glass px-4 py-2 rounded-full font-mono text-[13px] tracking-[0.3px] text-violet"
@@ -79,8 +72,7 @@ export function Hero() {
           <motion.div variants={staggerItem} className="flex flex-wrap items-center gap-4">
             <a
               href="#projects"
-              className="px-6 py-3 rounded-xl font-body font-medium text-[16px] text-platinum bg-violet hover:bg-violet-2 transition-colors duration-200"
-              style={{ boxShadow: "0 0 24px rgba(176,38,255,0.4)" }}
+              className="px-6 py-3 rounded-xl font-body font-medium text-[16px] text-platinum bg-violet hover:bg-violet-2 shadow-glow transition-colors duration-200"
             >
               {t("hero.cta_projects")}
             </a>

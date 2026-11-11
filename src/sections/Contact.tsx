@@ -2,8 +2,10 @@ import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import emailjs from "@emailjs/browser"
 import { AnimatedSection } from "@/components/AnimatedSection"
+import { SectionHeader } from "@/components/SectionHeader"
 import { emailjsConfig, isEmailjsConfigured } from "@/lib/emailjs"
 import { sanitize } from "@/lib/sanitize"
+import { contact, mailto } from "@/data/contact"
 
 type Field = "name" | "email" | "message"
 type SubmitError = "contact.error_generic" | "contact.error_unavailable"
@@ -26,9 +28,9 @@ function firstInvalidField(name: string, email: string, message: string): Field 
 }
 
 const CONTACT_LINKS = [
-  { label: "argudev@proton.me", href: "mailto:argudev@proton.me" },
-  { label: "github.com/MauroArguDev", href: "https://github.com/MauroArguDev" },
-  { label: "linkedin.com/in/mauro-argumedo-1942801ab", href: "https://www.linkedin.com/in/mauro-argumedo-1942801ab/" },
+  { label: contact.email, href: mailto },
+  contact.github,
+  contact.linkedin,
 ] as const
 
 const inputClass = [
@@ -108,24 +110,11 @@ export function Contact() {
     <AnimatedSection>
       <section id="contact" className="py-24 px-6 md:px-12 lg:px-24">
         <div className="max-w-6xl mx-auto">
-          {/* Eyebrow */}
-          <div className="flex items-center gap-3 mb-6">
-            <span className="w-6 h-[2px] bg-violet rounded-full" aria-hidden="true" />
-            <span className="font-mono text-[13px] tracking-[1px] uppercase text-silver">
-              {t("contact.eyebrow")}
-            </span>
-          </div>
-
-          {/* Heading + subheading */}
-          <h2
-            className="font-display font-semibold text-platinum leading-tight mb-3"
-            style={{ fontSize: "clamp(28px, 3.5vw, 40px)", letterSpacing: "-0.3px" }}
-          >
-            {t("contact.heading")}
-          </h2>
-          <p className="font-body text-[16px] text-silver mb-14">
-            {t("contact.sub")}
-          </p>
+          <SectionHeader
+            eyebrow={t("contact.eyebrow")}
+            title={t("contact.heading")}
+            subtitle={t("contact.sub")}
+          />
 
           {/* Two-column: form + contact info */}
           <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-12 lg:gap-20 items-start">
@@ -235,8 +224,7 @@ export function Contact() {
               <button
                 type="submit"
                 disabled={isDisabled}
-                className="w-full px-6 py-3 rounded-xl font-body font-medium text-[16px] text-platinum bg-violet hover:bg-violet-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
-                style={{ boxShadow: isDisabled ? "none" : "0 0 24px rgba(176,38,255,0.4)" }}
+                className="w-full px-6 py-3 rounded-xl font-body font-medium text-[16px] text-platinum bg-violet hover:bg-violet-2 shadow-glow disabled:shadow-none disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
               >
                 {buttonLabel}
               </button>

@@ -1,4 +1,8 @@
 export const stack = {
+  // Shown as pills in the hero
+  highlights: [
+    "Swift", "SwiftUI", "UIKit", "ARKit", "React", "Machine Learning",
+  ],
   ios: [
     "Swift 6", "SwiftUI", "SwiftData", "Core ML",
     "ARKit", "XCTest",

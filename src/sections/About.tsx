@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from "framer-motion"
 import { useTranslation } from "react-i18next"
 import { AnimatedSection } from "@/components/AnimatedSection"
+import { Eyebrow } from "@/components/SectionHeader"
 import { staggerContainer, staggerItem } from "@/lib/motion"
 import { useScrollReveal } from "@/hooks/useScrollReveal"
 import { stack } from "@/data/stack"
@@ -27,13 +28,7 @@ export function About() {
     <AnimatedSection>
       <section id="about" className="py-24 px-6 md:px-12 lg:px-24">
         <div className="max-w-6xl mx-auto">
-          {/* Eyebrow */}
-          <div className="flex items-center gap-3 mb-12">
-            <span className="w-6 h-[2px] bg-violet rounded-full" aria-hidden="true" />
-            <span className="font-mono text-[13px] tracking-[1px] uppercase text-silver">
-              {t("about.eyebrow")}
-            </span>
-          </div>
+          <Eyebrow className="mb-12">{t("about.eyebrow")}</Eyebrow>
 
           {/* Two-column: heading + bio + stack left, iPhone right */}
           <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-12 lg:gap-20 items-center">
@@ -41,10 +36,7 @@ export function About() {
             {/* Left: heading + bio + stack */}
             <div className="flex flex-col gap-10">
               <div>
-                <h2
-                  className="font-display font-semibold text-platinum mb-6 leading-tight"
-                  style={{ fontSize: "clamp(28px, 3.5vw, 40px)", letterSpacing: "-0.3px" }}
-                >
+                <h2 className="font-display font-semibold text-section text-platinum mb-6 leading-tight">
                   {t("about.heading")}
                 </h2>
                 <p className="font-body text-[17px] leading-relaxed text-silver">
