@@ -16,6 +16,8 @@
     "bio": "Développeur iOS avec 6+ ans de livraisons. Code propre, livraison rapide.",
     "cta_projects": "Voir les projets",
     "cta_contact": "Contact",
+    "photo_alt": "Portrait de Mauricio Argumedo, développeur iOS",
+    "skip_to_content": "Aller au contenu principal",
     "scroll": "Défiler",
     "tags": {
       "years": "6 ans"
@@ -25,7 +27,8 @@
     "eyebrow": "À propos",
     "heading": "Du code propre qui se livre.",
     "bio": "Développeur iOS avec plus de 6 ans de livraison de logiciels prêts pour la production. Efficace, propre et dans les délais — toujours.",
-    "stack_heading": "Stack technique"
+    "stack_heading": "Stack technique",
+    "mockup_alt": "Maquette d’iPhone"
   },
   "projects": {
     "eyebrow": "Projets",
@@ -64,14 +67,16 @@
     "error_email": "Veuillez saisir une adresse e-mail valide.",
     "error_message": "Veuillez écrire un message d’au moins 10 caractères.",
     "error_generic": "Une erreur s’est produite. Réessayez ou écrivez-moi directement.",
-    "error_unavailable": "Le formulaire est indisponible pour le moment. Écrivez-moi directement par e-mail."
+    "error_unavailable": "Le formulaire est indisponible pour le moment. Écrivez-moi directement par e-mail.",
+    "links_label": "Liens de contact"
   },
   "footer": {
     "tagline": "iOS Developer",
     "available": "Disponible pour des postes à distance",
     "nav_heading": "Navigation",
     "connect_heading": "Contact",
-    "built_with": "Construit avec React · TypeScript · Framer Motion"
+    "built_with": "Construit avec React · TypeScript · Framer Motion",
+    "credits": "Identité de marque, photographie et design par"
   },
   "lang": {
     "switcher_label": "Langue",

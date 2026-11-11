@@ -3,6 +3,13 @@ import { useTranslation } from "react-i18next"
 import { cardHover } from "@/lib/motion"
 import type { Project } from "@/types"
 
+const LINKS = [
+  { key: "github", label: "projects.view_github" },
+  { key: "testflight", label: "projects.view_testflight" },
+  { key: "appstore", label: "projects.view_appstore" },
+  { key: "live", label: "projects.view_live" },
+] as const satisfies readonly { key: keyof Project["links"]; label: string }[]
+
 interface Props {
   project: Project
 }
@@ -59,10 +66,7 @@ export function ProjectCard({ project }: Props) {
         )}
 
         {/* Title */}
-        <h3
-          className="font-display font-bold text-platinum leading-snug"
-          style={{ fontSize: 20 }}
-        >
+        <h3 className="font-display font-bold text-[20px] text-platinum leading-snug">
           {project.name}
         </h3>
 
@@ -71,8 +75,7 @@ export function ProjectCard({ project }: Props) {
           {project.stack.map((tech) => (
             <span
               key={tech}
-              className="font-mono text-[10px] tracking-[0.5px] text-violet/90 px-2 py-0.5 rounded-md border border-violet/20"
-              style={{ background: "rgba(176,38,255,0.06)" }}
+              className="font-mono text-[10px] tracking-[0.5px] text-violet/90 px-2 py-0.5 rounded-md border border-violet/20 bg-violet/[0.06]"
             >
               {tech}
             </span>
@@ -87,46 +90,20 @@ export function ProjectCard({ project }: Props) {
         {/* Links */}
         {hasLinks && (
           <div className="flex flex-wrap gap-3 pt-3 border-t border-white/[0.07]">
-            {project.links.github && (
-              <a
-                href={project.links.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-mono text-[12px] text-violet hover:text-platinum transition-colors duration-150"
-              >
-                {t("projects.view_github")}
-              </a>
-            )}
-            {project.links.testflight && (
-              <a
-                href={project.links.testflight}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-mono text-[12px] text-violet hover:text-platinum transition-colors duration-150"
-              >
-                {t("projects.view_testflight")}
-              </a>
-            )}
-            {project.links.appstore && (
-              <a
-                href={project.links.appstore}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-mono text-[12px] text-violet hover:text-platinum transition-colors duration-150"
-              >
-                {t("projects.view_appstore")}
-              </a>
-            )}
-            {project.links.live && (
-              <a
-                href={project.links.live}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-mono text-[12px] text-violet hover:text-platinum transition-colors duration-150"
-              >
-                {t("projects.view_live")}
-              </a>
-            )}
+            {LINKS.map(({ key, label }) => {
+              const href = project.links[key]
+              return href ? (
+                <a
+                  key={key}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono text-[12px] text-violet hover:text-platinum transition-colors duration-150"
+                >
+                  {t(label)}
+                </a>
+              ) : null
+            })}
           </div>
         )}
       </div>

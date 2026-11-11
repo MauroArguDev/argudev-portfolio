@@ -2,6 +2,7 @@ import { lazy, Suspense, useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 import { Analytics } from '@vercel/analytics/react'
+import { useTranslation } from 'react-i18next'
 import { I18nHtmlSync } from '@/components/I18nHtmlSync'
 import { BackgroundMesh } from '@/components/BackgroundMesh'
 import { ScrollProgress } from '@/components/ScrollProgress'
@@ -16,6 +17,7 @@ const Footer = lazy(() => import('@/sections/Footer').then(m => ({ default: m.Fo
 
 function App() {
   const [langChanging, setLangChanging] = useState(false)
+  const { t } = useTranslation()
 
   useEffect(() => {
     const fadeOut = () => setLangChanging(true)
@@ -35,7 +37,7 @@ function App() {
         href="#main"
         className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-violet focus:text-platinum focus:rounded-lg focus:font-mono focus:text-[14px] focus:shadow-lg"
       >
-        Skip to main content
+        {t('hero.skip_to_content')}
       </a>
       <ScrollProgress />
       <CursorGlow />

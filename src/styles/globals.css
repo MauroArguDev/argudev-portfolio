@@ -16,6 +16,13 @@
     --font-display: "Space Grotesk", sans-serif;
     --font-body: "DM Sans", sans-serif;
     --font-mono: "JetBrains Mono", monospace;
+
+    --text-hero: clamp(24px, 4.5vw, 48px);
+    --text-hero--letter-spacing: -0.5px;
+    --text-section: clamp(28px, 3.5vw, 40px);
+    --text-section--letter-spacing: -0.3px;
+
+    --shadow-glow: 0 0 24px rgb(176 38 255 / 0.4);
 }
 
 html {
