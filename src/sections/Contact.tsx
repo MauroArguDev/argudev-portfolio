@@ -2,8 +2,28 @@ import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import emailjs from "@emailjs/browser"
 import { AnimatedSection } from "@/components/AnimatedSection"
-import { emailjsConfig } from "@/lib/emailjs"
+import { emailjsConfig, isEmailjsConfigured } from "@/lib/emailjs"
 import { sanitize } from "@/lib/sanitize"
+
+type Field = "name" | "email" | "message"
+type SubmitError = "contact.error_generic" | "contact.error_unavailable"
+
+const MAX_LENGTH: Record<Field, number> = { name: 100, email: 254, message: 1000 }
+const MIN_MESSAGE_LENGTH = 10
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+const FIELD_ERROR = {
+  name: "contact.error_name",
+  email: "contact.error_email",
+  message: "contact.error_message",
+} as const
+
+function firstInvalidField(name: string, email: string, message: string): Field | null {
+  if (!name.trim()) return "name"
+  if (!EMAIL_PATTERN.test(email.trim())) return "email"
+  if (message.trim().length < MIN_MESSAGE_LENGTH) return "message"
+  return null
+}
 
 const CONTACT_LINKS = [
   { label: "argudev@proton.me", href: "mailto:argudev@proton.me" },
@@ -26,9 +46,12 @@ export function Contact() {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [message, setMessage] = useState("")
+  // Honeypot: hidden from people, often filled in by spam bots.
+  const [company, setCompany] = useState("")
   const [loading, setLoading] = useState(false)
   const [sent, setSent] = useState(false)
-  const [error, setError] = useState("")
+  const [invalidField, setInvalidField] = useState<Field | null>(null)
+  const [error, setError] = useState<SubmitError | null>(null)
 
   const isDisabled = loading || sent
 
@@ -40,24 +63,42 @@ export function Contact() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    setLoading(true)
-    setError("")
+    setError(null)
 
+    const invalid = firstInvalidField(name, email, message)
+    setInvalidField(invalid)
+    if (invalid) {
+      document.getElementById(`contact-${invalid}`)?.focus()
+      return
+    }
+
+    if (company) {
+      setSent(true)
+      return
+    }
+
+    if (!isEmailjsConfigured) {
+      if (import.meta.env.DEV) console.error("EmailJS is not configured: set the VITE_EMAILJS_* variables in .env")
+      setError("contact.error_unavailable")
+      return
+    }
+
+    setLoading(true)
     try {
       await emailjs.send(
         emailjsConfig.serviceId,
         emailjsConfig.templateId,
         {
-          from_name: sanitize(name),
-          from_email: sanitize(email),
-          message: sanitize(message),
-          reply_to: sanitize(email),
+          from_name: sanitize(name, MAX_LENGTH.name),
+          from_email: sanitize(email, MAX_LENGTH.email),
+          message: sanitize(message, MAX_LENGTH.message),
+          reply_to: sanitize(email, MAX_LENGTH.email),
         },
         emailjsConfig.publicKey,
       )
       setSent(true)
     } catch {
-      setError("Something went wrong. Please try again.")
+      setError("contact.error_generic")
     } finally {
       setLoading(false)
     }
@@ -104,12 +145,16 @@ export function Contact() {
                   type="text"
                   required
                   autoComplete="name"
+                  maxLength={MAX_LENGTH.name}
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder={t("contact.name_placeholder")}
                   disabled={isDisabled}
+                  aria-invalid={invalidField === "name"}
+                  aria-describedby={invalidField === "name" ? "contact-error" : undefined}
                   className={inputClass}
                 />
+                {invalidField === "name" && <FieldError message={t(FIELD_ERROR.name)} />}
               </div>
 
               {/* Email */}
@@ -125,12 +170,16 @@ export function Contact() {
                   type="email"
                   required
                   autoComplete="email"
+                  maxLength={MAX_LENGTH.email}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder={t("contact.email_placeholder")}
                   disabled={isDisabled}
+                  aria-invalid={invalidField === "email"}
+                  aria-describedby={invalidField === "email" ? "contact-error" : undefined}
                   className={inputClass}
                 />
+                {invalidField === "email" && <FieldError message={t(FIELD_ERROR.email)} />}
               </div>
 
               {/* Message */}
@@ -145,20 +194,42 @@ export function Contact() {
                   id="contact-message"
                   required
                   rows={5}
+                  maxLength={MAX_LENGTH.message}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder={t("contact.message_placeholder")}
                   disabled={isDisabled}
+                  aria-invalid={invalidField === "message"}
+                  aria-describedby={invalidField === "message" ? "contact-error" : undefined}
                   className={`${inputClass} resize-none`}
+                />
+                {invalidField === "message" && <FieldError message={t(FIELD_ERROR.message)} />}
+              </div>
+
+              {/* Honeypot — off-screen and hidden from assistive tech */}
+              <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">
+                <label htmlFor="contact-company">Company</label>
+                <input
+                  id="contact-company"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={company}
+                  onChange={(e) => setCompany(e.target.value)}
                 />
               </div>
 
-              {/* Error */}
+              {/* Submit error */}
               {error && (
                 <p role="alert" className="font-mono text-[12px] text-crimson">
-                  {error}
+                  {t(error)}
                 </p>
               )}
+
+              {/* Success — the live region stays mounted so the update is announced */}
+              <p role="status" className="font-mono text-[12px] text-silver empty:hidden">
+                {sent ? t("contact.sent_note") : ""}
+              </p>
 
               {/* Submit */}
               <button
@@ -196,5 +267,13 @@ export function Contact() {
         </div>
       </section>
     </AnimatedSection>
+  )
+}
+
+function FieldError({ message }: { message: string }) {
+  return (
+    <p id="contact-error" className="font-mono text-[12px] text-crimson">
+      {message}
+    </p>
   )
 }

@@ -54,7 +54,13 @@
     "submit": "Send message",
     "submitting": "Sending...",
     "sent": "Sent ✓",
-    "direct": "Direct contact"
+    "direct": "Direct contact",
+    "sent_note": "Thanks! Your message is on its way. I will get back to you soon.",
+    "error_name": "Please enter your name.",
+    "error_email": "Please enter a valid email address.",
+    "error_message": "Please write a message of at least 10 characters.",
+    "error_generic": "Something went wrong. Please try again or email me directly.",
+    "error_unavailable": "The form is unavailable right now. Please email me directly."
   },
   "footer": {
     "tagline": "iOS Developer",

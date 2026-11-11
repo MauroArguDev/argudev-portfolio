@@ -54,7 +54,13 @@
     "submit": "Enviar mensaje",
     "submitting": "Enviando...",
     "sent": "Enviado ✓",
-    "direct": "Contacto directo"
+    "direct": "Contacto directo",
+    "sent_note": "¡Gracias! Tu mensaje va en camino. Te responderé pronto.",
+    "error_name": "Escribe tu nombre.",
+    "error_email": "Escribe un correo válido.",
+    "error_message": "Escribe un mensaje de al menos 10 caracteres.",
+    "error_generic": "Algo salió mal. Inténtalo de nuevo o escríbeme directamente.",
+    "error_unavailable": "El formulario no está disponible ahora. Escríbeme directamente por correo."
   },
   "footer": {
     "tagline": "iOS Developer",
