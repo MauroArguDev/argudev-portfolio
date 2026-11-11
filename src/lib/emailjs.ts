@@ -3,3 +3,5 @@ export const emailjsConfig = {
   templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID ?? "",
   publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY ?? "",
 }
+
+export const isEmailjsConfigured = Object.values(emailjsConfig).every(Boolean)
