@@ -1,5 +1,4 @@
 import { lazy, Suspense, useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 import { Analytics } from '@vercel/analytics/react'
 import { useTranslation } from 'react-i18next'
@@ -44,9 +43,11 @@ function App() {
 
       {/* Content wrapper — fades on language change.
           Nav is intentionally outside: position:fixed breaks inside transformed parents. */}
-      <motion.div
-        animate={{ opacity: langChanging ? 0 : 1, y: langChanging ? 6 : 0 }}
-        transition={{ duration: 0.16, ease: "easeInOut" }}
+      <div
+        className={[
+          "transition-[opacity,translate] duration-150 ease-in-out",
+          langChanging ? "opacity-0 translate-y-1.5" : "",
+        ].join(" ")}
       >
         <main id="main" tabIndex={-1} style={{ outline: "none" }}>
           <Hero />
@@ -59,7 +60,7 @@ function App() {
         <Suspense fallback={null}>
           <Footer />
         </Suspense>
-      </motion.div>
+      </div>
 
       <SpeedInsights />
       <Analytics />

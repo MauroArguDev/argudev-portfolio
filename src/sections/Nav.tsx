@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
 import { useTranslation } from "react-i18next"
 import { LanguageSwitcher } from "@/components/LanguageSwitcher"
 
@@ -11,7 +10,6 @@ const NAV_LINKS = [
 
 export function Nav() {
   const { t } = useTranslation()
-  const prefersReduced = useReducedMotion()
   const [menuOpen, setMenuOpen] = useState(false)
 
   // Close the mobile menu with Escape
@@ -69,34 +67,31 @@ export function Nav() {
         </div>
       </div>
 
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.nav
-            id="mobile-nav"
-            aria-label={t("nav.main_label")}
-            initial={{ opacity: 0, y: prefersReduced ? 0 : -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: prefersReduced ? 0 : -8 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className="md:hidden absolute top-full left-0 right-0 bg-void border-b border-white/[0.08]"
-          >
-            <ul className="flex flex-col px-6 py-3">
-              {NAV_LINKS.map(({ index, key, href }) => (
-                <li key={key}>
-                  <a
-                    href={href}
-                    onClick={() => setMenuOpen(false)}
-                    className="flex items-baseline gap-4 py-4 border-b border-white/[0.06] last:border-0 font-display font-bold text-[28px] tracking-tight text-platinum"
-                  >
-                    <span className="font-mono text-[12px] font-normal text-violet">{index}</span>
-                    {t(key)}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </motion.nav>
-        )}
-      </AnimatePresence>
+      {/* Stays mounted so it can animate out; `invisible` keeps it out of focus and the accessibility tree */}
+      <nav
+        id="mobile-nav"
+        aria-label={t("nav.main_label")}
+        className={[
+          "md:hidden absolute top-full left-0 right-0 bg-void border-b border-white/[0.08]",
+          "transition-[opacity,translate,visibility] duration-200 ease-out motion-reduce:transition-none",
+          menuOpen ? "visible opacity-100 translate-y-0" : "invisible opacity-0 -translate-y-2",
+        ].join(" ")}
+      >
+        <ul className="flex flex-col px-6 py-3">
+          {NAV_LINKS.map(({ index, key, href }) => (
+            <li key={key}>
+              <a
+                href={href}
+                onClick={() => setMenuOpen(false)}
+                className="flex items-baseline gap-4 py-4 border-b border-white/[0.06] last:border-0 font-display font-bold text-[28px] tracking-tight text-platinum"
+              >
+                <span className="font-mono text-[12px] font-normal text-violet">{index}</span>
+                {t(key)}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </header>
   )
 }

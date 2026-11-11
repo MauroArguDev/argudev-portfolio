@@ -1,4 +1,3 @@
-import { motion, useReducedMotion } from "framer-motion"
 import { useTranslation } from "react-i18next"
 import { LogoMark } from "@/components/LogoMark"
 import profilePhoto from "@/assets/profile.webp"
@@ -23,18 +22,9 @@ function NowStatus() {
   )
 }
 
-const EASE = [0.16, 1, 0.3, 1] as const
-
 export function Hero() {
   const { t } = useTranslation()
-  const reduced = useReducedMotion()
   const proof = t("hero.proof", { returnObjects: true })
-
-  // Each name line slides up from behind its own mask
-  const line = (delay: number) =>
-    reduced
-      ? {}
-      : { initial: { y: "105%" }, animate: { y: 0 }, transition: { duration: 0.8, delay, ease: EASE } }
 
   return (
     <section
@@ -53,12 +43,12 @@ export function Hero() {
 
           <h1 className="font-display font-bold text-display text-platinum">
             <span className="block overflow-hidden pb-[0.06em]">
-              <motion.span className="block" {...line(0.05)}>Mauricio</motion.span>
+              <span className="block rise">Mauricio</span>
             </span>
             <span className="block overflow-hidden pb-[0.06em]">
-              <motion.span className="block" {...line(0.15)}>
+              <span className="block rise" style={{ animationDelay: "0.05s" }}>
                 Argumedo<span className="text-crimson">.</span>
-              </motion.span>
+              </span>
             </span>
           </h1>
 

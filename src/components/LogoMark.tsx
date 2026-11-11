@@ -1,5 +1,3 @@
-import { motion, useReducedMotion } from "framer-motion"
-
 // The ArguDev mark, traced from public/favicon.svg
 const SHAPES = [
   { type: "polygon", points: "425.1,987.1 314.1,987.1 219.3,795.3 43.8,735.6 158.3,620.7 17.6,92.7 425.1,92.7 425.1,159 103.8,159 232.1,640.5 165.8,707.1 266.5,741.3 355.3,920.8 425.1,920.8" },
@@ -13,29 +11,28 @@ const SHAPES = [
 
 interface Props {
   className?: string
-  /** Draws the outline on mount instead of showing it filled */
+  /** Draws the outline on mount (the .draw animation in globals.css) instead of showing it filled */
   draw?: boolean
 }
 
 export function LogoMark({ className, draw = false }: Props) {
-  const reduced = useReducedMotion()
-  const animate = draw && !reduced
-
   return (
     <svg viewBox="10 85 1060 910" className={className} aria-hidden="true">
       {SHAPES.map((shape, i) => {
-        const common = {
-          fill: draw ? "none" : "currentColor",
-          stroke: draw ? "currentColor" : "none",
-          strokeWidth: 3,
-          vectorEffect: "non-scaling-stroke" as const,
-          initial: animate ? { pathLength: 0 } : false,
-          animate: animate ? { pathLength: 1 } : undefined,
-          transition: { duration: 1.8, delay: 0.15 + i * 0.12, ease: [0.65, 0, 0.35, 1] as const },
-        }
+        const common = draw
+          ? {
+              fill: "none",
+              stroke: "currentColor",
+              strokeWidth: 3,
+              vectorEffect: "non-scaling-stroke" as const,
+              pathLength: 1,
+              className: "draw",
+              style: { animationDelay: `${0.15 + i * 0.12}s` },
+            }
+          : { fill: "currentColor" }
         return shape.type === "polygon"
-          ? <motion.polygon key={i} points={shape.points} {...common} />
-          : <motion.path key={i} d={shape.d} {...common} />
+          ? <polygon key={i} points={shape.points} {...common} />
+          : <path key={i} d={shape.d} {...common} />
       })}
     </svg>
   )

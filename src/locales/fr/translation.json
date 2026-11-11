@@ -122,7 +122,7 @@
   },
   "footer": {
     "tagline": "Développeur iOS · 6+ ans à livrer",
-    "built_with": "Construit avec React · TypeScript · Framer Motion",
+    "built_with": "Construit avec React · TypeScript · Tailwind CSS",
     "credits": "Identité de marque, photographie et design par",
     "back_to_top": "Retour en haut"
   },
