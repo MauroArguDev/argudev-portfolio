@@ -1,73 +1,53 @@
-# React + TypeScript + Vite
+# ArguDev — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio of **Mauricio Argumedo**, iOS developer. Live at [argudev.com](https://argudev.com).
 
-Currently, two official plugins are available:
+[![CI](https://github.com/MauroArguDev/argudev-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/MauroArguDev/argudev-portfolio/actions/workflows/ci.yml)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+A single-page site in English, Spanish and French, with a "liquid glass" visual identity, animated sections and a contact form.
 
-## React Compiler
+## Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Area | Choice |
+|---|---|
+| UI | React 19, TypeScript, Vite |
+| Styling | Tailwind CSS v4, design tokens in `src/styles/globals.css` |
+| Motion | Framer Motion, respecting `prefers-reduced-motion` |
+| i18n | i18next, keys type-checked against the English file |
+| Contact | EmailJS |
+| Hosting | Vercel, with security headers and a strict CSP in `vercel.json` |
 
-## Expanding the ESLint configuration
+## Getting started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+cp .env.example .env   # add your EmailJS IDs to enable the contact form
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+| Script | What it does |
+|---|---|
+| `npm run dev` | Dev server with hot reload |
+| `npm run build` | Type check, then production build to `dist/` |
+| `npm run lint` | ESLint |
+| `npm run preview` | Serve the production build |
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+CI runs lint and build on every pull request.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Project layout
+
+- `src/sections/`: page sections (Hero, About, Projects, Contact, Footer, Nav)
+- `src/components/`: shared pieces (project card, language switcher, background effects)
+- `src/data/`: content: projects and tech stack
+- `src/locales/`: translations (`en`, `es`, `fr`)
+- `argudev-brand-glass.html`: brand identity reference
+
+To add a project, add it to `src/data/projects.ts`, add its description key to `ProjectDescriptionKey` in `src/types/index.ts` and add the text to the three locale files.
+
+## Credits
+
+Brand identity, photography and design by [Danivan Peña](https://www.instagram.com/danivan_design).
+
+## License
+
+[MIT](LICENSE)
