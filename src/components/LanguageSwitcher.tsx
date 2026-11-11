@@ -23,7 +23,7 @@ export function LanguageSwitcher() {
 
   return (
     <div
-      className="glass-label flex items-center !p-1"
+      className="flex items-center p-1 border border-white/10 bg-void/60"
       role="group"
       aria-label={t("lang.switcher_label")}
     >
@@ -33,12 +33,12 @@ export function LanguageSwitcher() {
           onClick={() => handleChange(lang.code)}
           aria-pressed={current === lang.code}
           aria-label={lang.ariaLabel}
-          className="relative font-mono text-[12px] tracking-widest px-2 py-1 rounded"
+          className="relative font-mono text-[12px] tracking-widest px-2 py-1"
         >
           {current === lang.code && (
             <motion.div
               layoutId="lang-indicator"
-              className="absolute inset-0 rounded bg-violet/10 border border-violet/40"
+              className="absolute inset-0 bg-violet/10 border border-violet/40"
               transition={{ type: "spring", stiffness: 500, damping: 38 }}
             />
           )}

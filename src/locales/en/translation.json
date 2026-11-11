@@ -1,59 +1,100 @@
 {
   "nav": {
+    "work": "Work",
     "about": "About",
-    "projects": "Projects",
     "contact": "Contact",
-    "available": "Available 2026",
     "menu_open": "Open menu",
     "menu_close": "Close menu",
     "main_label": "Main navigation",
     "home_label": "ArguDev home"
   },
+  "a11y": {
+    "skip_to_content": "Skip to main content"
+  },
   "hero": {
-    "kicker": "Mauricio Argumedo",
-    "role": "iOS Developer",
-    "tagline": "Efficiency and Quality",
-    "bio": "iOS developer with 6+ years delivering. Clean code, fast shipping.",
-    "cta_projects": "View projects",
-    "cta_contact": "Contact",
+    "status_label": "Now",
+    "status": "Shipping Guldr to the App Store",
+    "role": "iOS Developer · ArguDev",
+    "statement": "Six years taking iOS apps from the first commit to the App Store.",
+    "proof": [
+      "6+ years shipping",
+      "Swift 6 · SwiftUI",
+      "Client work for Fiducia S.A.",
+      "Guldr v1.0"
+    ],
+    "cta_work": "See the work",
+    "cta_contact": "Get in touch",
     "photo_alt": "Portrait of Mauricio Argumedo, iOS developer",
-    "skip_to_content": "Skip to main content",
-    "scroll": "Scroll",
-    "tags": {
-      "years": "6 years"
+    "caption": "fig. 01 — the developer"
+  },
+  "work": {
+    "index": "01",
+    "eyebrow": "Selected work",
+    "heading": "Apps that shipped.",
+    "sub": "One product of my own and one for a client. Both run on real phones, not in mockups.",
+    "own": "Own product",
+    "client": "Client",
+    "problem": "Problem",
+    "decisions": "Key decisions",
+    "outcome": "Outcome",
+    "highlights": "Highlights",
+    "built_with": "Built with",
+    "view_github": "Source on GitHub",
+    "view_appstore": "View on the App Store",
+    "guldr": {
+      "status": "v1.0 · TestFlight",
+      "tagline": "Your gold, in order. A local-first personal finance app.",
+      "problem": "Finance apps ask for an account and send your spending to their servers. Guldr keeps everything on the phone: no account, no servers, nothing collected.",
+      "decisions": [
+        "Money is stored as Int64 minor units plus an ISO 4217 code, never Double.",
+        "Domain logic lives in GuldrCore, a Swift package shared by the app and the widget and tested on macOS without a simulator.",
+        "Swift 6 strict concurrency and MVVM with @Observable view models.",
+        "Widgets read the SwiftData store read-only from the App Group."
+      ],
+      "outcome": "v1.0 in TestFlight with a \"Data Not Collected\" privacy label. Budgets, analytics, widgets and a logging streak, with VoiceOver, Dynamic Type and Reduce Motion throughout.",
+      "demo_alt": "Guldr demo: adding an expense from Home, then opening Analytics"
+    },
+    "mifondo": {
+      "tagline": "Investment fund app for Ecuador's leading fund administrator.",
+      "summary": "Customers invest from $25 a month, manage withdrawals and access CHUBB medical plans from their phone.",
+      "highlights": [
+        "Investing from $25 a month",
+        "Withdrawals managed in the app",
+        "CHUBB medical plans"
+      ],
+      "image_alt": "Mi Fondo app screens next to the line \"Tu futuro, lo más importante\""
     }
   },
   "about": {
+    "index": "02",
     "eyebrow": "About",
     "heading": "Clean code that ships.",
     "bio": "iOS developer with 6+ years delivering production-ready software. Efficient, clean, and on time — every time.",
-    "stack_heading": "Tech stack",
-    "mockup_alt": "iPhone mockup"
-  },
-  "projects": {
-    "eyebrow": "Projects",
-    "heading": "Things I have built.",
-    "sub": "Personal projects and client work — shipped and production-ready.",
-    "client_label": "Client",
-    "view_github": "GitHub →",
-    "view_testflight": "TestFlight →",
-    "view_appstore": "App Store →",
-    "view_live": "Live →",
-    "types": {
-      "ios_app": "iOS App"
-    },
-    "items": {
-      "guldr": {
-        "description": "Local-first personal finance app: no account, no servers, nothing collected. Budgets with alerts, Swift Charts analytics, widgets, a logging streak and Face ID. Built with Swift 6 strict concurrency, a shared Swift package, Swift Testing and CI."
+    "principles_heading": "How I work",
+    "principles": [
+      {
+        "title": "Ship in small steps",
+        "body": "Small pull requests, CI on every change and releases that can be repeated."
       },
-      "mifondo": {
-        "description": "Investment fund app for Fiducia S.A., Ecuador's leading fund administrator. Invest from $25/month, manage withdrawals and access CHUBB medical plans."
+      {
+        "title": "Get the data right",
+        "body": "Money in minor units, versioned schemas and migrations that never lose data."
+      },
+      {
+        "title": "Native first",
+        "body": "System components before custom UI, with accessibility built in from day one."
       }
-    }
+    ],
+    "stack_heading": "Stack, and where I used it",
+    "used_guldr": "Guldr",
+    "used_mifondo": "Mi Fondo",
+    "used_ci": "CI on every pull request",
+    "used_site": "This site"
   },
   "contact": {
+    "index": "03",
     "eyebrow": "Contact",
-    "heading": "Let's work together.",
+    "heading": "Let's build something that ships.",
     "sub": "Available for remote roles and relocation.",
     "name_label": "Name",
     "name_placeholder": "Your name",
@@ -64,7 +105,7 @@
     "submit": "Send message",
     "submitting": "Sending...",
     "sent": "Sent ✓",
-    "direct": "Direct contact",
+    "direct": "Direct",
     "sent_note": "Thanks! Your message is on its way. I will get back to you soon.",
     "error_name": "Please enter your name.",
     "error_email": "Please enter a valid email address.",
@@ -74,12 +115,10 @@
     "links_label": "Contact links"
   },
   "footer": {
-    "tagline": "iOS Developer",
-    "available": "Available for remote roles",
-    "nav_heading": "Navigate",
-    "connect_heading": "Connect",
+    "tagline": "iOS developer · 6+ years delivering",
     "built_with": "Built with React · TypeScript · Framer Motion",
-    "credits": "Brand identity, photography & design by"
+    "credits": "Brand identity, photography & design by",
+    "back_to_top": "Back to top"
   },
   "lang": {
     "switcher_label": "Language",

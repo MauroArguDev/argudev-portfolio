@@ -1,102 +1,63 @@
-import { motion, useReducedMotion } from "framer-motion"
 import { useTranslation } from "react-i18next"
-import { AnimatedSection } from "@/components/AnimatedSection"
-import { Eyebrow } from "@/components/SectionHeader"
-import { staggerContainer, staggerItem } from "@/lib/motion"
-import { useScrollReveal } from "@/hooks/useScrollReveal"
+import { SectionHeader } from "@/components/SectionHeader"
 import { stack } from "@/data/stack"
-import iPhoneImg from "@/assets/iPhone.webp"
-import type { Variants } from "framer-motion"
-
-const STACK_GROUPS = [
-  { label: "iOS", items: stack.ios },
-  { label: "Frontend", items: stack.frontend },
-  { label: "Tools", items: stack.tools },
-] as const
-
-const reducedItem: Variants = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { duration: 0.3 } },
-}
 
 export function About() {
   const { t } = useTranslation()
-  const prefersReduced = useReducedMotion()
-  const { ref: stackRef, inView: stackInView } = useScrollReveal()
+  const principles = t("about.principles", { returnObjects: true })
 
   return (
-    <AnimatedSection>
-      <section id="about" className="py-24 px-6 md:px-12 lg:px-24">
-        <div className="max-w-6xl mx-auto">
-          <Eyebrow className="mb-12">{t("about.eyebrow")}</Eyebrow>
+    <section id="about" className="relative px-6 md:px-10 py-20 md:py-40 border-t border-white/[0.06]">
+      <div className="max-w-7xl mx-auto">
+        <SectionHeader
+          index={t("about.index")}
+          eyebrow={t("about.eyebrow")}
+          title={t("about.heading")}
+          subtitle={t("about.bio")}
+        />
 
-          {/* Two-column: heading + bio + stack left, iPhone right */}
-          <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-12 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-16">
+          {/* Principles */}
+          <div className="lg:col-span-6">
+            <h3 className="mb-8 font-mono text-[12px] tracking-[0.12em] uppercase text-ash">
+              {t("about.principles_heading")}
+            </h3>
+            <ol className="flex flex-col">
+              {principles.map(({ title, body }, i) => (
+                <li key={title} className="grid grid-cols-[3.5rem_1fr] py-7 border-t border-white/[0.08] last:border-b">
+                  <span className="font-mono text-[13px] text-violet pt-1.5">{String(i + 1).padStart(2, "0")}</span>
+                  <div>
+                    <p className="font-display font-bold text-[24px] leading-tight tracking-[-0.02em] text-platinum">{title}</p>
+                    <p className="mt-2 font-body text-[16px] leading-relaxed text-silver">{body}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
 
-            {/* Left: heading + bio + stack */}
-            <div className="flex flex-col gap-10">
-              <div>
-                <h2 className="font-display font-semibold text-section text-platinum mb-6 leading-tight">
-                  {t("about.heading")}
-                </h2>
-                <p className="font-body text-[17px] leading-relaxed text-silver">
-                  {t("about.bio")}
-                </p>
-              </div>
-
-              <div>
-                <p className="font-mono text-[12px] tracking-[1.5px] uppercase text-silver mb-6">
-                  {t("about.stack_heading")}
-                </p>
-                <motion.div
-                  ref={stackRef}
-                  variants={staggerContainer}
-                  initial="hidden"
-                  animate={stackInView ? "show" : "hidden"}
-                  className="flex flex-col gap-5"
-                >
-                  {STACK_GROUPS.map(({ label, items }) => (
-                    <motion.div
-                      key={label}
-                      variants={prefersReduced ? reducedItem : staggerItem}
-                    >
-                      <p className="font-mono text-[12px] tracking-[1.5px] uppercase text-silver mb-3">
-                        {label}
-                      </p>
-                      <div className="flex flex-wrap gap-2.5">
-                        {items.map((tech) => (
-                          <span
-                            key={tech}
-                            className="glass px-4 py-2 rounded-full font-mono text-[13px] tracking-[0.3px] text-violet"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </motion.div>
-                  ))}
-                </motion.div>
-              </div>
+          {/* Stack, anchored to where it was used */}
+          <div className="lg:col-span-6">
+            <h3 className="mb-8 font-mono text-[12px] tracking-[0.12em] uppercase text-ash">
+              {t("about.stack_heading")}
+            </h3>
+            <div className="cut cut-line">
+              <ul className="cut bg-void">
+                {stack.map(({ items, usedIn }) => (
+                  <li
+                    key={usedIn}
+                    className="flex flex-col xl:flex-row xl:items-center justify-between gap-2 xl:gap-6 px-6 py-5 border-b border-white/[0.08] last:border-0"
+                  >
+                    <span className="font-mono text-[13px] text-platinum">{items.join(" · ")}</span>
+                    <span className="shrink-0 font-mono text-[12px] tracking-[0.06em] text-ash">
+                      → <span className="text-violet">{t(usedIn)}</span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </div>
-
-            {/* Right: iPhone mockup — centered against full left column */}
-            <div className="hidden lg:flex justify-end items-center">
-              <motion.img
-                src={iPhoneImg}
-                alt={t("about.mockup_alt")}
-                loading="lazy"
-                animate={prefersReduced ? {} : { y: [0, -14, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="w-full max-w-[240px] xl:max-w-[270px]"
-                style={{
-                  filter: "hue-rotate(40deg) saturate(2) brightness(0.85) drop-shadow(0 24px 56px rgba(176,38,255,0.35))",
-                }}
-              />
-            </div>
-
           </div>
         </div>
-      </section>
-    </AnimatedSection>
+      </div>
+    </section>
   )
 }

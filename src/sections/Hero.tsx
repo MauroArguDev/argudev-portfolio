@@ -1,136 +1,107 @@
 import { motion, useReducedMotion } from "framer-motion"
 import { useTranslation } from "react-i18next"
-import { stack } from "@/data/stack"
-import { staggerContainer, staggerItem } from "@/lib/motion"
+import { LogoMark } from "@/components/LogoMark"
 import profilePhoto from "@/assets/profile.webp"
+
+const EASE = [0.16, 1, 0.3, 1] as const
 
 export function Hero() {
   const { t } = useTranslation()
-  const prefersReduced = useReducedMotion()
+  const reduced = useReducedMotion()
+  const proof = t("hero.proof", { returnObjects: true })
+
+  // Each name line slides up from behind its own mask
+  const line = (delay: number) =>
+    reduced
+      ? {}
+      : { initial: { y: "105%" }, animate: { y: 0 }, transition: { duration: 0.8, delay, ease: EASE } }
 
   return (
     <section
       id="hero"
-      className="relative min-h-[100dvh] flex flex-col justify-center px-6 md:px-12 lg:px-24 pt-[56px]"
+      className="relative min-h-[100svh] flex items-center px-6 md:px-10 pt-28 pb-20 md:pt-32 overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-16 items-center">
+      <div className="relative max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-10 items-center">
 
-        {/* Left: content */}
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          animate="show"
-          className="flex flex-col"
-        >
-          {/* Eyebrow kicker */}
-          <motion.div variants={staggerItem} className="flex items-center gap-3 mb-8">
-            <span className="w-6 h-[2px] bg-violet rounded-full" aria-hidden="true" />
-            <span className="font-mono text-[13px] tracking-[1px] text-silver">
-              {t("hero.kicker")}
+        {/* Text */}
+        <div className="lg:col-span-7 relative z-10">
+          <p className="flex items-center gap-3 mb-10 font-mono text-[12px] tracking-[0.08em] text-silver">
+            <span className="pulse w-2 h-2 bg-violet" aria-hidden="true" />
+            <span className="uppercase text-ash">{t("hero.status_label")}</span>
+            <span className="w-4 h-px bg-white/20" aria-hidden="true" />
+            {t("hero.status")}
+          </p>
+
+          <p className="mb-5 font-mono text-[13px] tracking-[0.12em] uppercase text-violet">
+            {t("hero.role")}
+          </p>
+
+          <h1 className="font-display font-bold text-display text-platinum">
+            <span className="block overflow-hidden pb-[0.06em]">
+              <motion.span className="block" {...line(0.05)}>Mauricio</motion.span>
             </span>
-          </motion.div>
+            <span className="block overflow-hidden pb-[0.06em]">
+              <motion.span className="block" {...line(0.15)}>
+                Argumedo<span className="text-crimson">.</span>
+              </motion.span>
+            </span>
+          </h1>
 
-          {/* Logo as h1 */}
-          <motion.h1 variants={staggerItem} className="mb-6">
-            <picture>
-              <source srcSet="/logo.avif" type="image/avif" />
-              <img
-                src="/logo.png"
-                alt="ArguDev."
-                loading="eager"
-                width={896}
-                height={243}
-                className="h-16 md:h-20 lg:h-24 w-auto"
-              />
-            </picture>
-          </motion.h1>
+          <p className="mt-8 max-w-[30ch] font-body text-[clamp(20px,2.1vw,26px)] leading-snug text-silver">
+            {t("hero.statement")}
+          </p>
 
-          {/* Role + tagline */}
-          <motion.div variants={staggerItem} className="mb-10">
-            <p className="font-display font-bold text-hero text-platinum leading-tight">
-              {t("hero.role")}
-            </p>
-            <p className="font-display font-bold text-hero text-silver leading-tight">
-              {t("hero.tagline")}
-            </p>
-          </motion.div>
-
-          {/* Tag pills */}
-          <motion.div variants={staggerItem} className="flex flex-wrap gap-2.5 mb-10">
-            {stack.highlights.map((tag) => (
-              <span
-                key={tag}
-                className="glass px-4 py-2 rounded-full font-mono text-[13px] tracking-[0.3px] text-violet"
-                style={{ background: "rgba(255,255,255,0.05)" }}
-              >
-                {tag}
-              </span>
+          <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 font-mono text-[12px] tracking-[0.04em] text-ash">
+            {proof.map((item) => (
+              <li key={item} className="flex items-center gap-2 text-silver">
+                <span className="w-1 h-1 bg-violet" aria-hidden="true" />
+                {item}
+              </li>
             ))}
-          </motion.div>
+          </ul>
 
-          {/* CTA buttons */}
-          <motion.div variants={staggerItem} className="flex flex-wrap items-center gap-4">
+          <div className="mt-12 flex flex-wrap items-center gap-4">
             <a
-              href="#projects"
-              className="px-6 py-3 rounded-xl font-body font-medium text-[16px] text-platinum bg-violet hover:bg-violet-2 shadow-glow transition-colors duration-200"
+              href="#work"
+              className="cut cut-sm group inline-flex items-center gap-3 px-7 py-4 bg-violet hover:bg-violet-2 font-body font-medium text-[16px] text-platinum transition-colors duration-200"
             >
-              {t("hero.cta_projects")}
+              {t("hero.cta_work")}
+              <span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-y-0.5">↓</span>
             </a>
-            <a
-              href="#contact"
-              className="px-6 py-3 rounded-xl font-body font-medium text-[16px] text-violet border border-violet/40 hover:border-violet/70 hover:bg-violet/10 transition-all duration-200"
-            >
-              {t("hero.cta_contact")}
+            <a href="#contact" className="cut cut-sm cut-line inline-flex hover:bg-white/30 transition-colors duration-200">
+              <span className="cut cut-sm inline-flex items-center px-7 py-4 bg-void font-body font-medium text-[16px] text-platinum">
+                {t("hero.cta_contact")}
+              </span>
             </a>
-          </motion.div>
-        </motion.div>
-
-        {/* Right: profile photo — visible on all screen sizes */}
-        <motion.div
-          initial={{ opacity: 0, x: prefersReduced ? 0 : 48 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.9, delay: 0.65, ease: [0.16, 1, 0.3, 1] }}
-          className="flex justify-center items-center"
-        >
-          <div
-            className="glass p-1.5 rounded-2xl overflow-hidden w-full max-w-[280px] sm:max-w-[320px] lg:max-w-full"
-            style={{ boxShadow: "0 24px 64px rgba(176,38,255,0.2), 0 8px 32px rgba(0,0,0,0.5)" }}
-          >
-            <img
-              src={profilePhoto}
-              alt={t("hero.photo_alt")}
-              loading="eager"
-              fetchPriority="high"
-              className="w-full rounded-xl object-cover object-top"
-              style={{ aspectRatio: "3/4" }}
-            />
           </div>
-        </motion.div>
+        </div>
 
-      </div>
+        {/* Portrait, framed by the mark's outline */}
+        <div className="lg:col-span-5 relative mx-auto w-full max-w-[280px] sm:max-w-[400px] lg:max-w-none">
+          <div className="hero-light -left-1/3 -top-1/4 w-[140%] h-[120%]" aria-hidden="true" />
+          <LogoMark
+            draw
+            className="absolute -inset-x-[14%] -top-[10%] w-[128%] text-violet/35 pointer-events-none"
+          />
+          <figure className="relative">
+            <div className="jaw">
+                <img
+                  src={profilePhoto}
+                  alt={t("hero.photo_alt")}
+                  loading="eager"
+                  fetchPriority="high"
+                  width={960}
+                  height={1478}
+                  className="block w-full aspect-[4/5] object-cover object-[50%_20%]"
+                />
+            </div>
+            <figcaption className="mt-5 flex justify-between font-mono text-[11px] tracking-[0.1em] uppercase text-ash">
+              <span>{t("hero.caption")}</span>
+              <span className="text-silver">argudev.com</span>
+            </figcaption>
+          </figure>
+        </div>
 
-      {/* Scroll indicator — only shown on two-column layout where it sits cleanly above the fold */}
-      <div className="hidden lg:flex lg:flex-col absolute bottom-8 left-1/2 -translate-x-1/2 items-center gap-2">
-        <span className="font-mono text-[11px] tracking-[2px] uppercase text-silver">
-          {t("hero.scroll")}
-        </span>
-        <motion.div
-          aria-hidden="true"
-          animate={prefersReduced ? {} : { y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          className="text-violet"
-        >
-          <svg width="16" height="10" viewBox="0 0 16 10" fill="none">
-            <path
-              d="M1 1l7 7 7-7"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </motion.div>
-        <span className="w-[1px] h-8 bg-violet/40 rounded-full" aria-hidden="true" />
       </div>
     </section>
   )

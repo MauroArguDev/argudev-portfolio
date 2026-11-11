@@ -4,14 +4,13 @@ import { SpeedInsights } from '@vercel/speed-insights/react'
 import { Analytics } from '@vercel/analytics/react'
 import { useTranslation } from 'react-i18next'
 import { I18nHtmlSync } from '@/components/I18nHtmlSync'
-import { BackgroundMesh } from '@/components/BackgroundMesh'
+import { Backdrop } from '@/components/Backdrop'
 import { ScrollProgress } from '@/components/ScrollProgress'
-import { CursorGlow } from '@/components/CursorGlow'
 import { Nav } from '@/sections/Nav'
 import { Hero } from '@/sections/Hero'
 
 const About = lazy(() => import('@/sections/About').then(m => ({ default: m.About })))
-const Projects = lazy(() => import('@/sections/Projects').then(m => ({ default: m.Projects })))
+const Work = lazy(() => import('@/sections/Work').then(m => ({ default: m.Work })))
 const Contact = lazy(() => import('@/sections/Contact').then(m => ({ default: m.Contact })))
 const Footer = lazy(() => import('@/sections/Footer').then(m => ({ default: m.Footer })))
 
@@ -35,13 +34,12 @@ function App() {
       <I18nHtmlSync />
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-violet focus:text-platinum focus:rounded-lg focus:font-mono focus:text-[14px] focus:shadow-lg"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-violet focus:text-platinum focus:font-mono focus:text-[14px] focus:shadow-lg"
       >
-        {t('hero.skip_to_content')}
+        {t('a11y.skip_to_content')}
       </a>
       <ScrollProgress />
-      <CursorGlow />
-      <BackgroundMesh />
+      <Backdrop />
       <Nav />
 
       {/* Content wrapper — fades on language change.
@@ -53,8 +51,8 @@ function App() {
         <main id="main" tabIndex={-1} style={{ outline: "none" }}>
           <Hero />
           <Suspense fallback={null}>
+            <Work />
             <About />
-            <Projects />
             <Contact />
           </Suspense>
         </main>

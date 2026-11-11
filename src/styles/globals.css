@@ -11,332 +11,137 @@
     --color-plum: #5D1A9E;
     --color-platinum: #F5F5F7;
     --color-silver: #A1A1AA;
-    --color-ash: #5C5C6B;
+    --color-ash: #7E7E89;
+    /* Guldr's own accent, used only inside its case study */
+    --color-gold: #C8A96A;
 
     --font-display: "Space Grotesk", sans-serif;
     --font-body: "DM Sans", sans-serif;
     --font-mono: "JetBrains Mono", monospace;
 
-    --text-hero: clamp(24px, 4.5vw, 48px);
-    --text-hero--letter-spacing: -0.5px;
-    --text-section: clamp(28px, 3.5vw, 40px);
-    --text-section--letter-spacing: -0.3px;
-
-    --shadow-glow: 0 0 24px rgb(176 38 255 / 0.4);
+    --text-display: clamp(52px, 8.4vw, 116px);
+    --text-display--letter-spacing: -0.045em;
+    --text-display--line-height: 0.92;
+    --text-section: clamp(34px, 4.6vw, 60px);
+    --text-section--letter-spacing: -0.03em;
+    --text-section--line-height: 1;
 }
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 56px;
-}
-
-/* ── FOCUS RING ── */
-:focus-visible {
-    outline: 2px solid rgba(176, 38, 255, 0.8);
-    outline-offset: 3px;
-    border-radius: 4px;
+    scroll-padding-top: 64px;
 }
 
 body {
-    background-color: #0A0A0F;
-    color: #F5F5F7;
+    background-color: var(--color-void);
+    color: var(--color-platinum);
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
 }
 
-/* ── BACKGROUND MESH ── */
-.bg-mesh {
+::selection {
+    background: rgb(176 38 255 / 0.35);
+}
+
+/* ── FOCUS RING ── */
+:focus-visible {
+    outline: 2px solid rgb(176 38 255 / 0.8);
+    outline-offset: 3px;
+}
+
+/* ── BACKDROP ──
+   One faint grid and a single violet light, placed on the same side as the
+   light in the portrait so the page reads as a continuation of the photo. */
+.backdrop {
     position: fixed;
     inset: 0;
     z-index: 0;
-    overflow: hidden;
     pointer-events: none;
-}
-
-.bg-orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.5;
-    will-change: transform;
-}
-
-.bg-orb-1 {
-    width: 60vw;
-    height: 60vw;
-    max-width: 500px;
-    max-height: 500px;
-    background: radial-gradient(circle, rgba(176, 38, 255, 0.20) 0%, transparent 70%);
-    top: -15%;
-    left: -20%;
-    animation: orbFloat1 18s linear infinite;
-}
-
-.bg-orb-2 {
-    width: 50vw;
-    height: 50vw;
-    max-width: 420px;
-    max-height: 420px;
-    background: radial-gradient(circle, rgba(255, 8, 68, 0.12) 0%, transparent 70%);
-    bottom: 10%;
-    right: -15%;
-    animation: orbFloat2 24s linear infinite;
-}
-
-.bg-orb-3 {
-    width: 40vw;
-    height: 40vw;
-    max-width: 360px;
-    max-height: 360px;
-    background: radial-gradient(circle, rgba(93, 26, 158, 0.16) 0%, transparent 70%);
-    top: 40%;
-    left: 40%;
-    animation: orbFloat3 20s linear infinite;
-}
-
-@keyframes orbFloat1 {
-    0%   { transform: translate(0, 0) scale(1); }
-    33%  { transform: translate(8vw, 6vh) scale(1.1); }
-    66%  { transform: translate(-4vw, 10vh) scale(0.95); }
-    100% { transform: translate(0, 0) scale(1); }
-}
-
-@keyframes orbFloat2 {
-    0%   { transform: translate(0, 0) scale(1); }
-    40%  { transform: translate(-6vw, -8vh) scale(1.05); }
-    70%  { transform: translate(4vw, -4vh) scale(0.9); }
-    100% { transform: translate(0, 0) scale(1); }
-}
-
-@keyframes orbFloat3 {
-    0%   { transform: translate(0, 0) scale(1); }
-    50%  { transform: translate(-5vw, 5vh) scale(1.15); }
-    100% { transform: translate(0, 0) scale(1); }
-}
-
-/* Extra violet illumination orbs */
-.bg-orb-4 {
-    width: 48vw;
-    height: 48vw;
-    max-width: 420px;
-    max-height: 420px;
-    background: radial-gradient(circle, rgba(176, 38, 255, 0.15) 0%, transparent 70%);
-    top: 45%;
-    right: -10%;
-    animation: orbFloat4 22s linear infinite;
-}
-
-.bg-orb-5 {
-    width: 38vw;
-    height: 38vw;
-    max-width: 340px;
-    max-height: 340px;
-    background: radial-gradient(circle, rgba(176, 38, 255, 0.12) 0%, transparent 70%);
-    bottom: 15%;
-    left: 10%;
-    animation: orbFloat5 28s linear infinite;
-}
-
-.bg-orb-6 {
-    width: 30vw;
-    height: 30vw;
-    max-width: 280px;
-    max-height: 280px;
-    background: radial-gradient(circle, rgba(130, 20, 220, 0.11) 0%, transparent 70%);
-    top: 25%;
-    left: 55%;
-    animation: orbFloat6 19s linear infinite;
-}
-
-@keyframes orbFloat4 {
-    0%   { transform: translate(0, 0) scale(1); }
-    45%  { transform: translate(-6vw, -7vh) scale(1.08); }
-    80%  { transform: translate(3vw, -3vh) scale(0.93); }
-    100% { transform: translate(0, 0) scale(1); }
-}
-
-@keyframes orbFloat5 {
-    0%   { transform: translate(0, 0) scale(1); }
-    35%  { transform: translate(7vw, -5vh) scale(1.1); }
-    70%  { transform: translate(-4vw, 7vh) scale(0.94); }
-    100% { transform: translate(0, 0) scale(1); }
-}
-
-@keyframes orbFloat6 {
-    0%   { transform: translate(0, 0) scale(1); }
-    40%  { transform: translate(-4vw, 8vh) scale(1.12); }
-    75%  { transform: translate(5vw, 3vh) scale(0.9); }
-    100% { transform: translate(0, 0) scale(1); }
-}
-
-/* Grid overlay */
-.bg-mesh::after {
-    content: '';
-    position: absolute;
-    inset: 0;
     background-image:
-        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-    background-size: 40px 40px;
+        linear-gradient(rgb(255 255 255 / 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgb(255 255 255 / 0.035) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 30%, transparent 85%);
 }
 
-/* ── GLASS SYSTEM ── */
-.glass {
-    background: rgba(255, 255, 255, 0.04);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-top-color: rgba(255, 255, 255, 0.28);
-    box-shadow:
-        0 8px 32px rgba(0, 0, 0, 0.45),
-        0 2px 8px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.18),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.2);
-    border-radius: 20px;
+.hero-light {
+    position: absolute;
+    pointer-events: none;
+    background: radial-gradient(closest-side, rgb(176 38 255 / 0.28), rgb(93 26 158 / 0.12) 55%, transparent);
+}
+
+/* ── SIGNATURE SHAPES, TAKEN FROM THE MARK ── */
+
+/* Cut corners: the diagonal cuts of the mark's outline, top-left and bottom-right */
+.cut {
+    --cut: 14px;
+    clip-path: polygon(
+        var(--cut) 0, 100% 0,
+        100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%,
+        0 100%, 0 var(--cut)
+    );
+}
+
+.cut-sm { --cut: 8px; }
+.cut-lg { --cut: 28px; }
+
+/* A 1px outline for cut shapes: the outer layer paints the line, the inner layer the fill */
+.cut-line {
+    background: rgb(255 255 255 / 0.1);
+    padding: 1px;
+}
+
+/* Jaw: the mark's tapered lower outline, used to frame the portrait */
+.jaw {
+    clip-path: polygon(0 0, 100% 0, 100% 84%, 86% 100%, 14% 100%, 0 84%);
+}
+
+/* Brackets: the open top corners of the mark */
+.brackets {
     position: relative;
-    overflow: hidden;
-    transition:
-        background 0.3s ease,
-        box-shadow 0.3s ease,
-        transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-        border-color 0.3s ease;
+    --bracket: var(--color-platinum);
+    --bracket-size: 32px;
+    --bracket-offset: -14px;
 }
 
-/* Specular highlight — top rim */
-.glass::before {
-    content: '';
+.brackets::before,
+.brackets::after {
+    content: "";
     position: absolute;
-    top: 0;
-    left: 10%;
-    right: 10%;
-    height: 1px;
-    background: linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(255, 255, 255, 0.5) 30%,
-        rgba(255, 255, 255, 0.7) 50%,
-        rgba(255, 255, 255, 0.5) 70%,
-        transparent 100%
-    );
-    border-radius: 99px;
+    top: var(--bracket-offset);
+    width: var(--bracket-size);
+    height: var(--bracket-size);
+    border-top: 2px solid var(--bracket);
     pointer-events: none;
-    z-index: 1;
 }
 
-/* Liquid sheen — sweep across on hover */
-.glass::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        115deg,
-        transparent 20%,
-        rgba(255, 255, 255, 0.07) 50%,
-        transparent 80%
-    );
-    pointer-events: none;
-    z-index: 1;
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
+.brackets::before {
+    left: var(--bracket-offset);
+    border-left: 2px solid var(--bracket);
 }
 
-.glass:hover::after {
-    transform: translateX(100%);
+.brackets::after {
+    right: var(--bracket-offset);
+    border-right: 2px solid var(--bracket);
 }
 
-.glass:hover {
-    background: rgba(255, 255, 255, 0.065);
-    box-shadow:
-        0 16px 48px rgba(0, 0, 0, 0.55),
-        0 4px 16px rgba(0, 0, 0, 0.35),
-        inset 0 1.5px 0 rgba(255, 255, 255, 0.35);
-}
-
-/* Violet glass variant */
-.glass-violet {
-    background: rgba(176, 38, 255, 0.08);
-    border-color: rgba(176, 38, 255, 0.25);
-    border-top-color: rgba(176, 38, 255, 0.4);
-    box-shadow:
-        0 0 32px rgba(176, 38, 255, 0.2),
-        inset 0 1px 0 rgba(176, 38, 255, 0.3);
-}
-
-.glass-violet::before {
-    background: linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(176, 38, 255, 0.4) 30%,
-        rgba(255, 255, 255, 0.5) 50%,
-        rgba(176, 38, 255, 0.4) 70%,
-        transparent 100%
-    );
-}
-
-/* Glass pill — same treatment as .glass, used for labels and eyebrow text */
-.glass-label {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.09);
-    border-top-color: rgba(255, 255, 255, 0.18);
-    box-shadow:
-        0 4px 16px rgba(0, 0, 0, 0.4),
-        0 1px 4px rgba(0, 0, 0, 0.25),
-        inset 0 1px 0 rgba(255, 255, 255, 0.18),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    padding: 2px 10px;
+/* Status dot */
+.pulse {
     position: relative;
 }
 
-.glass-label::before {
-    content: '';
+.pulse::after {
+    content: "";
     position: absolute;
-    top: 0;
-    left: 10%;
-    right: 10%;
-    height: 1px;
-    background: linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(255, 255, 255, 0.5) 30%,
-        rgba(255, 255, 255, 0.7) 50%,
-        rgba(255, 255, 255, 0.5) 70%,
-        transparent 100%
-    );
-    border-radius: 99px;
-    pointer-events: none;
-    z-index: 1;
+    inset: -4px;
+    border: 1px solid var(--color-violet);
+    animation: pulse 2.4s ease-out infinite;
 }
 
-/* Crimson glass variant */
-.glass-crimson {
-    background: rgba(255, 8, 68, 0.07);
-    border-color: rgba(255, 8, 68, 0.22);
-    border-top-color: rgba(255, 8, 68, 0.35);
-}
-
-.glass-crimson::before {
-    background: linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(255, 8, 68, 0.35) 30%,
-        rgba(255, 200, 200, 0.5) 50%,
-        rgba(255, 8, 68, 0.35) 70%,
-        transparent 100%
-    );
-}
-
-/* Grain texture */
-.bg-mesh::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-    opacity: 0.03;
-    z-index: 1;
+@keyframes pulse {
+    from { opacity: 0.9; transform: scale(0.6); }
+    to   { opacity: 0;   transform: scale(1.6); }
 }
 
 /* ── REDUCED MOTION ── */
@@ -345,12 +150,7 @@ body {
         scroll-behavior: auto;
     }
 
-    .bg-orb {
+    .pulse::after {
         animation: none;
-    }
-
-    .glass,
-    .glass::after {
-        transition: none;
     }
 }
