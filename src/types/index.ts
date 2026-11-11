@@ -1,11 +1,14 @@
 export type ProjectDescriptionKey =
-  | "projects.items.fintrack.description"
+  | "projects.items.guldr.description"
   | "projects.items.mifondo.description"
+
+// Translated through projects.types.<type>
+export type ProjectType = "ios_app"
 
 export interface Project {
   id: string
   name: string
-  type: string
+  type: ProjectType
   year: string
   stack: string[]
   descriptionKey: ProjectDescriptionKey

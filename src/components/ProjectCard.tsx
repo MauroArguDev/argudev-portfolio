@@ -48,7 +48,7 @@ export function ProjectCard({ project }: Props) {
         {/* Type badge + year */}
         <div className="flex items-center justify-between">
           <span className="px-2.5 py-1 rounded-full font-mono text-[10px] tracking-[1px] uppercase text-violet bg-violet/10 border border-violet/20">
-            {project.type}
+            {t(`projects.types.${project.type}`)}
           </span>
           <span className="font-mono text-[12px] text-ash">{project.year}</span>
         </div>
