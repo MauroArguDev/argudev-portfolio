@@ -331,3 +331,19 @@ body {
     opacity: 0.03;
     z-index: 1;
 }
+
+/* ── REDUCED MOTION ── */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .bg-orb {
+        animation: none;
+    }
+
+    .glass,
+    .glass::after {
+        transition: none;
+    }
+}
