@@ -33,12 +33,16 @@ const CONTACT_LINKS = [
 ] as const
 
 const inputClass = [
-  "w-full px-0 py-3 font-body text-[18px] text-platinum",
-  "bg-transparent border-0 border-b border-white/15 rounded-none",
-  "placeholder:text-ash/70",
-  "focus:border-violet focus:outline-none",
-  "aria-[invalid=true]:border-crimson",
+  "cut cut-sm block w-full px-4 py-3.5 bg-obsidian font-body text-[16px] text-platinum",
+  "placeholder:text-silver/60",
+  "focus:outline-none focus-visible:outline-none",
   "disabled:opacity-50 disabled:cursor-not-allowed",
+].join(" ")
+
+// The cut-corner outline: violet while focused, crimson when the field is invalid
+const fieldFrame = [
+  "cut cut-sm p-px bg-white/15",
+  "focus-within:bg-violet has-[[aria-invalid=true]]:bg-crimson",
   "transition-colors duration-150",
 ].join(" ")
 
@@ -122,51 +126,56 @@ export function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           <form onSubmit={handleSubmit} noValidate className="lg:col-span-7 flex flex-col gap-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-2">
                 <label htmlFor="contact-name" className={labelClass}>
                   {t("contact.name_label")}
                 </label>
-                <input
-                  id="contact-name"
-                  type="text"
-                  autoComplete="name"
-                  required
-                  maxLength={MAX_LENGTH.name}
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder={t("contact.name_placeholder")}
-                  disabled={isDisabled}
-                  aria-invalid={invalidField === "name"}
-                  aria-describedby={invalidField === "name" ? "contact-error" : undefined}
-                  className={inputClass}
-                />
+                <div className={fieldFrame}>
+                  <input
+                    id="contact-name"
+                    type="text"
+                    autoComplete="name"
+                    required
+                    maxLength={MAX_LENGTH.name}
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder={t("contact.name_placeholder")}
+                    disabled={isDisabled}
+                    aria-invalid={invalidField === "name"}
+                    aria-describedby={invalidField === "name" ? "contact-error" : undefined}
+                    className={inputClass}
+                  />
+                </div>
                 {invalidField === "name" && <FieldError message={t(FIELD_ERROR.name)} />}
               </div>
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-2">
                 <label htmlFor="contact-email" className={labelClass}>
                   {t("contact.email_label")}
                 </label>
-                <input
-                  id="contact-email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  maxLength={MAX_LENGTH.email}
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder={t("contact.email_placeholder")}
-                  disabled={isDisabled}
-                  aria-invalid={invalidField === "email"}
-                  aria-describedby={invalidField === "email" ? "contact-error" : undefined}
-                  className={inputClass}
-                />
+                <div className={fieldFrame}>
+                  <input
+                    id="contact-email"
+                    type="email"
+                    autoComplete="email"
+                    required
+                    maxLength={MAX_LENGTH.email}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder={t("contact.email_placeholder")}
+                    disabled={isDisabled}
+                    aria-invalid={invalidField === "email"}
+                    aria-describedby={invalidField === "email" ? "contact-error" : undefined}
+                    className={inputClass}
+                  />
+                </div>
                 {invalidField === "email" && <FieldError message={t(FIELD_ERROR.email)} />}
               </div>
             </div>
-              <div className="flex flex-col gap-1">
-                <label htmlFor="contact-message" className={labelClass}>
-                  {t("contact.message_label")}
-                </label>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="contact-message" className={labelClass}>
+                {t("contact.message_label")}
+              </label>
+              <div className={fieldFrame}>
                 <textarea
                   id="contact-message"
                   rows={4}
@@ -180,8 +189,9 @@ export function Contact() {
                   aria-describedby={invalidField === "message" ? "contact-error" : undefined}
                   className={`${inputClass} resize-none`}
                 />
-                {invalidField === "message" && <FieldError message={t(FIELD_ERROR.message)} />}
               </div>
+              {invalidField === "message" && <FieldError message={t(FIELD_ERROR.message)} />}
+            </div>
 
             {/* Honeypot — off-screen and hidden from assistive tech */}
             <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">
