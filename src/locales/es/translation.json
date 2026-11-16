@@ -14,9 +14,9 @@
   "hero": {
     "status_label": "Ahora",
     "role": "iOS Developer · ArguDev",
-    "statement": "Seis años llevando apps iOS del primer commit al App Store.",
+    "statement": "+5 años llevando apps iOS del primer commit al App Store.",
     "proof": [
-      "+6 años entregando",
+      "+5 años entregando",
       "Swift 6 · SwiftUI",
       "Cliente: Fiducia S.A.",
       "Guldr v1.0"
@@ -75,7 +75,7 @@
     "index": "02",
     "eyebrow": "Sobre mí",
     "heading": "Código limpio que llega a producción.",
-    "bio": "iOS developer con +6 años entregando software listo para producción. Eficiente, limpio y a tiempo — siempre.",
+    "bio": "iOS developer con +6 años entregando software listo para producción, +5 de ellos en iOS. Eficiente, limpio y a tiempo — siempre.",
     "principles_heading": "Cómo trabajo",
     "principles": [
       {
@@ -121,7 +121,7 @@
     "links_label": "Enlaces de contacto"
   },
   "footer": {
-    "tagline": "iOS developer · +6 años entregando",
+    "tagline": "iOS developer · +5 años entregando",
     "built_with": "Construido con React · TypeScript · Tailwind CSS",
     "credits": "Identidad de marca, fotografía y diseño por",
     "back_to_top": "Volver arriba"
