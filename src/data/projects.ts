@@ -12,10 +12,10 @@ export const guldr: CaseStudy = {
 
 export const miFondo: CaseStudy = {
   name: "Mi Fondo",
-  year: "2020",
+  year: "2021",
   client: "Fiducia S.A.",
   stack: ["Swift", "SwiftUI", "UIKit", "Combine", "Vision", "AVFoundation"],
   links: [
-    { label: "work.view_appstore", href: "https://apps.apple.com/sv/app/mi-fondo-app/id1461509423?l=en-GB" },
+    { label: "work.view_appstore", href: "https://apps.apple.com/app/id1461509423" },
   ],
 }
