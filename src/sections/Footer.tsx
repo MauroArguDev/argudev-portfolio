@@ -11,6 +11,8 @@ const NAV_LINKS = [
 const CONNECT_LINKS = [
   { label: "GitHub", href: contact.github.href },
   { label: "LinkedIn", href: contact.linkedin.href },
+  { label: "X", href: contact.x.href },
+  { label: "Instagram", href: contact.instagram.href },
   { label: contact.email, href: mailto },
 ] as const
 
