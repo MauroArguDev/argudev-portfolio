@@ -30,6 +30,8 @@ const CONTACT_LINKS = [
   { label: contact.email, href: mailto },
   contact.github,
   contact.linkedin,
+  contact.x,
+  contact.instagram,
 ] as const
 
 const inputClass = [

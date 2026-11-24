@@ -5,6 +5,8 @@ export const contact = {
     label: "linkedin.com/in/mauricio-argumedo-1942801ab",
     href: "https://www.linkedin.com/in/mauricio-argumedo-1942801ab/",
   },
+  x: { label: "x.com/ArguDev", href: "https://x.com/ArguDev" },
+  instagram: { label: "instagram.com/argu.dev", href: "https://www.instagram.com/argu.dev/" },
 } as const
 
 export const mailto = `mailto:${contact.email}`
