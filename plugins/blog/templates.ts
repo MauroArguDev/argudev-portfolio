@@ -264,11 +264,12 @@ ${o.head ?? ""}
 }
 
 function navLinks(labels: Labels) {
+  // `transition` matches the view-transition-name of the same link in Nav.tsx
   return [
-    { index: "01", label: labels.nav.work, href: "/#work" },
-    { index: "02", label: labels.nav.about, href: "/#about" },
-    { index: "03", label: labels.nav.contact, href: "/#contact" },
-    { index: "04", label: labels.nav.blog, href: "/blog", current: true },
+    { index: "01", label: labels.nav.work, href: "/#work", transition: "nav-work" },
+    { index: "02", label: labels.nav.about, href: "/#about", transition: "nav-about" },
+    { index: "03", label: labels.nav.contact, href: "/#contact", transition: "nav-contact" },
+    { index: "04", label: labels.nav.blog, href: "/blog", transition: "nav-blog", current: true },
   ]
 }
 
@@ -279,8 +280,8 @@ function skipLink(labels: Labels) {
 function header(labels: Labels) {
   const links = navLinks(labels)
   const desktop = links
-    .map(({ index, label, href, current }) => `
-          <a href="${href}"${current ? ` aria-current="page"` : ""} class="group flex items-baseline gap-2 font-mono text-[12px] tracking-[0.12em] uppercase ${current ? "text-platinum" : "text-silver"} hover:text-platinum transition-colors duration-150">
+    .map(({ index, label, href, current, transition }) => `
+          <a href="${href}"${current ? ` aria-current="page"` : ""} style="view-transition-name: ${transition}" class="group flex items-baseline gap-2 font-mono text-[12px] tracking-[0.12em] uppercase ${current ? "text-platinum" : "text-silver"} hover:text-platinum transition-colors duration-150">
             <span class="${current ? "text-violet" : "text-ash"} group-hover:text-violet transition-colors duration-150">${index}</span>
             ${e(label)}
           </a>`)

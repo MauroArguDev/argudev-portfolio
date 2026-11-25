@@ -289,7 +289,8 @@ body {
 
 /* ── PAGE TRANSITIONS ──
    Cross-document view transitions between the portfolio and the blog, pure CSS.
-   The header keeps its place (view-transition-name: site-header), the page content
+   The header keeps its place (view-transition-name: site-header) and its links slide to
+   their new positions (nav-work, nav-about…: the blog has no language switcher), the page content
    lifts out and the next page rises in, and a post's title travels from its card on
    /blog into the post's headline (view-transition-class: post-title). Browsers without
    support navigate as usual. */
@@ -315,8 +316,28 @@ body {
     from { opacity: 0; transform: translateY(16px); }
 }
 
-::view-transition-group(site-header) {
-    animation-duration: 0.3s;
+::view-transition-group(site-header),
+::view-transition-group(nav-work),
+::view-transition-group(nav-about),
+::view-transition-group(nav-contact),
+::view-transition-group(nav-blog) {
+    animation-duration: 0.35s;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Arriving at /#section (the links back from the blog): the content stays hidden until the
+   lazy sections exist and the page has scrolled there (main.tsx, ScrollToHash), then rises in
+   like a page transition, instead of showing the hero and jumping. */
+html[data-arriving] main,
+html[data-arriving] footer {
+    visibility: hidden;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    html[data-arrived] main,
+    html[data-arrived] footer {
+        animation: page-in 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
 }
 
 ::view-transition-group(*.post-title) {

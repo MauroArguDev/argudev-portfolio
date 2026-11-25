@@ -39,6 +39,8 @@ export function Nav() {
               <a
                 key={key}
                 href={href}
+                // Each link slides to its place when navigating to and from the blog (globals.css)
+                style={{ viewTransitionName: key.replace(".", "-") }}
                 className="group flex items-baseline gap-2 font-mono text-[12px] tracking-[0.12em] uppercase text-silver hover:text-platinum transition-colors duration-150"
               >
                 <span className="text-ash group-hover:text-violet transition-colors duration-150">{index}</span>
