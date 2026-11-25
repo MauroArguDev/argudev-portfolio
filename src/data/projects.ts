@@ -6,6 +6,7 @@ export const guldr: CaseStudy = {
   year: "2026",
   stack: ["Swift 6", "SwiftUI", "SwiftData", "WidgetKit", "Swift Charts", "Swift Testing"],
   links: [
+    { label: "work.view_appstore", href: "https://apps.apple.com/app/id6826453592" },
     { label: "work.view_github", href: "https://github.com/MauroArguDev/Guldr" },
   ],
 }

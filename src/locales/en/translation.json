@@ -20,7 +20,7 @@
       "5+ years shipping",
       "Swift 6 · SwiftUI",
       "Client work for Fiducia S.A.",
-      "Guldr v1.0"
+      "Guldr on the App Store"
     ],
     "cta_work": "See the work",
     "cta_contact": "Get in touch",
@@ -44,7 +44,7 @@
     "view_github": "Source on GitHub",
     "view_appstore": "View on the App Store",
     "guldr": {
-      "status": "v1.0 · TestFlight",
+      "status": "v1.0 · App Store",
       "tagline": "Your gold, in order. A local-first personal finance app.",
       "problem": "Finance apps ask for an account and send your spending to their servers. Guldr keeps everything on the phone: no account, no servers, nothing collected.",
       "decisions": [
@@ -53,7 +53,7 @@
         "Swift 6 strict concurrency and MVVM with @Observable view models.",
         "Widgets read the SwiftData store read-only from the App Group."
       ],
-      "outcome": "v1.0 in TestFlight with a \"Data Not Collected\" privacy label. Budgets, analytics, widgets and a logging streak, with VoiceOver, Dynamic Type and Reduce Motion throughout.",
+      "outcome": "v1.0 live on the App Store with a \"Data Not Collected\" privacy label. Budgets, analytics, widgets and a logging streak, with VoiceOver, Dynamic Type and Reduce Motion throughout.",
       "demo_alt": "Guldr demo: adding an expense from Home, then opening Analytics"
     },
     "mifondo": {
