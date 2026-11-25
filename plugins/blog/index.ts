@@ -61,7 +61,9 @@ export function blog(): Plugin {
 
           const ctx: PageContext = {
             labels: labels(),
-            styles: `<script type="module" src="/src/styles/blog-dev.ts"></script>`,
+            // Render-blocking: Vite injects dev CSS from JS, and without it the first frame
+            // (the one the page transition captures) would be unstyled
+            styles: `<script type="module" blocking="render" src="/src/styles/blog-dev.ts"></script>`,
             scripts: "",
           }
           const slug = match?.[1]

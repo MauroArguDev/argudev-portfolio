@@ -34,7 +34,8 @@ function renderBlockingEntry(): Plugin {
     transformIndexHtml: {
       order: "post",
       handler(html) {
-        return html.replace(/<script type="module"(?![^>]*blocking)/, '<script type="module" blocking="render"')
+        // The app entry: a module script with a src that isn't one of Vite's own (/@vite/client)
+        return html.replace(/<script type="module"(?![^>]*blocking)(?=[^>]*\ssrc="(?!\/@))/g, '<script type="module" blocking="render"')
       },
     },
   }
