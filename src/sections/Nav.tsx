@@ -6,6 +6,7 @@ const NAV_LINKS = [
   { index: "01", key: "nav.work", href: "#work" },
   { index: "02", key: "nav.about", href: "#about" },
   { index: "03", key: "nav.contact", href: "#contact" },
+  { index: "04", key: "nav.blog", href: "/blog" },
 ] as const
 
 export function Nav() {
