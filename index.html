@@ -40,6 +40,11 @@
 
   <title>Mauricio Argumedo — iOS Developer | ArguDev</title>
 
+  <!-- In <head> so it can block rendering (only head elements can): the page transition from
+       the blog captures the first frame, which must already have the styles and the app.
+       Module scripts are deferred, so it still runs after the document is parsed. -->
+  <script type="module" src="/src/main.tsx"></script>
+
   <!-- Structured Data -->
   <script type="application/ld+json">
   {
@@ -80,7 +85,6 @@
 
 <body>
   <div id="root"></div>
-  <script type="module" src="/src/main.tsx"></script>
 </body>
 
 </html>
