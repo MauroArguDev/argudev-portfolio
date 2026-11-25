@@ -1,17 +1,28 @@
 import { StrictMode } from 'react'
+import { flushSync } from 'react-dom'
 import { createRoot } from 'react-dom/client'
-import '@fontsource/space-grotesk/latin-600.css'
-import '@fontsource/space-grotesk/latin-700.css'
-import '@fontsource/dm-sans/latin-400.css'
-import '@fontsource/dm-sans/latin-500.css'
-import '@fontsource/jetbrains-mono/latin-400.css'
-import '@fontsource/jetbrains-mono/latin-500.css'
+import './styles/fonts'
 import './lib/i18n'
 import './styles/globals.css'
 import App from './App.tsx'
+import { initialHashTarget, revealArrival } from './lib/hashTarget'
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+// Opened at /#work and the like (the links back from the blog): the content stays hidden until
+// the lazy sections exist and ScrollToHash has scrolled to the section, then rises in
+// (globals.css), instead of showing the hero and jumping. Shown anyway after 3s in case a chunk
+// fails to load.
+if (initialHashTarget()) {
+  document.documentElement.dataset.arriving = ''
+  setTimeout(revealArrival, 3000)
+}
+
+// Rendered synchronously so the first frame (captured by the page transition from the blog)
+// already has Nav and Hero; the lazy sections follow.
+const root = createRoot(document.getElementById('root')!)
+flushSync(() => {
+  root.render(
+    <StrictMode>
+      <App />
+    </StrictMode>,
+  )
+})

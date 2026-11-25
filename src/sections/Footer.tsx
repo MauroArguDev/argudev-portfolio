@@ -6,6 +6,7 @@ const NAV_LINKS = [
   { key: "nav.work", href: "#work" },
   { key: "nav.about", href: "#about" },
   { key: "nav.contact", href: "#contact" },
+  { key: "nav.blog", href: "/blog" },
 ] as const
 
 const CONNECT_LINKS = [

@@ -6,6 +6,7 @@ const NAV_LINKS = [
   { index: "01", key: "nav.work", href: "#work" },
   { index: "02", key: "nav.about", href: "#about" },
   { index: "03", key: "nav.contact", href: "#contact" },
+  { index: "04", key: "nav.blog", href: "/blog" },
 ] as const
 
 export function Nav() {
@@ -23,7 +24,7 @@ export function Nav() {
   }, [menuOpen])
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 h-14 md:h-16 bg-void/80 backdrop-blur-xl border-b border-white/[0.06]">
+    <header className="fixed top-0 left-0 right-0 z-50 h-14 md:h-16 bg-void/80 backdrop-blur-xl border-b border-white/[0.06] [view-transition-name:site-header]">
       <div className="max-w-7xl mx-auto px-6 md:px-10 h-full flex items-center justify-between">
         <a href="#hero" aria-label={t("nav.home_label")} className="flex items-center select-none">
           <picture>
@@ -38,6 +39,8 @@ export function Nav() {
               <a
                 key={key}
                 href={href}
+                // Each link slides to its place when navigating to and from the blog (globals.css)
+                style={{ viewTransitionName: key.replace(".", "-") }}
                 className="group flex items-baseline gap-2 font-mono text-[12px] tracking-[0.12em] uppercase text-silver hover:text-platinum transition-colors duration-150"
               >
                 <span className="text-ash group-hover:text-violet transition-colors duration-150">{index}</span>
