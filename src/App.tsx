@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { I18nHtmlSync } from '@/components/I18nHtmlSync'
 import { Backdrop } from '@/components/Backdrop'
 import { ScrollProgress } from '@/components/ScrollProgress'
+import { ScrollToHash } from '@/components/ScrollToHash'
 import { Nav } from '@/sections/Nav'
 import { Hero } from '@/sections/Hero'
 
@@ -55,6 +56,7 @@ function App() {
             <Work />
             <About />
             <Contact />
+            <ScrollToHash />
           </Suspense>
         </main>
         <Suspense fallback={null}>
