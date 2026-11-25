@@ -149,6 +149,123 @@ body {
     to   { opacity: 0;   transform: scale(1.6); }
 }
 
+/* ── BLOG POST BODY ──
+   Markdown rendered by plugins/blog. Preflight strips element styles, so they come back here. */
+.post {
+    font-size: 18px;
+    line-height: 1.75;
+    color: rgb(245 245 247 / 0.86);
+}
+
+.post > * + * {
+    margin-top: 1.4em;
+}
+
+.post h2,
+.post h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--color-platinum);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    scroll-margin-top: 96px;
+}
+
+.post h2 {
+    margin-top: 2.6em;
+    font-size: clamp(24px, 3vw, 30px);
+}
+
+.post h3 {
+    margin-top: 2em;
+    font-size: 21px;
+}
+
+.post h2 + *,
+.post h3 + * {
+    margin-top: 0.8em;
+}
+
+.post a {
+    color: var(--color-platinum);
+    text-decoration: underline;
+    text-decoration-color: rgb(176 38 255 / 0.7);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    transition: text-decoration-color 150ms;
+}
+
+.post a:hover {
+    text-decoration-color: var(--color-platinum);
+}
+
+.post strong {
+    font-weight: 500;
+    color: var(--color-platinum);
+}
+
+.post code {
+    font-family: var(--font-mono);
+    font-size: 0.84em;
+    padding: 0.12em 0.4em;
+    background: var(--color-graphite);
+    border: 1px solid rgb(255 255 255 / 0.08);
+    color: var(--color-platinum);
+}
+
+.post pre {
+    --cut: 12px;
+    overflow-x: auto;
+    padding: 1.25em 1.5em;
+    background: var(--color-obsidian);
+    font-size: 15px;
+    line-height: 1.6;
+    clip-path: polygon(
+        var(--cut) 0, 100% 0,
+        100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%,
+        0 100%, 0 var(--cut)
+    );
+}
+
+.post pre code {
+    padding: 0;
+    background: none;
+    border: 0;
+    font-size: inherit;
+}
+
+.post ul,
+.post ol {
+    padding-left: 1.4em;
+}
+
+.post ul { list-style: square; }
+.post ol { list-style: decimal; }
+
+.post li + li {
+    margin-top: 0.4em;
+}
+
+.post li::marker {
+    color: var(--color-violet);
+}
+
+.post blockquote {
+    padding-left: 1.25em;
+    border-left: 2px solid var(--color-violet);
+    color: var(--color-silver);
+}
+
+.post hr {
+    border-color: rgb(255 255 255 / 0.1);
+    margin: 3em 0;
+}
+
+.post img {
+    max-width: 100%;
+    height: auto;
+}
+
 /* ── MOTION ──
    Plain CSS: the hero name rises from behind its mask and the mark draws
    its outline (each shape sets its own animation-delay). */

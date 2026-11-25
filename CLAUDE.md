@@ -33,4 +33,11 @@ The contact form needs `VITE_EMAILJS_SERVICE_ID`, `VITE_EMAILJS_TEMPLATE_ID` and
 
 ## Deployment
 
-Vercel (`vercel.json`): an SPA rewrite to `/index.html`, plus security headers including a strict Content-Security-Policy. Adding any new external script, font, image host or API endpoint (beyond EmailJS, Google Fonts and Vercel Analytics/Speed Insights) requires updating the CSP there, or it will be blocked in production. SEO metadata lives in `index.html`, `public/sitemap.xml` and `public/robots.txt`.
+Vercel (`vercel.json`): an SPA rewrite to `/index.html` that skips `/blog`, `cleanUrls` (so `blog/<slug>.html` is served at `/blog/<slug>`), plus security headers including a strict Content-Security-Policy. Adding any new external script, font, image host or API endpoint (beyond EmailJS, Google Fonts and Vercel Analytics/Speed Insights) requires updating the CSP there, or it will be blocked in production. SEO metadata lives in `index.html`, the blog templates and `public/robots.txt`; `sitemap.xml` is generated at build time by the blog plugin.
+
+## Blog
+
+- **Posts** are Markdown files in `content/blog/<slug>.md` with frontmatter `title`, `date` (YYYY-MM-DD), `description` and `slug` (must match the file name); optional `draft: true` (shown in dev, left out of the build) and `image`. Post bodies are English only. Adding a post is adding one file.
+- **Rendering**: `plugins/blog/` is a Vite plugin. At build it emits static HTML with no JavaScript (`dist/blog.html`, `dist/blog/<slug>.html`, `dist/blog/rss.xml`, `dist/sitemap.xml`, `dist/404.html`), each page with its own title, description, canonical, Open Graph/Twitter tags and JSON-LD, linking the app's built stylesheet. In `npm run dev` the same pages are rendered on request (`/blog`, `/blog/<slug>`). The frontmatter parser is hand-written (`key: value` lines); Markdown goes through `marked`.
+- **Templates** (`plugins/blog/templates.ts`) mirror `Nav` and `Footer` as static markup, with labels read from the English locale file. Keep them in step when the nav or footer changes. Post body styles are the `.post` rules in `globals.css`.
+- **Open Graph image**: `npm run og -- <slug>` renders `scripts/og/template.html` with headless Chrome to `public/blog/<slug>/og.png` (1200×630), which the plugin picks up automatically; without one, posts fall back to `/og.jpg`. Set `CHROME_PATH` if Chrome isn't in `/Applications`.

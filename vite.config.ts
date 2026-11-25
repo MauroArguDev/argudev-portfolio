@@ -2,6 +2,7 @@ import { defineConfig, type Plugin } from "vite"
 import react from "@vitejs/plugin-react"
 import tailwindcss from "@tailwindcss/vite"
 import path from "path"
+import { blog } from "./plugins/blog/index.ts"
 
 function preloadLCPImage(): Plugin {
   return {
@@ -24,7 +25,7 @@ function preloadLCPImage(): Plugin {
 }
 
 export default defineConfig({
-  plugins: [react(), tailwindcss(), preloadLCPImage()],
+  plugins: [react(), tailwindcss(), preloadLCPImage(), blog()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
