@@ -1,54 +1,62 @@
 ---
 title: "Building Guldr: a local-first finance app for iPhone"
 date: 2026-11-30
-description: "How Guldr, a local-first personal finance app for iPhone, is built: no backend, money as integers, a shared Swift package and Swift 6."
+description: "Guldr is a personal finance app for iPhone that keeps your data on your phone. Here's what it does and the decisions behind how it's built."
 slug: building-guldr
 ---
 
-Guldr is out on the App Store. It's a personal finance app for iPhone with one rule that shaped everything else: your data never leaves your phone. There's no account to create, no server to sync with and no analytics SDK. The App Store privacy label reads **Data Not Collected**, and I wanted that to be true by construction, not by policy.
+Guldr is live on the App Store! It's a personal finance app for iPhone, built around one simple promise: your money data stays on your phone. There's no account to sign up for, no server syncing in the background and no analytics watching what you tap. The App Store privacy label says **Data Not Collected**, and I wanted that to be true because of how the app is built, not just because a policy says so.
 
-This post is about how it's built and the decisions behind it. The code is public on [GitHub](https://github.com/MauroArguDev/Guldr), and every decision mentioned here links to its record in the repo.
+In this post I'll walk you through what Guldr does and the handful of decisions that shaped it. You don't need to be an iOS developer to follow along. If you are one, the code is public on [GitHub](https://github.com/MauroArguDev/Guldr), and each decision links to its full write-up in the repo.
 
 ## What it does
 
-You log income and expenses from a sheet that opens straight to a keypad, because logging has to take seconds or it doesn't happen. On top of that log, Guldr gives you a balance, monthly budgets per category with alerts at 80% and 100%, and charts of where the money goes. A daily reminder, a logging streak and achievements in bronze, silver and gold exist for one reason: to keep the log complete. They reward logging, never spending less, and none of them can be bought.
+When you open Guldr to log an expense, you land straight on a keypad. That's on purpose: if logging takes more than a few seconds, people stop doing it, and a finance app is only as useful as the data you put in.
 
-It also has Home Screen widgets, a Face ID lock, CSV export, and full support for English, Spanish, VoiceOver, Dynamic Type and Reduce Motion.
+From that log, Guldr shows your balance, lets you set monthly budgets per category (with a heads-up at 80% and again at 100%) and draws charts of where your money goes. There's also a daily reminder, a logging streak and achievements in bronze, silver and gold. They're there for one reason: to help you keep the log complete. They reward you for logging, never for spending less, and none of them can be bought.
 
-## Decision 1: no backend at all
+On top of that, you get Home Screen widgets, a Face ID lock, CSV export, English and Spanish, and full support for VoiceOver, Dynamic Type and Reduce Motion.
 
-The simplest way to keep data private is to never hold it. Guldr stores everything in SwiftData, inside an App Group container shared with the widget extension. The app opens the store read-write; the widget opens the same store read-only, so it can show the balance and the streak without ever being able to corrupt them ([ADR 007](https://github.com/MauroArguDev/Guldr/blob/main/docs/decisions/007-persistence-and-widget-data.md)).
+## No servers, on purpose
 
-"No backend" doesn't mean "no sync, ever." iCloud sync is the next release, through the user's own private CloudKit database. To make that a feature instead of a migration, the models follow CloudKit's rules from day one: no unique constraints, every relationship optional, every property with a default value. When sync turns on, existing data uploads as it is.
+The simplest way to protect someone's data is to never have it. Everything in Guldr lives on your phone, stored with SwiftData, Apple's own database framework. The Home Screen widget reads from the same place, but it can only read: it shows your balance and your streak, and it can't change them by accident ([ADR 007](https://github.com/MauroArguDev/Guldr/blob/main/docs/decisions/007-persistence-and-widget-data.md)).
 
-## Decision 2: money is never a Double
+"No servers" doesn't mean "no sync, ever." iCloud sync is coming in the next release, through your own private iCloud database. I planned for it from day one, so when it arrives, the data you already have uploads as it is. No migration, no starting over.
 
-Every amount is an `Int64` in the minor units of its currency, stored next to an ISO 4217 code ([ADR 005](https://github.com/MauroArguDev/Guldr/blob/main/docs/decisions/005-money-representation.md)). Floating point can't represent most decimal fractions exactly, so `0.1 + 0.2` isn't `0.3`. That's a curiosity in a tutorial and a real bug in a budget that sums thousands of transactions.
+## Money is never a decimal number
 
-Storing the currency on every transaction also means Guldr never guesses. Totals, budgets and charts use the active currency. Converting between currencies would need exchange rates from the network, which would break the first rule.
+This one sounds nerdy, but it matters. Computers are surprisingly bad at decimals: in most programming languages, `0.1 + 0.2` doesn't come out as exactly `0.3`. That's a fun quirk in a tutorial and a real problem in an app that adds up thousands of transactions.
 
-## Decision 3: the domain is a Swift package
+So Guldr stores every amount as a whole number in the smallest unit of its currency, along with the currency itself ([ADR 005](https://github.com/MauroArguDev/Guldr/blob/main/docs/decisions/005-money-representation.md)). $12.50 is saved as 1250 cents, and the math is always exact.
 
-All the logic that can be pure lives in `GuldrCore`, a local Swift package linked by both the app and the widget ([ADR 006](https://github.com/MauroArguDev/Guldr/blob/main/docs/decisions/006-guldr-core-package.md)): money and formatting, month calculations, budget status, the streak, achievements and the monthly recap. The app keeps the views, the view models and the system integrations like notifications, Face ID and sharing.
+Keeping the currency on every transaction also means Guldr never has to guess. Totals, budgets and charts use your active currency. Converting between currencies would mean fetching exchange rates from the internet, and that would break the first rule.
 
-The package builds for macOS too, only so `swift test` runs without a simulator. That keeps the feedback loop to seconds, and the widget and the app can't disagree about a number because they run the same code.
+## One brain for the app and the widget
 
-## Decision 4: Swift 6, main actor by default
+All the logic that doesn't depend on the screen lives in its own package, `GuldrCore` ([ADR 006](https://github.com/MauroArguDev/Guldr/blob/main/docs/decisions/006-guldr-core-package.md)): formatting money, working out months, budget status, the streak, achievements and the monthly recap. The app keeps the screens and the parts that talk to the system, like notifications, Face ID and sharing.
 
-The app targets use Swift 6 language mode with `MainActor` as the default isolation ([ADR 003](https://github.com/MauroArguDev/Guldr/blob/main/docs/decisions/003-concurrency-defaults.md)). Most of an app like this is UI and should run on the main actor anyway, so the default removes a lot of annotations and makes the exceptions stand out. The domain package goes the other way: it's `nonisolated` by default, because pure calculations shouldn't care which thread calls them.
+Because the app and the widget run the same code, they can never disagree about a number. And since the package also builds for the Mac, its tests run in seconds without starting an iPhone simulator. Fast tests are tests you actually run.
 
-## Decision 5: derive state instead of counting it
+## Letting Swift catch the hard bugs
 
-The logging streak looks like a counter, but it isn't stored as one ([ADR 012](https://github.com/MauroArguDev/Guldr/blob/main/docs/decisions/012-logging-streak.md)). Guldr stores the set of days you logged, and computes everything from it: the current run, the best run, the freezes you've earned (one every 7 days, up to 2) and whether yesterday can still be repaired. A counter can drift, double-count or disagree between the app and the widget. A function of the logged days can't, and it's trivially testable.
+Apps do many things at once, and bugs where two pieces of code touch the same data at the same time are some of the hardest to track down. Swift 6 catches them while the code compiles, before the app ever runs, so Guldr uses it in its strictest mode ([ADR 003](https://github.com/MauroArguDev/Guldr/blob/main/docs/decisions/003-concurrency-defaults.md)).
 
-## How it was built
+Most of an app like this is user interface, which runs on the main thread anyway, so I made that the default. That keeps the code clean and makes the few exceptions stand out. The shared package goes the other way: its calculations don't care which thread calls them.
 
-From the first commit to the App Store took eight weeks. Every change went through a branch, a pull request and CI on GitHub Actions: SwiftLint with zero warnings, the package tests and the app tests, 440 in total. Every decision that wasn't obvious became an architecture decision record, sixteen so far, so the reasoning lives next to the code.
+## The streak isn't a counter
 
-Five people tested it on TestFlight over five builds. One of those builds taught me the most: on iOS 27, the add sheet froze at 100% CPU when you tapped the date. I pulled the build from App Review, found the cause in a cycle between UIKit and SwiftUI's view graph, and shipped the fix in build 5. That bug gets its own post next.
+The logging streak looks like a number that goes up every day, but that's not how it's stored ([ADR 012](https://github.com/MauroArguDev/Guldr/blob/main/docs/decisions/012-logging-streak.md)). Guldr keeps the list of days you logged something and works everything out from it: your current streak, your best one, the freezes you've earned (one every 7 days, up to 2) and whether a missed yesterday can still be repaired.
+
+Why bother? A counter can drift, count the same day twice, or show one number in the app and another in the widget. A list of days can't, and it's easy to test.
+
+## How it got built
+
+From the first commit to the App Store took eight weeks. Every change went through a pull request and automatic checks on GitHub: a linter with zero warnings and 440 tests across the app and the shared package. Every decision that wasn't obvious got written down as an architecture decision record, sixteen so far, so the reasoning lives right next to the code.
+
+Five people tested Guldr on TestFlight over five builds. One of those builds taught me the most: on iOS 27, the add sheet froze at 100% CPU the moment you tapped the date. I pulled the build from App Review, traced the freeze to a loop between UIKit and SwiftUI, and shipped the fix in build 5. That bug gets its own post next.
 
 ## What's next
 
-Version 1.1 brings iCloud sync and a CSV import, so nothing you log can be lost and it follows you to every iPhone you own. After that comes a one-time Gold unlock and, further out, receipt scanning that runs entirely on the device.
+Version 1.1 brings iCloud sync and CSV import, so nothing you log can be lost and your data follows you to every iPhone you own. After that comes a one-time Gold unlock and, further down the road, receipt scanning that runs entirely on your phone.
 
-If you try it, I'd love to hear what you think. [Download Guldr on the App Store](https://apps.apple.com/app/id6826453592), or read the code on [GitHub](https://github.com/MauroArguDev/Guldr).
+If you give it a try, I'd love to hear what you think. [Download Guldr on the App Store](https://apps.apple.com/app/id6826453592), or take a look at the code on [GitHub](https://github.com/MauroArguDev/Guldr).
