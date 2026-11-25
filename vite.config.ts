@@ -24,8 +24,24 @@ function preloadLCPImage(): Plugin {
   }
 }
 
+// The page transition into the portfolio (see PAGE TRANSITIONS in globals.css) snapshots the
+// first frame, which is empty until React renders. Making the entry script render-blocking
+// (plus the synchronous first render in main.tsx) puts Nav and Hero in that frame.
+// Vite rewrites the entry <script> and drops the attribute, so it's added back here.
+function renderBlockingEntry(): Plugin {
+  return {
+    name: "render-blocking-entry",
+    transformIndexHtml: {
+      order: "post",
+      handler(html) {
+        return html.replace(/<script type="module"(?![^>]*blocking)/, '<script type="module" blocking="render"')
+      },
+    },
+  }
+}
+
 export default defineConfig({
-  plugins: [react(), tailwindcss(), preloadLCPImage(), blog()],
+  plugins: [react(), tailwindcss(), preloadLCPImage(), renderBlockingEntry(), blog()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

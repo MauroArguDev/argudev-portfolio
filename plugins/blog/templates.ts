@@ -100,7 +100,7 @@ export function renderPost(post: Post, ctx: PageContext) {
         <a href="/blog" class="inline-flex font-mono text-[12px] tracking-[0.12em] uppercase text-silver hover:text-platinum transition-colors duration-150">← All posts</a>
         <header class="mt-10 md:mt-14 mb-12 md:mb-16">
           <p class="font-mono text-[12px] tracking-[0.12em] uppercase text-ash">${postMeta(post)}</p>
-          <h1 class="mt-5 font-display font-bold text-[clamp(36px,5.6vw,60px)] leading-[1.02] tracking-[-0.035em] text-platinum text-balance">${e(post.title)}</h1>
+          <h1 style="${titleTransition(post)}" class="mt-5 font-display font-bold text-[clamp(36px,5.6vw,60px)] leading-[1.02] tracking-[-0.035em] text-platinum text-balance">${e(post.title)}</h1>
           <p class="mt-6 font-body text-[19px] leading-snug text-silver">${e(post.description)}</p>
           <p class="mt-8 flex items-center gap-3 font-mono text-[12px] tracking-[0.08em] uppercase text-silver">
             <span class="w-8 h-px bg-violet" aria-hidden="true"></span>
@@ -296,7 +296,7 @@ function header(labels: Labels) {
     .join("")
 
   // The mobile menu is a <details> element so it works without JavaScript
-  return `<header class="fixed top-0 left-0 right-0 z-50 h-14 md:h-16 bg-void/80 backdrop-blur-xl border-b border-white/[0.06]">
+  return `<header class="fixed top-0 left-0 right-0 z-50 h-14 md:h-16 bg-void/80 backdrop-blur-xl border-b border-white/[0.06] [view-transition-name:site-header]">
     <div class="max-w-7xl mx-auto px-6 md:px-10 h-full flex items-center justify-between">
       <a href="/" aria-label="${e(labels.nav.home_label)}" class="flex items-center select-none">
         <picture>
@@ -375,6 +375,11 @@ function footer(labels: Labels) {
   </footer>`
 }
 
+/** Pairs a post's card title on /blog with its headline, so the title travels between them */
+function titleTransition(post: Post) {
+  return `view-transition-name: post-title-${post.slug}; view-transition-class: post-title`
+}
+
 function postMeta(post: Post) {
   return `<time datetime="${post.date}">${formatDate(post.date)}</time> · ${post.readingMinutes} min read`
 }
@@ -385,7 +390,7 @@ function postCard(post: Post) {
             <a href="/blog/${post.slug}" class="group block cut cut-line">
               <div class="cut bg-obsidian group-hover:bg-graphite transition-colors duration-150 p-6 sm:p-8">
                 <p class="font-mono text-[12px] tracking-[0.12em] uppercase text-ash">${postMeta(post)}</p>
-                <h2 class="mt-3 font-display font-bold text-[clamp(24px,3vw,32px)] leading-[1.1] tracking-[-0.02em] text-platinum text-balance">${e(post.title)}</h2>
+                <h2 style="${titleTransition(post)}" class="mt-3 font-display font-bold text-[clamp(24px,3vw,32px)] leading-[1.1] tracking-[-0.02em] text-platinum text-balance">${e(post.title)}</h2>
                 <p class="mt-3 font-body text-[16px] leading-relaxed text-silver">${e(post.description)}</p>
                 <p class="mt-6 font-mono text-[12px] tracking-[0.12em] uppercase text-violet">
                   Read <span class="inline-block transition-transform duration-150 group-hover:translate-x-1" aria-hidden="true">→</span>
